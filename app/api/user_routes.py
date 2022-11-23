@@ -17,3 +17,9 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>/business')
+@login_required
+def user_business(id):
+
+    user_business = Business.query.filter()
