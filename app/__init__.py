@@ -4,11 +4,21 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
+
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api.servers_routes import servers_routes
+from .api.channel_routes import channel_routes
+from .api.messages_routes import messages_routes
+
 from .seeds import seed_commands
+
 from .config import Config
+
+# socket import
+from .socket import socketio
+
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -28,8 +38,14 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(servers_routes, url_prefix='/api/servers')
+app.register_blueprint(channel_routes, url_prefix='/api/channels')
+app.register_blueprint(messages_routes, url_prefix='/api/messages')
 db.init_app(app)
 Migrate(app, db)
+
+# initialize the app with the socket instance
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -61,6 +77,8 @@ def inject_csrf_token(response):
     return response
 
 
+
+
 @app.route("/api/docs")
 def api_help():
     """
@@ -76,11 +94,19 @@ def api_help():
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
+    """
+    This route will direct to the public directory in our
+    react builds in the production environment for favicon
+    or index.html requests
+    """
     if path == 'favicon.ico':
-        return app.send_static_file('favicon.ico')
+        return app.send_from_directory('public', 'favicon.ico')
     return app.send_static_file('index.html')
 
 
 @app.errorhandler(404)
 def not_found(e):
     return app.send_static_file('index.html')
+
+if __name__ == '__main__':
+    socketio.run(app)
