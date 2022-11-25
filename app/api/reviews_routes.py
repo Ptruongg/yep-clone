@@ -36,3 +36,32 @@ def create_review():
         db.session.add(new_review)
         db.session.commit()
         return new_review.to_dict()
+
+#update a review
+@review_routes('/<int:id>', methods=['PUT'])
+@login_required
+def update_review(id):
+    form = CreateReviewForm()
+    form = ['csrf_token'].data = request.cookies['csrf_token']
+    review = Review.query.get(id)
+
+    if current_user.id == review.user_id:
+        review.review = form.data['review']
+        review.rating = form.data['rating']
+
+        db.session.commit()
+        return review.to_dict()
+    else:
+        return "404: Unauthorized User"
+
+#delete a review
+@review_routes('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_review(id):
+    review = Review.query.get(id)
+    if current_user.id == review.user_id:
+        db.session.delete(id)
+        db.session.commit()
+        return "Review has been successfully deleted"
+    else:
+        return "404 Unauthorized User"
