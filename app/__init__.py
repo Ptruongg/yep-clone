@@ -8,16 +8,16 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-from .api.servers_routes import servers_routes
-from .api.channel_routes import channel_routes
-from .api.messages_routes import messages_routes
+# from .api.servers_routes import servers_routes
+# from .api.channel_routes import channel_routes
+# from .api.messages_routes import messages_routes
 
 from .seeds import seed_commands
 
 from .config import Config
 
 # socket import
-from .socket import socketio
+# from .socket import socketio
 
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
@@ -38,14 +38,14 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
-app.register_blueprint(servers_routes, url_prefix='/api/servers')
-app.register_blueprint(channel_routes, url_prefix='/api/channels')
-app.register_blueprint(messages_routes, url_prefix='/api/messages')
+# app.register_blueprint(servers_routes, url_prefix='/api/servers')
+# app.register_blueprint(channel_routes, url_prefix='/api/channels')
+# app.register_blueprint(messages_routes, url_prefix='/api/messages')
 db.init_app(app)
 Migrate(app, db)
 
 # initialize the app with the socket instance
-socketio.init_app(app)
+# socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -108,5 +108,5 @@ def react_root(path):
 def not_found(e):
     return app.send_static_file('index.html')
 
-if __name__ == '__main__':
-    socketio.run(app)
+# if __name__ == '__main__':
+#     socketio.run(app)
