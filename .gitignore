@@ -1,8 +1,8 @@
-.env
+
 __pycache__/
 *.py[cod]
 .venv
 .DS_Store
 .vscode/
-app/dev.db
+# app/dev.d
 # migrations
