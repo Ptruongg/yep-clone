@@ -20,7 +20,7 @@ def get_review_id(id):
     return review.to_dict()
 
 #create a review
-@review_routes('/', methods=['POST'])
+@review_routes.route('/', methods=['POST'])
 @login_required
 def create_review():
     form = CreateReviewForm()
@@ -38,7 +38,7 @@ def create_review():
         return new_review.to_dict()
 
 #update a review
-@review_routes('/<int:id>', methods=['PUT'])
+@review_routes.route('/<int:id>', methods=['PUT'])
 @login_required
 def update_review(id):
     form = CreateReviewForm()
@@ -55,7 +55,7 @@ def update_review(id):
         return "404: Unauthorized User"
 
 #delete a review
-@review_routes('/<int:id>', methods=['DELETE'])
+@review_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_review(id):
     review = Review.query.get(id)
