@@ -7,7 +7,7 @@ import "./createBusiness.css";
 
 const CreateBusiness = () => {
     const dispatch = useDispatch();
-    const { businessId } = useParams();
+    let { businessId } = useParams();
     businessId = Number(businessId);
 
     const [name, setName] = useState('');
@@ -125,3 +125,4 @@ const CreateBusiness = () => {
         </div >
     )
 }
+export default CreateBusiness;
