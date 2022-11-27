@@ -19,6 +19,7 @@ def businesses():
     else:
         return "Unauthorized User!"
 
+
 # get a business based on id
 @business_routes.route("/<int:id>")
 def business_by_id(id):
