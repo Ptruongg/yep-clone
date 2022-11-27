@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired
-from app.models import User
+from app.models import User, Business, Review
 
 class CreateReviewForm(FlaskForm):
     review = StringField('Review Message', validators=[DataRequired("To submit your review, please enter in a review")])
