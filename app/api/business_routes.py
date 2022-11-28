@@ -9,15 +9,13 @@ business_routes = Blueprint("businesses", __name__)
 
 # get all businesses route
 
+
 @business_routes.route("/")
 def businesses():
-    if(current_user):
-        all_businesses = Business.query.all()
-        businesses = [business.to_dict() for business in all_businesses]
-        response = {"businesses": businesses}
-        return response
-    else:
-        return "Unauthorized User!"
+    all_businesses = Business.query.all()
+    businesses = [business.to_dict() for business in all_businesses]
+    response = {"businesses": businesses}
+    return response
 
 
 # get a business based on id
@@ -29,6 +27,8 @@ def business_by_id(id):
     return response
 
 # get businesses owned by one user
+
+
 @business_routes.route("user/<int:userId>/")
 @login_required
 def businesses_of_user(userId):
@@ -37,7 +37,9 @@ def businesses_of_user(userId):
     response = {"businesses": businesses}
     return response
 
-#create a business
+# create a business
+
+
 @business_routes.route("/<int:id>", methods=['POST'])
 def create_business():
     new_business = BusinessForm()
@@ -45,14 +47,14 @@ def create_business():
     if new_business.validate_on_submit():
         data = new_business.data
         newBusiness = Business(
-            name = new_business.data['name'],
-            description = new_business.data['description'],
-            address = new_business.data['address'],
-            city = new_business.data['city'],
-            state = new_business.data['state'],
-            zipcode = new_business.data['zipcode'],
-            country = new_business.data['country'],
-            phone_number = new_business.data['phone_number'],
+            name=new_business.data['name'],
+            description=new_business.data['description'],
+            address=new_business.data['address'],
+            city=new_business.data['city'],
+            state=new_business.data['state'],
+            zipcode=new_business.data['zipcode'],
+            country=new_business.data['country'],
+            phone_number=new_business.data['phone_number'],
         )
         # new_business = Business(
         #     name = name,
@@ -64,7 +66,6 @@ def create_business():
         #     country = country,
         #     phone_number = phone_number,
         # )
-
 
     db.session.add(newBusiness)
     db.session.commit(newBusiness)
@@ -99,6 +100,8 @@ def edit_business(id):
     return business.to_dict()
 
 # delete a business
+
+
 @business_routes.route("/<int:id>", methods=['DELETE'])
 @login_required
 def delete_business(id):

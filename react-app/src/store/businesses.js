@@ -48,8 +48,8 @@ export const getAllBusinesses = () => async(dispatch) => {
     }
 }
 
-export const createBusiness = (business) => async(dispatch) => {
-    const response = await fetch(`/api/businesses`, {
+export const createBusiness = (business, businessId) => async (dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -61,10 +61,7 @@ export const createBusiness = (business) => async(dispatch) => {
         dispatch(addBusiness(newBusiness))
         return newBusiness
     }
-    else {
-        return response
-    }
-
+    return response
 }
 
 export const editBusiness = (business, businessId) => async(dispatch) => {
