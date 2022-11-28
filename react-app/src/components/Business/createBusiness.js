@@ -86,7 +86,7 @@ const CreateBusiness = () => {
                 {errors ?? (
                     <ul>
                         {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
+                            <div key={idx}>{error}</div>
                         ))}
                     </ul>
                 )}
