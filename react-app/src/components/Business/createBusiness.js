@@ -115,6 +115,78 @@ const CreateBusiness = () => {
                             required
                         />
                     </div>
+                    <div>
+                        <label>
+                            Address:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Address"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>
+                            City:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="City"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>
+                            State:
+                        </label>
+                        <input
+                            type="state"
+                            placeholder="State"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>
+                            Zipcode:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Zipcode"
+                            value={zipcode}
+                            onChange={(e) => setZipcode(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>
+                            Country:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Country"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>
+                            Phone Number:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Phone Number"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                    </div>
                 </div>
                 <div>
                     <button className="createBusinessButton" type="submit">
