@@ -27,11 +27,11 @@ const addBusiness = (business) => {
     }
 }
 
-const businessEdit = (business, businessId) => {
+const businessEdit = (business) => {
     return {
         type: EDIT_BUSINESS,
-        business,
-        businessId
+        business
+
     }
 }
 
@@ -155,7 +155,7 @@ const businessReducer = (state = initialState, action) => {
         }
         case EDIT_BUSINESS: {
             let newState = { ...state };
-            newState[action.business.id] = action.business
+            newState[action.businessId] = action.business
             return newState
         }
         case DELETE_BUSINESS: {

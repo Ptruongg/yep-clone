@@ -74,19 +74,26 @@ def create_business():
 
 
 # edit a business
-@business_routes.route("/<int:id>", methods=["PUT"])
-def edit_business(id):
-    business = Business.query.filter(Business.id == id)
+@business_routes.route("/<business_id>", methods=["GET", "PUT"])
+def edit_business(business_id):
+    business = Business.query.get(business_id)
+
+
+    if not business:
+        return "Business could not be found!", 404
 
     updated_business = BusinessForm()
-    name = updated_business.data['name']
-    description = updated_business.data['description']
-    address = updated_business.data['address']
-    city = updated_business.data['city']
-    state = updated_business.data['state']
-    zipcode = updated_business.data['zipcode']
-    country = updated_business.data['country']
-    phoneNumber = updated_business.data['phoneNumber']
+
+    # updated_business['csrf_token'].data = request.cookies['csrf_token']
+    name = updated_business.data['name'],
+    description = updated_business.data['description'],
+    address = updated_business.data['address'],
+    city = updated_business.data['city'],
+    state = updated_business.data['state'],
+    zipcode = updated_business.data['zipcode'],
+    country = updated_business.data['country'],
+    phoneNumber = updated_business.data['phoneNumber'],
+    user_id = updated_business.data['user_id'],
 
     business.name = name
     business.description = description
@@ -96,9 +103,10 @@ def edit_business(id):
     business.zipcode = zipcode
     business.country = country
     business.phoneNumber = phoneNumber
+    business.user_id = user_id
 
-    db.session.commit
-    return business.to_dict()
+    db.session.commit()
+    return business.to_dict(id=True)
 
 # delete a business
 
