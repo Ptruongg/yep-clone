@@ -41,7 +41,7 @@ const BusinessesList = () => {
                                 <NavLink to={`/business/${bus.id}`}>
                                     Business
                                 </NavLink>
-                                {bus.name}, {bus.description}, {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}, {bus.phone_number}
+                                {bus.name}, {bus.description}, {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}, {bus.phoneNumber}
                             </div>
                         </div>
                     ))}

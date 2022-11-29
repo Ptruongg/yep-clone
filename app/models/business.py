@@ -15,7 +15,7 @@ class Business(db.Model):
     zipcode = db.Column(db.String, nullable=False)
     country = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    phone_number = db.Column(db.Integer, nullable=False)
+    phoneNumber = db.Column(db.String, nullable=False)
 
     #relationships
     user = db.relationship("User", back_populates='business', foreign_keys=[user_id])
@@ -31,5 +31,5 @@ class Business(db.Model):
             "zipcode": self.zipcode,
             "country": self.country,
             "user_id": self.user_id,
-            "phone_number": self.phone_number,
+            "phoneNumber": self.phoneNumber,
         }

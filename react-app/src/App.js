@@ -10,7 +10,7 @@ import User from './components/User';
 import CreateBusiness from './components/CreateBusiness/createBusiness';
 import BusinessesList from './components/Businesses/businessList';
 import { authenticate } from './store/session';
-import EditBusiness from './components/EditBusiness';
+import EditBusiness from './components/EditBusiness/editBusiness';
 import BusinessDetails from './components/BusinessDetails';
 
 function App() {
@@ -51,11 +51,11 @@ function App() {
         <Route path='/business/create' exact={true}>
           <CreateBusiness />
         </Route>
-        <Route path='/business/:businessId'>
-          <BusinessDetails />
-        </Route>
         <Route path='/business/:businessId/edit' >
           <EditBusiness />
+        </Route>
+        <Route path='/business/:businessId'>
+          <BusinessDetails />
         </Route>
       </Switch>
     </BrowserRouter>

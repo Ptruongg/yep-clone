@@ -50,7 +50,7 @@ def create_business():
             zipcode=new_business.data['zipcode'],
             country=new_business.data['country'],
             user_id=new_business.data['user_id'],
-            phone_number=new_business.data['phone_number'],
+            phoneNumber=new_business.data['phoneNumber'],
         )
         # new_business = Business(
         #     name = name,
@@ -60,28 +60,42 @@ def create_business():
         #     state = state,
         #     zipcode = zipcode,
         #     country = country,
-        #     phone_number = phone_number,
+        #     phoneNumber = phoneNumber,
         # )
-
+        # print(newBusiness)
         db.session.add(newBusiness)
         db.session.commit()
-    return newBusiness.to_dict()
+        return newBusiness.to_dict()
+    else:
+        print(request.cookies["csrf_token"], "@@@@@@@@@@@@@@@@")
+        print(new_business.data['user_id'], "===========================")
+        print(new_business.data['phoneNumber'], 'dasdadasddasdasdasd'),
+        return "Unauthorized", 403
 
 
 # edit a business
-@business_routes.route("/<int:id>", methods=["PUT"])
+@business_routes.route("/<int:id>", methods=["GET", "PUT"])
+# @login_required
 def edit_business(id):
-    business = Business.query.filter(Business.id == id)
+    print('id', id)
+    business = Business.query.get(id)
+
+
+    if not business:
+        return "Business could not be found!", 404
 
     updated_business = BusinessForm()
-    name = updated_business.data['name']
-    description = updated_business.data['description']
-    address = updated_business.data['address']
-    city = updated_business.data['city']
-    state = updated_business.data['state']
-    zipcode = updated_business.data['zipcode']
-    country = updated_business.data['country']
-    phone_number = updated_business.data['phone_number']
+    # print(business_id, 'busid')
+    # updated_business['csrf_token'].data = request.cookies['csrf_token']
+    name = updated_business.data['name'],
+    description = updated_business.data['description'],
+    address = updated_business.data['address'],
+    city = updated_business.data['city'],
+    state = updated_business.data['state'],
+    zipcode = updated_business.data['zipcode'],
+    country = updated_business.data['country'],
+    phoneNumber = updated_business.data['phoneNumber'],
+    user_id = updated_business.data['user_id'],
 
     business.name = name
     business.description = description
@@ -90,10 +104,11 @@ def edit_business(id):
     business.state = state
     business.zipcode = zipcode
     business.country = country
-    business.phone_number = phone_number
+    business.phoneNumber = phoneNumber
+    business.user_id = user_id
 
-    db.session.commit
-    return business.to_dict()
+    db.session.commit()
+    return business.to_dict(id=True)
 
 # delete a business
 

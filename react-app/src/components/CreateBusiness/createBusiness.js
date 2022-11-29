@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
 import * as businessActions from "../../store/businesses";
 import "./createBusiness.css";
 
 
 const CreateBusiness = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     let { businessId } = useParams();
     businessId = Number(businessId);
-
+    const user = useSelector(state => state.session.user)
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -22,9 +23,9 @@ const CreateBusiness = () => {
     const [errors, setErrors] = useState([]);
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
-    if (submitSuccess) {
-        return <Redirect to={`/businesses/${businessId}/create`} />
-    }
+    // if (submitSuccess) {
+    //     return <Redirect to={`/businesses/${businessId}/create`} />
+    // }
 
     const validations = () => {
         const errors = [];
@@ -55,7 +56,7 @@ const CreateBusiness = () => {
         return errors;
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let data = {
             name: name,
@@ -65,18 +66,18 @@ const CreateBusiness = () => {
             state: state,
             zipcode: zipcode,
             country: country,
-            phoneNumber: phoneNumber
+            phoneNumber: phoneNumber,
+            user_id: user.id
         }
         const errors = validations();
         if (errors.length) {
             setErrors(errors);
             return;
         }
-        return dispatch(businessActions.createBusiness(businessId, data)).then(
-            async (res) => {
-                setSubmitSuccess(true)
-            }
-        )
+        let created = await dispatch(businessActions.createBusiness(data))
+        if (created) {
+            history.push("/")
+        }
     }
 
     return (

@@ -44,7 +44,7 @@ const BusinessDetails = () => {
 
                 <div className="businessDetailPage">
                     <div className="businessDetails">
-                        {businesses?.name}, {businesses?.description}, {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}, {businesses?.country}, {businesses?.phone_number}
+                        {businesses?.name}, {businesses?.description}, {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}, {businesses?.country}, {businesses?.phoneNumber}
                     </div>
                     <div>
                         {sessionUser && sessionUser.id === businesses?.user_id && (
