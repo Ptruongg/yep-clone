@@ -107,13 +107,13 @@ export const createBusiness = (data) => async (dispatch) => {
     // return response
 }
 
-export const editBusiness = (business, businessId) => async(dispatch) => {
+export const editBusiness = (payload, businessId) => async(dispatch) => {
     const response = await fetch(`/api/business/${businessId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(business)
+        body: JSON.stringify(payload)
     })
     if (response.ok) {
         const editedBusiness = await response.json();

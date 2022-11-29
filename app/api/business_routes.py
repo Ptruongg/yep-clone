@@ -74,16 +74,18 @@ def create_business():
 
 
 # edit a business
-@business_routes.route("/<business_id>", methods=["GET", "PUT"])
-def edit_business(business_id):
-    business = Business.query.get(business_id)
+@business_routes.route("/<int:id>", methods=["GET", "PUT"])
+# @login_required
+def edit_business(id):
+    print('id', id)
+    business = Business.query.get(id)
 
 
     if not business:
         return "Business could not be found!", 404
 
     updated_business = BusinessForm()
-
+    # print(business_id, 'busid')
     # updated_business['csrf_token'].data = request.cookies['csrf_token']
     name = updated_business.data['name'],
     description = updated_business.data['description'],
