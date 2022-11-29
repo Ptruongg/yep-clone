@@ -36,12 +36,11 @@ def businesses_of_user(userId):
     return response
 
 # create a busines
-@business_routes.route("/<int:id>", methods=['POST'])
+@business_routes.route("/", methods=['POST'])
 def create_business():
     new_business = BusinessForm()
     new_business["csrf_token"].data = request.cookies["csrf_token"]
     if new_business.validate_on_submit():
-        data = new_business.data
         newBusiness = Business(
             name=new_business.data['name'],
             description=new_business.data['description'],
@@ -50,6 +49,7 @@ def create_business():
             state=new_business.data['state'],
             zipcode=new_business.data['zipcode'],
             country=new_business.data['country'],
+            user_id=new_business.data['user_id'],
             phone_number=new_business.data['phone_number'],
         )
         # new_business = Business(
@@ -63,8 +63,8 @@ def create_business():
         #     phone_number = phone_number,
         # )
 
-    db.session.add(newBusiness)
-    db.session.commit(newBusiness)
+        db.session.add(newBusiness)
+        db.session.commit()
     return newBusiness.to_dict()
 
 
@@ -98,22 +98,13 @@ def edit_business(id):
 # delete a business
 
 
-@business_routes.route("/<int:id>", methods=['DELETE'])
-@login_required
-def delete_business(id):
-    business = business.query.get(id)
-    if business:
-        if business.user_id == current_user.id:
-            db.session.delete(business)
-            db.session.commit()
-            return {
-                "message": "Business has been successfully delete"
-            }
-        else:
-            return {
-                "message": "You do not own this business to delete"
-            }
-    else:
-        return {
-            "message": f"Business with {id} id does not exist"
-        }
+@business_routes.route("/<business_id>", methods=['DELETE'])
+def delete_tweet(business_id):
+    business = Business.query.get(business_id)
+    if not business:
+        return "The Business you are looking for can not be found!", 404
+
+    db.session.delete(business)
+    db.session.commit()
+
+    return "Successfully Deleted"

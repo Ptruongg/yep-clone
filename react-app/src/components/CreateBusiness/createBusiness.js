@@ -23,7 +23,7 @@ const CreateBusiness = () => {
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
     if (submitSuccess) {
-        return <Redirect to={`/businesses/${businessId}`} />
+        return <Redirect to={`/businesses/${businessId}/create`} />
     }
 
     const validations = () => {

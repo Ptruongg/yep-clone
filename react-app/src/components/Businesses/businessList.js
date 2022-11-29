@@ -4,6 +4,7 @@ import { Redirect, useParams } from "react-router-dom";
 import * as businessActions from "../../store/businesses";
 import { getAllBusinesses } from "../../store/businesses";
 import "./businessList.css";
+import { NavLink } from "react-router-dom";
 
 
 const BusinessesList = () => {
@@ -35,8 +36,11 @@ const BusinessesList = () => {
             <div className="businesses">
                 {business &&
                     business.map((bus) => (
-                        <div className="busCard" key={business.id}>
+                        <div className="busCard" key={bus.id}>
                             <div>
+                                <NavLink to={`/business/${bus.id}`}>
+                                    Business
+                                </NavLink>
                                 {bus.name}, {bus.description}, {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}, {bus.phone_number}
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteBusiness, getBusinessDetails } from "../../store/businesses";
+import { deleteBusiness, getAllBusinesses, getBusinessDetails } from "../../store/businesses";
 import { getAllUsers } from "../../store/user";
 import "./businessDetails.css"
 
@@ -10,7 +10,9 @@ const BusinessDetails = () => {
     const dispatch = useDispatch();
     let { businessId } = useParams();
     businessId = Number(businessId);
-    const businesses = useSelector((state) => state.businesses);
+    const businesses = useSelector((state) => state.businessReducer[businessId]);
+    console.log(businesses, "business")
+
     const sessionUser = useSelector((state) => state.session.user);
     // const reviews = useSelector((state) => Object.values(state.reviews));
     const user = useSelector((state) => state.session.user);
@@ -21,9 +23,8 @@ const BusinessDetails = () => {
     // const user = useSelector((state) => Object.values(state.users));
 
     useEffect(() => {
-        dispatch(getBusinessDetails);
-        history.push('/')
-    }, [dispatch, businessString])
+        dispatch(getAllBusinesses());
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(getAllUsers);
@@ -39,14 +40,14 @@ const BusinessDetails = () => {
         history.push('/')
     }
     return (
-        businesses && (
-            <>
+        // <div>hi</div>
+
                 <div className="businessDetailPage">
                     <div className="businessDetails">
-                        {businesses.name}, {businesses.description}, {businesses.address}, {businesses.city}, {businesses.state}, {businesses.zipcode}, {businesses.country}, {businesses.phone_number}
+                        {businesses?.name}, {businesses?.description}, {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}, {businesses?.country}, {businesses?.phone_number}
                     </div>
                     <div>
-                        {sessionUser && sessionUser.id === businesses.user_id && (
+                        {sessionUser && sessionUser.id === businesses?.user_id && (
                             <div className="editAndDeleteButtons">
                                 <button className="editButton" onClick={handleEditClick}>
                                     Edit Business
@@ -58,8 +59,6 @@ const BusinessDetails = () => {
                         )}
                     </div>
                 </div>
-            </>
-        )
     )
 }
 export default BusinessDetails;

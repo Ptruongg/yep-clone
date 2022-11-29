@@ -48,13 +48,13 @@ function App() {
           <h1>Yep</h1>
           <BusinessesList />
         </ProtectedRoute>
-        <Route path='/business/details'>
-          <BusinessDetails />
-        </Route>
         <Route path='/business/create' exact={true}>
           <CreateBusiness />
         </Route>
-        <Route path='/business/:id' >
+        <Route path='/business/:businessId'>
+          <BusinessDetails />
+        </Route>
+        <Route path='/business/:businessId/edit' >
           <EditBusiness />
         </Route>
       </Switch>
