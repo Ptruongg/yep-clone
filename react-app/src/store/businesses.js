@@ -56,7 +56,7 @@ export const getAllBusinesses = () => async(dispatch) => {
 }
 
 export const getBusinessDetails = (businessId) => async(dispatch) => {
-    const response = await fetch(`/api/businesses/${businessId}`)
+    const response = await fetch(`/api/business/${businessId}`)
     if(response.ok) {
         const businessDeats = await response.json();
         dispatch(getBusinessId(businessDeats));
@@ -65,8 +65,8 @@ export const getBusinessDetails = (businessId) => async(dispatch) => {
     return response
 }
 
-export const createBusiness = (business, businessId) => async (dispatch) => {
-    const response = await fetch(`/api/businesses/${businessId}`, {
+export const createBusiness = (business) => async (dispatch) => {
+    const response = await fetch(`/api/business`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -98,7 +98,7 @@ export const editBusiness = (business, businessId) => async(dispatch) => {
 }
 
 export const deleteBusiness = (businessId) => async(dispatch) => {
-    const response = await fetch(`/ap/business/${businessId}`, {
+    const response = await fetch(`/api/business/${businessId}`, {
         method: 'DELETE',
     });
     if(response.ok) {
@@ -119,7 +119,7 @@ const businessReducer = (state = initialState, action) => {
         }
         case GET_BUSINESS_DEATS: {
             const newState = {...state};
-            newState[action.business.businessId] = action.business;
+            newState[action.businessId] = action.business;
             return newState
         }
         case ADD_BUSINESS: {
@@ -134,7 +134,7 @@ const businessReducer = (state = initialState, action) => {
         }
         case DELETE_BUSINESS: {
             let newState = { ...state };
-            delete newState[action.business.id];
+            delete newState[action.businessId];
             return newState;
         }
         default:
