@@ -65,20 +65,46 @@ export const getBusinessDetails = (businessId) => async(dispatch) => {
     return response
 }
 
-export const createBusiness = (business) => async (dispatch) => {
-    const response = await fetch(`/api/business`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(business)
+export const createBusiness = (data) => async (dispatch) => {
+    const {name, description, address, city, state, zipcode, country, phoneNumber, user_id} = data
+
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('description', description)
+    formData.append('address', address)
+    formData.append('city', city)
+    formData.append('state', state)
+    formData.append('zipcode', zipcode)
+    formData.append('country', country)
+    formData.append('phoneNumber', phoneNumber)
+    formData.append('user_id', user_id)
+
+
+    const response = await fetch(`/api/business/`, {
+        method: 'POST',
+        body: formData
     })
-    if(response.ok) {
-        const newBusiness = await response.json()
-        dispatch(addBusiness(newBusiness))
-        return newBusiness
+
+    if (response.ok) {
+        const newBusiness = await response.json();
+        dispatch(addBusiness(newBusiness));
+        return newBusiness;
     }
-    return response
+
+
+    // const response = await fetch(`/api/business/`, {
+    //     method: "POST",
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(business)
+    // })
+    // if(response.ok) {
+    //     const newBusiness = await response.json()
+    //     dispatch(addBusiness(newBusiness))
+    //     return newBusiness
+    // }
+    // return response
 }
 
 export const editBusiness = (business, businessId) => async(dispatch) => {

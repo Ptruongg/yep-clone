@@ -12,5 +12,5 @@ class BusinessForm(FlaskForm):
     zipcode = IntegerField("Zipcode", validators=[DataRequired()])
     country = StringField("Country", validators=[DataRequired()])
     user_id = IntegerField("Owner of business", validators=[DataRequired()])
-    phone_number = IntegerField("Phone Number", validators=[DataRequired()])
-    submit = SubmitField("Submit")
+    phoneNumber = StringField("Phone Number", validators=[DataRequired()])
+    # submit = SubmitField("Submit")

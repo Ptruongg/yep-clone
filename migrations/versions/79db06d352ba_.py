@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 79db06d352ba
-Revises: 
+Revises:
 Create Date: 2022-11-27 16:03:52.100061
 
 """
@@ -40,7 +40,7 @@ def upgrade():
     sa.Column('zipcode', sa.String(), nullable=False),
     sa.Column('country', sa.String(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('phone_number', sa.Integer(), nullable=False),
+    sa.Column('phoneNumber', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

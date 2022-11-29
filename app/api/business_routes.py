@@ -50,7 +50,7 @@ def create_business():
             zipcode=new_business.data['zipcode'],
             country=new_business.data['country'],
             user_id=new_business.data['user_id'],
-            phone_number=new_business.data['phone_number'],
+            phoneNumber=new_business.data['phoneNumber'],
         )
         # new_business = Business(
         #     name = name,
@@ -60,12 +60,17 @@ def create_business():
         #     state = state,
         #     zipcode = zipcode,
         #     country = country,
-        #     phone_number = phone_number,
+        #     phoneNumber = phoneNumber,
         # )
-
+        # print(newBusiness)
         db.session.add(newBusiness)
         db.session.commit()
-    return newBusiness.to_dict()
+        return newBusiness.to_dict()
+    else:
+        print(request.cookies["csrf_token"], "@@@@@@@@@@@@@@@@")
+        print(new_business.data['user_id'], "===========================")
+        print(new_business.data['phoneNumber'], 'dasdadasddasdasdasd'),
+        return "Unauthorized", 403
 
 
 # edit a business
@@ -81,7 +86,7 @@ def edit_business(id):
     state = updated_business.data['state']
     zipcode = updated_business.data['zipcode']
     country = updated_business.data['country']
-    phone_number = updated_business.data['phone_number']
+    phoneNumber = updated_business.data['phoneNumber']
 
     business.name = name
     business.description = description
@@ -90,7 +95,7 @@ def edit_business(id):
     business.state = state
     business.zipcode = zipcode
     business.country = country
-    business.phone_number = phone_number
+    business.phoneNumber = phoneNumber
 
     db.session.commit
     return business.to_dict()

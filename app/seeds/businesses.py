@@ -10,7 +10,7 @@ def seed_businesses():
         zipcode = "95051",
         country = "United States",
         user_id = 1,
-        phone_number = 4082179112
+        phoneNumber = 4082179112
     )
     business2 = Business(
         name = "Detailz",
@@ -21,7 +21,7 @@ def seed_businesses():
         zipcode = "95132",
         country = "United States",
         user_id = 2,
-        phone_number = 4085086022
+        phoneNumber = 4085086022
     )
     business3 = Business(
         name = "SLT Auto Repair",
@@ -32,7 +32,7 @@ def seed_businesses():
         zipcode = "94085",
         country = "United States",
         user_id = 3,
-        phone_number = 4085086022
+        phoneNumber = 4085086022
     )
     business4 = Business(
         name = "ECU Tuning",
@@ -43,7 +43,7 @@ def seed_businesses():
         zipcode = "95133",
         country = "United States",
         user_id = 4,
-        phone_number = 4087689099
+        phoneNumber = 4087689099
     )
     business5 = Business(
         name = "EJ Auto Repair",
@@ -54,7 +54,7 @@ def seed_businesses():
         zipcode = "92062",
         country = "United States",
         user_id = 5,
-        phone_number = 5103107650
+        phoneNumber = 5103107650
     )
 
 
