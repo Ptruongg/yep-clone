@@ -54,6 +54,7 @@ const CreateBusiness = () => {
             errors.push('Please enter in a phone number')
         }
         return errors;
+
     }
 
     const handleSubmit = async (e) => {
