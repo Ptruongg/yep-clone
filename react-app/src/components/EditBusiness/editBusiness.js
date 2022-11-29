@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { editBusiness } from "../../store/businesses";
+import { editBusiness, getAllBusinesses } from "../../store/businesses";
 import "./editBusiness.css"
 
-const EditBusiness = (business, onClick) => {
+const EditBusiness = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // let { businessId } = useParams();
-    // businessId = Number(businessId)
+
+    let { businessId } = useParams();
+    businessId = Number(businessId)
 
     // const business = useSelector((state) => state.businesses[businessId])
     const user = useSelector((state) => state.session.user)
+    const business = useSelector((state) => state.businessReducer[businessId]);
 
     const [name, setName] = useState(business?.name);
     const [description, setDescription] = useState(business?.description);
@@ -33,7 +35,9 @@ const EditBusiness = (business, onClick) => {
     const updatedCountry = (e) => setCountry(e.target.value);
     const updatedPhoneNumber = (e) => setPhoneNumber(e.target.value)
     // const updatedPreviewImage = (e) => setPreviewImage(e.target.value);
-
+    useEffect(() => {
+        dispatch(getAllBusinesses());
+    }, [dispatch])
 
     useEffect(() => {
         const errorNotifications = [];
@@ -77,15 +81,15 @@ const EditBusiness = (business, onClick) => {
             zipcode,
             country,
             phoneNumber,
-            user_id: user.id
+            // user_id: user.id
         };
 
-        let updatedBusiness = await dispatch(editBusiness(payload));
+        let updatedBusiness = await dispatch(editBusiness(payload, business.id));
         if (updatedBusiness) {
-            history.push(`/business`);
+            history.push(`/business/${businessId}`);
         }
 
-        onClick();
+
 
     }
     return (
