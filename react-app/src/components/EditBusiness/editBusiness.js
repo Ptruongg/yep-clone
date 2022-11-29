@@ -73,14 +73,14 @@ const EditBusiness = () => {
         }
 
         let payload = {
-            name,
-            description,
-            address,
-            city,
-            state,
-            zipcode,
-            country,
-            phoneNumber,
+            name: name,
+            description: description,
+            address: address,
+            city: city,
+            state: state,
+            zipcode: zipcode,
+            country: country,
+            phoneNumber: phoneNumber,
             // user_id: user.id
         };
 
