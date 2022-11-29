@@ -155,7 +155,7 @@ const businessReducer = (state = initialState, action) => {
         }
         case EDIT_BUSINESS: {
             let newState = { ...state };
-            newState[action.businessId] = action.business
+            newState[action.business.id] = action.business
             return newState
         }
         case DELETE_BUSINESS: {

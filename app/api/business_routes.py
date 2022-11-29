@@ -87,14 +87,14 @@ def edit_business(business_id):
     updated_business = BusinessForm()
     # print(business_id, 'buid')
     updated_business['csrf_token'].data = request.cookies['csrf_token']
-    name = updated_business.data['name'],
-    description = updated_business.data['description'],
-    address = updated_business.data['address'],
-    city = updated_business.data['city'],
-    state = updated_business.data['state'],
-    zipcode = updated_business.data['zipcode'],
-    country = updated_business.data['country'],
-    phoneNumber = updated_business.data['phoneNumber'],
+    name = updated_business.data['name']
+    description = updated_business.data['description']
+    address = updated_business.data['address']
+    city = updated_business.data['city']
+    state = updated_business.data['state']
+    zipcode = updated_business.data['zipcode']
+    country = updated_business.data['country']
+    phoneNumber = updated_business.data['phoneNumber']
     # user_id = updated_business.data['user_id'],
 
     business.name = name
