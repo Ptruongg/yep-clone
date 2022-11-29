@@ -74,19 +74,19 @@ def create_business():
 
 
 # edit a business
-@business_routes.route("/<int:id>", methods=["GET", "PUT"])
+@business_routes.route("/<business_id>", methods=["PUT"])
 # @login_required
-def edit_business(id):
-    print('id', id)
-    business = Business.query.get(id)
+def edit_business(business_id):
+    # print('id', id)
+    business = Business.query.get(business_id)
 
 
     if not business:
         return "Business could not be found!", 404
 
     updated_business = BusinessForm()
-    # print(business_id, 'busid')
-    # updated_business['csrf_token'].data = request.cookies['csrf_token']
+    # print(business_id, 'buid')
+    updated_business['csrf_token'].data = request.cookies['csrf_token']
     name = updated_business.data['name'],
     description = updated_business.data['description'],
     address = updated_business.data['address'],
@@ -95,7 +95,7 @@ def edit_business(id):
     zipcode = updated_business.data['zipcode'],
     country = updated_business.data['country'],
     phoneNumber = updated_business.data['phoneNumber'],
-    user_id = updated_business.data['user_id'],
+    # user_id = updated_business.data['user_id'],
 
     business.name = name
     business.description = description
@@ -105,10 +105,10 @@ def edit_business(id):
     business.zipcode = zipcode
     business.country = country
     business.phoneNumber = phoneNumber
-    business.user_id = user_id
+    # business.user_id = user_id
 
     db.session.commit()
-    return business.to_dict(id=True)
+    return business.to_dict()
 
 # delete a business
 
