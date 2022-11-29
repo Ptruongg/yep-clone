@@ -6,9 +6,10 @@ import { getAllBusinesses } from "../../store/businesses";
 import "./businessList.css";
 
 
-const BusinessesList = ({ business }) => {
+const BusinessesList = () => {
     const dispatch = useDispatch();
-    // const bussiness = useSelector((state) => Object.values(state?.business));
+    const business = useSelector((state) => Object.values(state?.businessReducer));
+    console.log(business, business)
     // const sessionUser = useSelector((state) => state.session.user)
     // const reviews = useSelector((state) => Object.values(state?.reviews))
     const buz = useSelector((state) => state)
@@ -31,16 +32,16 @@ const BusinessesList = ({ business }) => {
 
     return (
         <div className="all-bussinesses">
-            {/* <div className="businesses">
+            <div className="businesses">
                 {business &&
                     business.map((bus) => (
-                        // <div className="busCard" key={business.id}>
-                        //     <div>
-                        //         {console.log(bus)}
-                        //     </div>
-                        // </div>
+                        <div className="busCard" key={business.id}>
+                            <div>
+                                {bus.name}, {bus.description}, {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}, {bus.phone_number}
+                            </div>
+                        </div>
                     ))}
-            </div> */}
+            </div>
 
         </div>
     )
