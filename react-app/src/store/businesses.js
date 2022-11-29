@@ -1,14 +1,22 @@
-const GET_BUSINESS = 'business/getBusinesses';
-const ADD_BUSINESS = 'business/createBusiness';
-const EDIT_BUSINESS = 'business/editBusiness';
-const DELETE_BUSINESS = 'business/deleteBusiness';
+const GET_BUSINESS = 'businesses/GET_BUSINESS';
+const GET_BUSINESS_DEATS = 'businesses/GET_BUSINESS_DEATS'
+const ADD_BUSINESS = 'businesses/ADD_BUSINESS';
+const EDIT_BUSINESS = 'businesses/EDIT_BUSINESS';
+const DELETE_BUSINESS = 'businesses/DELETE_BUSINESS';
 
 //actions
 
-const getBusinesses = (businesses) => {
+const getBusinesses = (allBus) => {
     return {
         type: GET_BUSINESS,
-        businesses
+        allBus
+    }
+}
+
+const getBusinessId = (id) => {
+    return {
+        type: GET_BUSINESS_DEATS,
+        id
     }
 }
 
@@ -37,15 +45,24 @@ const businessDelete = (businessId) => {
 //thunks
 
 export const getAllBusinesses = () => async(dispatch) => {
-    const response = await fetch(`/api/businesses`)
-    const data = await response.json();
-    if(!data.message) {
-        dispatch(getBusinesses(data))
-        return data;
+    const response = await fetch(`/api/business/`)
+    if (response.ok) {
+        const business = await response.json();
+        dispatch(getBusinesses(business))
+        const all = {};
+        business.businesses.forEach((business) => all[business.id] = business)
+        return {...all}
     }
-    else {
-        dispatch(getBusinesses({ "businesses": []}))
+}
+
+export const getBusinessDetails = (id) => async(dispatch) => {
+    const response = await fetch(`/api/businesses/${id}`)
+    if(response.ok) {
+        const businessDeats = await response.json();
+        dispatch(getBusinessId(businessDeats));
+        return businessDeats;
     }
+    return response
 }
 
 export const createBusiness = (business, businessId) => async (dispatch) => {
@@ -95,10 +112,16 @@ const initialState = {}
 
 const businessReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_BUSINESS:
+        case GET_BUSINESS: {
             let newState = {}
-            action.business.forEach((business) => newState[business.id] = business)
+            action.allBus.businesses.forEach((business) => newState[business.id] = business)
             return newState
+        }
+        case GET_BUSINESS_DEATS: {
+            const newState = {...state};
+            newState[action.business.id] = action.business;
+            return newState
+        }
         case ADD_BUSINESS: {
             let newState = { ...state };
             newState[action.business.id] = action.business
