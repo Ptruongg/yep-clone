@@ -13,10 +13,10 @@ const getBusinesses = (allBus) => {
     }
 }
 
-const getBusinessId = (id) => {
+const getBusinessId = (businessId) => {
     return {
         type: GET_BUSINESS_DEATS,
-        id
+        businessId
     }
 }
 
@@ -55,8 +55,8 @@ export const getAllBusinesses = () => async(dispatch) => {
     }
 }
 
-export const getBusinessDetails = (id) => async(dispatch) => {
-    const response = await fetch(`/api/businesses/${id}`)
+export const getBusinessDetails = (businessId) => async(dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}`)
     if(response.ok) {
         const businessDeats = await response.json();
         dispatch(getBusinessId(businessDeats));
@@ -119,7 +119,7 @@ const businessReducer = (state = initialState, action) => {
         }
         case GET_BUSINESS_DEATS: {
             const newState = {...state};
-            newState[action.business.id] = action.business;
+            newState[action.business.businessId] = action.business;
             return newState
         }
         case ADD_BUSINESS: {

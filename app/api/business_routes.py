@@ -22,13 +22,11 @@ def businesses():
 @business_routes.route("/<int:id>")
 def business_by_id(id):
     one_business = Business.query.filter(Business.id == id)
-    business = [business.to_dict() for businesss in one_business]
+    business = [business.to_dict() for business in one_business]
     response = {"business": business}
     return response
 
 # get businesses owned by one user
-
-
 @business_routes.route("user/<int:userId>/")
 @login_required
 def businesses_of_user(userId):
@@ -37,9 +35,7 @@ def businesses_of_user(userId):
     response = {"businesses": businesses}
     return response
 
-# create a business
-
-
+# create a busines
 @business_routes.route("/<int:id>", methods=['POST'])
 def create_business():
     new_business = BusinessForm()
