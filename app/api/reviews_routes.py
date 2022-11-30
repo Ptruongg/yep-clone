@@ -59,7 +59,7 @@ def update_review(id):
         return "404: Unauthorized User"
 
 #delete a review
-@review_routes.route('/<review_id>/delete', methods=['DELETE'])
+@review_routes.route('/<review_id>', methods=['DELETE'])
 @login_required
 def delete_review(review_id):
     review = Review.query.get(review_id)

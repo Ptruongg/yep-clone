@@ -4,11 +4,9 @@ import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { deleteReviewThunk } from "../../store/reviews";
 
-function DeleteReview({ reviewId, businessId }) {
+function DeleteReview({reviewId, businessId}) {
     let dispatch = useDispatch();
     let history = useHistory();
-
-
 
     const handleDeleteClick = () => {
         dispatch(deleteReviewThunk(reviewId));

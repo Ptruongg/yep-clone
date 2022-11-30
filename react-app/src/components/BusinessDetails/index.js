@@ -22,7 +22,7 @@ const BusinessDetails = () => {
     // console.log(reviewsArr, 'arrrrrrrr')
     // const reviewsArr = Object.values(allReviews)
     // console.log('BIZZZZREVIEWS', businessReviews)
-    // console.log('reviewssssssss', allReviews)
+    console.log('reviewssssssss', allReviews)
     const sessionUser = useSelector((state) => state.session.user);
     // const reviews = useSelector((state) => Object.values(state?.reviews));
     // const reviewsString = JSON.stringify(reviews);
@@ -108,12 +108,13 @@ const BusinessDetails = () => {
                 {businessReviews.map((rev) => (
                     <div key={rev.id}>
                         <div className="reviewContent"> Review: {rev.review}</div>
+                        <div className='delete-comment' >
+                            <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
+                        </div>
                     </div>
                 ))}
             </div>
-            <div className='delete-comment' >
-                <DeleteReview businessReviews={allReviews.id}/>
-            </div>
+
 
         </div>
     )

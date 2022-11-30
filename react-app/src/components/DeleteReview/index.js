@@ -4,7 +4,7 @@ import DeleteReview from './DeleteReview'
 
 
 
-function DeleteReviewModal({ review }) {
+function DeleteReviewModal({ reviewId, businessId }) {
     const [showModal, setShowModal] = useState(false)
 
     return (
@@ -12,7 +12,7 @@ function DeleteReviewModal({ review }) {
         <div className='delete-business-button' onClick={() => setShowModal(true)}>Delete</div>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
-                <DeleteReview review={review} onClick={() => setShowModal(false)} />
+                <DeleteReview reviewId={reviewId} businessId={businessId} onClick={() => setShowModal(false)} />
             </Modal>
         )}
         </>
