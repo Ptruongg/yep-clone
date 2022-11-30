@@ -11,13 +11,17 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/')
 def get_all_reviews():
     all_reviews = Review.query.all()
-    return {"reviews": [reviews.dict() for reviews in all_reviews]}
+    return {"reviews": [reviews.to_dict() for reviews in all_reviews]}
 
 #get review by id
-@review_routes.route('/<int:id>')
-def get_review_id(id):
-    review = Review.query.get(id)
-    return review.to_dict()
+# @review_routes.route('/<business_id/rev>/')
+# def get_review_id(business_id):
+#     reviews = Review.query.get(Review.business_id == business_id).all()
+#     response = [review.to_dict() for review in reviews]
+#     res = {'reviews': response}
+#     return res
+#     # return review.to_dict()
+
 
 #create a review
 @review_routes.route('/', methods=['POST'])
