@@ -29,16 +29,18 @@ const CreateReviews = () => {
         let data = {
             review: review,
             rating: rating,
+            user_id: user.id,
+            business_id: businessId
         };
 
-        const errors = validations();
-        if (errors.length) {
-            setErrors(errors);
-            return;
-        }
+        // const errors = validations();
+        // if (errors.length) {
+        //     setErrors(errors);
+        //     return;
+        // }
         let createdReview = await dispatch(reviewActions.createReviewThunk(data))
         if (createdReview) {
-            dispatch(reviewActions.getReviewsThunk(review))
+            history.push(`/business/${businessId}`)
         }
     };
     return (

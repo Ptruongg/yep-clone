@@ -12,14 +12,15 @@ const BusinessDetails = () => {
     businessId = Number(businessId);
     const businesses = useSelector((state) => state.businessReducer[businessId]);
     // console.log(businesses, "business")
-    const allReviews = useSelector((state) => state.reviewsReducer[businessId])
+    const allReviews = useSelector((state) => Object.values(state.reviewsReducer))
+    const businessReviews = allReviews.filter(
+        (review) => review.business_id === businessId
+    )
 
+    // console.log(reviewsArr, 'arrrrrrrr')
     // const reviewsArr = Object.values(allReviews)
-    // const businessReviews = Object.values(allReviews).filter(
-    //     (review) => review.review === businessId
-    // )
     // console.log('BIZZZZREVIEWS', businessReviews)
-    console.log('reviewssssssss', Object.values(allReviews))
+    console.log('reviewssssssss', allReviews)
     const sessionUser = useSelector((state) => state.session.user);
     // const reviews = useSelector((state) => Object.values(state?.reviews));
     // const reviewsString = JSON.stringify(reviews);
@@ -85,27 +86,27 @@ const BusinessDetails = () => {
                 )}
             </div>
             <div className="businessReviews">
-                <div className="reviewStars">
+                {/* <div className="reviewStars">
                     <div className="starIcon">{<i className="fas fa-star"></i>}</div>
 
                     <div className="circleBottom">
                         <i className="fas fa-circle"></i>{" "}
                     </div>
 
-                    {sessionUser && (
-                        <div>
-                            <button className="reviewButton" onClick={handleCreateReview}>
-                                Create Review
-                            </button>
-                        </div>
-                    )}
-                </div>
+                </div> */}
 
-                {/* {reviewsArr.map((rev) => (
+                {sessionUser && (
+                    <div>
+                        <button className="reviewButton" onClick={handleCreateReview}>
+                            Create Review
+                        </button>
+                    </div>
+                )}
+                {businessReviews.map((rev) => (
                     <div key={rev.id}>
                        <div className="reviewContent"> Review: {rev.review}</div>
                     </div>
-                ))} */}
+                ))}
             </div>
 
         </div>

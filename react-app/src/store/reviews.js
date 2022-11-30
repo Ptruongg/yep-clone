@@ -62,10 +62,18 @@ export const getBusinessReviewsThunk = (businessId) => async (dispatch) => {
     return response
 }
 
-export const createReviewThunk = (businessId, review) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${businessId}/create`, {
+export const createReviewThunk = (data) => async (dispatch) => {
+    const {review, rating, user_id, business_id} = data
+
+    const formData = new FormData()
+    formData.append('review', review)
+    formData.append('rating', rating)
+    formData.append('user_id', user_id)
+    formData.append('business_id', business_id)
+
+    const response = await fetch(`/api/reviews/${data.business_id}/reviews`, {
         method: "POST",
-        body: JSON.stringify(review)
+        body: formData
     });
     if (response.ok) {
         const newReview = await response.json();
