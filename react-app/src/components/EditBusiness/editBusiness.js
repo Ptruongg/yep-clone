@@ -23,6 +23,7 @@ const EditBusiness = () => {
     const [zipcode, setZipcode] = useState(business?.zipcode);
     const [country, setCountry] = useState(business?.country);
     const [phoneNumber, setPhoneNumber] = useState(business?.phoneNumber)
+    const [imageUrl, setImageUrl] = useState(business?.imageUrl)
     // const [previewImage, setPreviewImage] = useState(business?.previewImage);
     const [errors, setErrors] = useState([])
 
@@ -34,6 +35,7 @@ const EditBusiness = () => {
     const updatedZipcode = (e) => setZipcode(e.target.value);
     const updatedCountry = (e) => setCountry(e.target.value);
     const updatedPhoneNumber = (e) => setPhoneNumber(e.target.value)
+    const updatedImageUrl = (e) => setImageUrl(e.target.value)
     // const updatedPreviewImage = (e) => setPreviewImage(e.target.value);
     useEffect(() => {
         dispatch(getAllBusinesses());
@@ -50,10 +52,10 @@ const EditBusiness = () => {
         if (!zipcode) errorNotifications.push("Zipcode is required");
         if (!country) errorNotifications.push("Country is required")
         if (!phoneNumber) errorNotifications.push("Phone number is required")
-
+        if (!imageUrl) errorNotifications.push("Image is required")
         setErrors(errorNotifications)
 
-    }, [name, description, address, city, state, zipcode, country, phoneNumber])
+    }, [name, description, address, city, state, zipcode, country, phoneNumber, imageUrl])
 
     // const cancelEdit = (e) => {
     //     e.preventDefault();
@@ -81,6 +83,7 @@ const EditBusiness = () => {
             zipcode: zipcode,
             country: country,
             phoneNumber: phoneNumber,
+            imageUrl: imageUrl
             // user_id: user.id
         };
 
@@ -190,6 +193,16 @@ const EditBusiness = () => {
                             type="text"
                             value={phoneNumber}
                             onChange={updatedPhoneNumber}
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Images
+                        <input
+                            type="text"
+                            value={imageUrl}
+                            onChange={setImageUrl}
                         />
                     </label>
                 </div>

@@ -59,6 +59,7 @@ def create_business():
             country=new_business.data['country'],
             user_id=new_business.data['user_id'],
             phoneNumber=new_business.data['phoneNumber'],
+            imageUrl = new_business.data['imageUrl']
         )
         # new_business = Business(
         #     name = name,
@@ -103,6 +104,7 @@ def edit_business(business_id):
     zipcode = updated_business.data['zipcode']
     country = updated_business.data['country']
     phoneNumber = updated_business.data['phoneNumber']
+    imageUrl = updated_business.data['imageUrl']
     # user_id = updated_business.data['user_id'],
 
     business.name = name
@@ -113,6 +115,7 @@ def edit_business(business_id):
     business.zipcode = zipcode
     business.country = country
     business.phoneNumber = phoneNumber
+    business.imageUrl = imageUrl
     # business.user_id = user_id
 
     db.session.commit()

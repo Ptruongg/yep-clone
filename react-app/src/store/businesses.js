@@ -66,7 +66,7 @@ export const getBusinessDetails = (businessId) => async(dispatch) => {
 }
 
 export const createBusiness = (data) => async (dispatch) => {
-    const {name, description, address, city, state, zipcode, country, phoneNumber, user_id} = data
+    const {name, description, address, city, state, zipcode, country, phoneNumber, user_id, imageUrl} = data
 
     const formData = new FormData()
     formData.append('name', name)
@@ -78,7 +78,7 @@ export const createBusiness = (data) => async (dispatch) => {
     formData.append('country', country)
     formData.append('phoneNumber', phoneNumber)
     formData.append('user_id', user_id)
-
+    formData.append('imageUrl', imageUrl)
 
     const response = await fetch(`/api/business/`, {
         method: 'POST',

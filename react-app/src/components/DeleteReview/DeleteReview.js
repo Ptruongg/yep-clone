@@ -2,15 +2,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { deleteReviewThunk } from "../../store/reviews";
+import { deleteReviewThunk, getReviewsThunk } from "../../store/reviews";
 
-function DeleteReview({reviewId, businessId}) {
+
+function DeleteReview({reviewId, businessId, onClick}) {
     let dispatch = useDispatch();
     let history = useHistory();
 
     const handleDeleteClick = () => {
         dispatch(deleteReviewThunk(reviewId));
-        history.push(`/business/${businessId}`)
+        // history.push(`/business/${businessId}`)
+        dispatch(getReviewsThunk());
+        onClick()
     };
 
     return (
@@ -28,9 +31,7 @@ function DeleteReview({reviewId, businessId}) {
                 <div className="delete-review-button">
                     <button style={{ borderRadius: "5em", color: "white", backgroundColor: "red" }} className='deleteComment' onClick={handleDeleteClick}>Delete</button>
                 </div>
-                {/* <button className="delete-option delete-button" onClick={onDelete}>
-                    Delete
-                </button> */}
+
             </div>
         </div>
     );

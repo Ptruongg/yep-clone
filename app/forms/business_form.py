@@ -13,4 +13,5 @@ class BusinessForm(FlaskForm):
     country = StringField("Country", validators=[DataRequired()])
     user_id = IntegerField("Owner of business", validators=[DataRequired()])
     phoneNumber = StringField("Phone Number", validators=[DataRequired()])
+    imageUrl = StringField("imageUrl", validators=[DataRequired()])
     # submit = SubmitField("Submit")

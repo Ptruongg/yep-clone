@@ -16,6 +16,7 @@ class Business(db.Model):
     country = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     phoneNumber = db.Column(db.String, nullable=False)
+    imageUrl = db.Column(db.String, nullable=False)
 
     #relationships
     user = db.relationship("User", back_populates='business', foreign_keys=[user_id])
@@ -33,4 +34,5 @@ class Business(db.Model):
             "country": self.country,
             "user_id": self.user_id,
             "phoneNumber": self.phoneNumber,
+            "imageUrl": self.imageUrl
         }
