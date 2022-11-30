@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, url_for, render_template, redirect, flash
 from flask_login import login_required, current_user
-from app.models import db, User, Business
+from app.models import db, User, Business, Review
 from app.forms import BusinessForm
 from werkzeug.utils import secure_filename
 import os
@@ -34,6 +34,14 @@ def businesses_of_user(userId):
     businesses = [business.to_dict() for business in userBusinesses]
     response = {"businesses": businesses}
     return response
+
+# get reviews from business id
+@business_routes.route("/<business_id>/reviews")
+def get_review_id(business_id):
+    reviews = Review.query.get(Review.business_id == business_id).all()
+    response = [review.to_dict() for review in reviews]
+    res = {'reviews': response}
+    return res
 
 # create a busines
 @business_routes.route("/", methods=['POST'])

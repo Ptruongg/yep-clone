@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBusiness, getAllBusinesses, getBusinessDetails } from "../../store/businesses";
-import { reviewsReducer, getBusinessReviewsThunk } from "../../store/reviews";
+import { reviewsReducer, getBusinessReviewsThunk, getReviewsThunk } from "../../store/reviews";
 import "./businessDetails.css"
 
 const BusinessDetails = () => {
@@ -12,10 +12,17 @@ const BusinessDetails = () => {
     businessId = Number(businessId);
     const businesses = useSelector((state) => state.businessReducer[businessId]);
     // console.log(businesses, "business")
+    const allReviews = useSelector((state) => state.reviewsReducer[businessId])
 
+    // const reviewsArr = Object.values(allReviews)
+    // const businessReviews = Object.values(allReviews).filter(
+    //     (review) => review.review === businessId
+    // )
+    // console.log('BIZZZZREVIEWS', businessReviews)
+    console.log('reviewssssssss', Object.values(allReviews))
     const sessionUser = useSelector((state) => state.session.user);
-    const reviews = useSelector((state) => Object.values(state?.reviews));
-    const reviewsString = JSON.stringify(reviews);
+    // const reviews = useSelector((state) => Object.values(state?.reviews));
+    // const reviewsString = JSON.stringify(reviews);
     // console.log(reviews)
     const user = useSelector((state) => state.session.user);
     // const [isLoaded, setIsLoaded] = useState(false);
@@ -28,8 +35,8 @@ const BusinessDetails = () => {
         dispatch(getAllBusinesses());
     }, [dispatch])
     useEffect(() => {
-        dispatch(getBusinessReviewsThunk())
-    }, [dispatch, reviewsString])
+        dispatch(getReviewsThunk())
+    }, [dispatch, businesses])
     // useEffect(() => {
     //     dispatch(getAllUsers);
     // }, [dispatch, usersString])
@@ -48,15 +55,15 @@ const BusinessDetails = () => {
         history.push(`/business/${businessId}/createReview`);
     };
 
-    let business = business[businessId];
-    const getBusinessReviews = reviews.filter((review) => {
-        return review.businessId === businessId;
-    });
-    let allStars = 0;
-    (getBusinessReviews || []).forEach((review) => {
-        allStars += review.stars;
-    });
-    const avgStarRating = allStars / getBusinessReviews.length;
+    // let business = business[businessId];
+    // const getBusinessReviews = reviews.filter((review) => {
+    //     return review.businessId === businessId;
+    // });
+    // let allStars = 0;
+    // (getBusinessReviews || []).forEach((review) => {
+    //     allStars += review.stars;
+    // });
+    // const avgStarRating = allStars / getBusinessReviews.length;
 
     return (
         // <div>hi</div>
@@ -94,11 +101,11 @@ const BusinessDetails = () => {
                     )}
                 </div>
 
-                {getBusinessReviewsThunk.map((review) => (
-                    <div key={review.id}>
-                       <div className="reviewContent"> Review: {review.review}</div>
+                {/* {reviewsArr.map((rev) => (
+                    <div key={rev.id}>
+                       <div className="reviewContent"> Review: {rev.review}</div>
                     </div>
-                ))}
+                ))} */}
             </div>
 
         </div>
