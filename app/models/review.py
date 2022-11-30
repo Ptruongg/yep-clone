@@ -13,7 +13,7 @@ class Review(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
     # review_id = db.Column(db.Integer, db.ForeignKey('reviewImages.id'))
 
-    user = db.relationship("User", back_populates='review')
+    user = db.relationship("User", back_populates='review', foreign_keys=[user_id])
     business = db.relationship("Business", back_populates="review")
     # reviewImage = db.relationship("ReviewImage", back_populates="review")
 
