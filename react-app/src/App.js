@@ -12,6 +12,7 @@ import BusinessesList from './components/Businesses/businessList';
 import { authenticate } from './store/session';
 import EditBusiness from './components/EditBusiness/editBusiness';
 import BusinessDetails from './components/BusinessDetails';
+import CreateReviews from './components/BusinessDetails/createReview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route path='/business/:businessId/edit' >
           <EditBusiness />
+        </Route>
+        <Route path='/business/:businessId/createReview' >
+          <CreateReviews />
         </Route>
         <Route path='/business/:businessId'>
           <BusinessDetails />

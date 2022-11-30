@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useParams } from "react-router-dom";
+import { Redirect, useParams, useHistory } from "react-router-dom";
 import * as reviewActions from "../../store/reviews"
 import "./createReviews.css"
 
 const CreateReviews = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     let { businessId } = useParams();
     businessId = Number(businessId);
 
@@ -23,7 +24,7 @@ const CreateReviews = () => {
             errors.push('Please enter a number from 1 to 5 stars')
         }
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let data = {
             review: review,
@@ -35,11 +36,10 @@ const CreateReviews = () => {
             setErrors(errors);
             return;
         }
-        return dispatch(reviewActions.createReview(businessId, data)).then(
-            async (res) => {
-                setSubmitSuccess(true);
-            }
-        );
+        let createdReview = await dispatch(reviewActions.createReviewThunk(data))
+        if (createdReview) {
+            history.push(`api/business/${businessId}`)
+        }
     };
     return (
         <div className="reviewContainer">
@@ -52,7 +52,42 @@ const CreateReviews = () => {
                         ))}
                     </ul>
                 )}
+                <div>
+                    <div>
+                        <label>
+                            Review:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Review Message"
+                            value={review}
+                            onChange={(e) => setReview(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>
+                            Rating:
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Rating"
+                            min={1}
+                            max={5}
+                            value={rating}
+                            onChange={(e) => setRating(e.target.value)}
+                            required
+                        />
+                    </div>
+                </div>
+                <div>
+                    <button className="createReviewButton" type="submit">
+                        Create Review
+                    </button>
+                </div>
             </form>
         </div>
     )
 }
+
+export default CreateReviews;
