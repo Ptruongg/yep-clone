@@ -9,10 +9,10 @@ const CreateReviews = () => {
     const history = useHistory();
     let { businessId } = useParams();
     businessId = Number(businessId);
-
+    const user = useSelector((state) => state.session.user);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState('');
-    const [errors, setErrors] = useState('');
+    const [errors, setErrors] = useState([]);
     const [submitSuccess, setSubmitSuccess] = useState('');
 
     const validations = () => {
@@ -38,7 +38,7 @@ const CreateReviews = () => {
         }
         let createdReview = await dispatch(reviewActions.createReviewThunk(data))
         if (createdReview) {
-            history.push(`api/business/${businessId}`)
+            dispatch(reviewActions.getReviewsThunk(review))
         }
     };
     return (
@@ -81,7 +81,7 @@ const CreateReviews = () => {
                     </div>
                 </div>
                 <div>
-                    <button className="createReviewButton" type="submit">
+                    <button className="createReviewButton" type="submit" onClick={handleSubmit}>
                         Create Review
                     </button>
                 </div>
