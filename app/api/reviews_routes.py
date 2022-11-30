@@ -24,9 +24,9 @@ def get_all_reviews():
 
 
 #create a review
-@review_routes.route('/', methods=['POST'])
+@review_routes.route('/<business_id>/reviews', methods=['POST'])
 @login_required
-def create_review():
+def create_review(business_id):
     form = CreateReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
