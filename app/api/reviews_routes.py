@@ -59,12 +59,13 @@ def update_review(id):
         return "404: Unauthorized User"
 
 #delete a review
-@review_routes.route('/<int:id>', methods=['DELETE'])
+@review_routes.route('/<review_id>', methods=['DELETE'])
 @login_required
-def delete_review(id):
-    review = Review.query.get(id)
+def delete_review(review_id):
+    review = Review.query.get(review_id)
+    print(review, 'reeeeeeeeeview')
     if current_user.id == review.user_id:
-        db.session.delete(id)
+        db.session.delete(review)
         db.session.commit()
         return "Review has been successfully deleted"
     else:

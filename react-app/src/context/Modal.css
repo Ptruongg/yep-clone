@@ -15,12 +15,11 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color:rgb(223, 50, 50);
 }
 
 #modal-content {
     position: absolute;
     width: auto;
-    background-color: #15202b;
+    background-color: lightgrey;
     border-radius: 10px;
 }

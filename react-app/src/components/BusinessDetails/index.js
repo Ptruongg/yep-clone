@@ -3,7 +3,9 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBusiness, getAllBusinesses, getBusinessDetails } from "../../store/businesses";
 import { reviewsReducer, getBusinessReviewsThunk, getReviewsThunk } from "../../store/reviews";
+import DeleteReviewModal from "../DeleteReview";
 import "./businessDetails.css"
+import DeleteReview from "../DeleteReview/DeleteReview";
 
 const BusinessDetails = () => {
     const history = useHistory();
@@ -26,6 +28,7 @@ const BusinessDetails = () => {
     // const reviewsString = JSON.stringify(reviews);
     // console.log(reviews)
     const user = useSelector((state) => state.session.user);
+
     // const [isLoaded, setIsLoaded] = useState(false);
     const businessString = JSON.stringify(businesses);
     const usersString = JSON.stringify(user);
@@ -104,10 +107,14 @@ const BusinessDetails = () => {
                 )}
                 {businessReviews.map((rev) => (
                     <div key={rev.id}>
-                       <div className="reviewContent"> Review: {rev.review}</div>
+                        <div className="reviewContent"> Review: {rev.review}</div>
+                        <div className='delete-comment' >
+                            <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
+                        </div>
                     </div>
                 ))}
             </div>
+
 
         </div>
     )
