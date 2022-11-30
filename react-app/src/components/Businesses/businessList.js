@@ -42,6 +42,7 @@ const BusinessesList = () => {
                                     Business
                                 </NavLink>
                                 {bus.name}, {bus.description}, {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}, {bus.phoneNumber}
+                                <img src={bus.imageUrl} className="businessImages"></img>
                             </div>
                         </div>
                     ))}

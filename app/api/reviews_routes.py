@@ -46,21 +46,23 @@ def create_review(business_id):
 # update a review
 
 
-@review_routes.route('/<int:id>', methods=['PUT'])
+@review_routes.route('/<review_id>', methods=['PUT'])
 @login_required
-def update_review(id):
-    form = CreateReviewForm()
-    form = ['csrf_token'].data = request.cookies['csrf_token']
-    review = Review.query.get(id)
+def update_review(review_id):
+    # form = CreateReviewForm()
+    # form = ['csrf_token'].data = request.cookies['csrf_token']
+    review = Review.query.get(review_id)
+    data = request.json
+    review.review = data['review']
+    review.rating = data['rating']
+    # if current_user.id == review.user_id:
+        # review.review = form.data['review']
+        # review.rating = form.data['rating']
 
-    if current_user.id == review.user_id:
-        review.review = form.data['review']
-        review.rating = form.data['rating']
-
-        db.session.commit()
-        return review.to_dict()
-    else:
-        return "404: Unauthorized User"
+    db.session.commit()
+    return review.to_dict()
+    # else:
+        # return "404: Unauthorized User"
 
 # delete a review
 
@@ -73,8 +75,8 @@ def delete_review(review_id):
         if current_user.id == review.user_id:
             db.session.delete(review)
             db.session.commit()
-            return "Review has been successfully deleted"
+            return {"message": "Review has been successfully deleted"}
         else:
             return "404 Unauthorized User"
     else:
-        return "Review not found"
+        return {"message": "Review not found"}

@@ -10,7 +10,8 @@ def seed_businesses():
         zipcode = "95051",
         country = "United States",
         user_id = 1,
-        phoneNumber = 4082179112
+        phoneNumber = 4082179112,
+        imageUrl = "https://s3-media0.fl.yelpcdn.com/bphoto/royQpKYzGmjgVjuQ0ZsFtg/o.jpg"
     )
     business2 = Business(
         name = "Detailz",
@@ -21,7 +22,8 @@ def seed_businesses():
         zipcode = "95132",
         country = "United States",
         user_id = 2,
-        phoneNumber = 4085086022
+        phoneNumber = 4085086022,
+        imageUrl = "https://s3-media0.fl.yelpcdn.com/bphoto/9DfjVymrp19GuiditZSCJg/o.jpg"
     )
     business3 = Business(
         name = "SLT Auto Repair",
@@ -32,7 +34,8 @@ def seed_businesses():
         zipcode = "94085",
         country = "United States",
         user_id = 3,
-        phoneNumber = 4085086022
+        phoneNumber = 4085086022,
+        imageUrl = "https://s3-media0.fl.yelpcdn.com/bphoto/LNkrALRly_Wmw-Pd2R5L6Q/o.jpg "
     )
     business4 = Business(
         name = "ECU Tuning",
@@ -43,7 +46,8 @@ def seed_businesses():
         zipcode = "95133",
         country = "United States",
         user_id = 4,
-        phoneNumber = 4087689099
+        phoneNumber = 4087689099,
+        imageUrl = "https://photos.smugmug.com/photos/i-rNLqWr8/0/X5/i-rNLqWr8-X5.jpg"
     )
     business5 = Business(
         name = "EJ Auto Repair",
@@ -54,7 +58,8 @@ def seed_businesses():
         zipcode = "92062",
         country = "United States",
         user_id = 5,
-        phoneNumber = 5103107650
+        phoneNumber = 5103107650,
+        imageUrl = "https://photos.smugmug.com/photos/i-cjkgNcv/0/X5/i-cjkgNcv-X5.jpg"
     )
 
 

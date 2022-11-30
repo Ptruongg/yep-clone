@@ -26,10 +26,11 @@ const createReviews = (review) => {
     }
 }
 
-const editReviews = (review) => {
+const editReviews = (review, reviewId) => {
     return {
         type: EDIT_REVIEWS,
-        review
+        review,
+        reviewId
     }
 }
 
@@ -99,7 +100,8 @@ export const editReviewThunk = (review, reviewId) => async (dispatch) => {
 
 export const deleteReviewThunk = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {"Content-Type": "application/json"}
     })
     if (response.ok) {
         const deletedReview = await response.json();

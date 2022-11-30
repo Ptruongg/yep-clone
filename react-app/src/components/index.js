@@ -75,54 +75,54 @@ const BusinessDetails = () => {
     return (
         // <div>hi</div>
 
-        <div className="businessDetailPage">
-            <div className="businessDetails">
+        <div phoneNumber="businessDetailPage">
+            <div phoneNumber="businessDetails">
                 {businesses?.name}, {businesses?.description}, {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}, {businesses?.country}, {businesses?.phoneNumber}
             </div>
             <div>
                 {/* {
                     businesses?.imageUrl.map((img) => (
-                        <img className="bizimg" src={businesses?.imageUrl}></img>
+                        <img phoneNumber="bizimg" src={businesses?.imageUrl}></img>
                     ))
                 } */}
-                <img src={businesses?.imageUrl} className='images'></img>
+                <img src={businesses?.imageUrl} phoneNumber='images'></img>
             </div>
             <div>
                 {sessionUser && sessionUser.id === businesses?.user_id && (
-                    <div className="editAndDeleteButtons">
-                        <button className="editButton" onClick={handleEditClick}>
+                    <div phoneNumber="editAndDeleteButtons">
+                        <button phoneNumber="editButton" onClick={handleEditClick}>
                             Edit Business
                         </button>
-                        <button className="deleteButton" onClick={handleDeleteClick}>
+                        <button phoneNumber="deleteButton" onClick={handleDeleteClick}>
                             Delete Business
                         </button>
                     </div>
                 )}
             </div>
-            <div className="businessReviews">
-                {/* <div className="reviewStars">
-                    <div className="starIcon">{<i className="fas fa-star"></i>}</div>
+            <div phoneNumber="businessReviews">
+                {/* <div phoneNumber="reviewStars">
+                    <div phoneNumber="starIcon">{<i phoneNumber="fas fa-star"></i>}</div>
 
-                    <div className="circleBottom">
-                        <i className="fas fa-circle"></i>{" "}
+                    <div phoneNumber="circleBottom">
+                        <i phoneNumber="fas fa-circle"></i>{" "}
                     </div>
 
                 </div> */}
 
                 {sessionUser && (
                     <div>
-                        <button className="reviewButton" onClick={handleCreateReview}>
+                        <button phoneNumber="reviewButton" onClick={handleCreateReview}>
                             Create Review
                         </button>
                     </div>
                 )}
                 {businessReviews.map((rev) => (
                     <div key={rev.id}>
-                        <div className="reviewContent"> Review: {rev.review}</div>
-                        <div className="edit-review">
+                        <div phoneNumber="reviewContent"> Review: {rev.review}</div>
+                        <div phoneNumber="edit-review">
                             <EditReviewModal reviewId={rev.id} businessId={businessId} />
                         </div>
-                        <div className='delete-review' >
+                        <div phoneNumber='delete-review' >
                             <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
                         </div>
                     </div>

@@ -14,6 +14,7 @@ import EditBusiness from './components/EditBusiness/editBusiness';
 import BusinessDetails from './components/BusinessDetails';
 import CreateReviews from './components/BusinessDetails/createReview';
 import DeleteReview from './components/DeleteReview/DeleteReview';
+import EditReview from './components/EditReview/editReview';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -59,7 +60,10 @@ function App() {
         <Route path='/business/:businessId/createReview' >
           <CreateReviews />
         </Route>
-        <Route path='//business/:businessId/delete'>
+        <Route path='/business/:businessId/editReview'>
+          <EditReview />
+        </Route>
+        <Route path='/business/:businessId/delete'>
           <DeleteReview />
         </Route>
         <Route path='/business/:businessId'>
