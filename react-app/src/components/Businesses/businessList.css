@@ -27,10 +27,10 @@
     align-items: center;
     border: 1px solid lightgrey;
     text-align: left;
-    border-left: 1px solid #ebebeb;
+    /* border-left: 1px solid #ebebeb;
     border-right: 1px solid #ebebeb;
     border-top: 1px solid #ebebeb;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb; */
     height: 275px;
     width: 500px;
     align-items: center;
@@ -46,6 +46,10 @@
     padding: 0px;
     border: 0px;
     vertical-align: baseline;
+    display: grid;
+    align-items: center;
+    margin-right: auto;
+
 
 }
 .bizphoto {
