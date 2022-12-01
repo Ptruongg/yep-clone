@@ -44,7 +44,7 @@ const BusinessesList = () => {
                                     </div>
                                     <div className="business-text">
                                         <div className="name">
-                                            {bus.name},
+                                            {bus.name}
                                         </div>
                                         <div className="address">
                                             {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}

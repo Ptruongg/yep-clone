@@ -28,7 +28,7 @@ def business_by_id(id):
 
 # get businesses owned by one user
 @business_routes.route("user/<int:userId>/")
-@login_required
+# @login_required
 def businesses_of_user(userId):
     userBusinesses = Business.query.filter(Business.user_id == userId).all()
     businesses = [business.to_dict() for business in userBusinesses]
