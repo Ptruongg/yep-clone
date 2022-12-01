@@ -36,28 +36,28 @@ const BusinessesList = () => {
             <div className="businesses-list">
                 {business &&
                     business.map((bus) => (
-                        <div className="busCard" key={bus.id}>
-                            <div className="businessDiv">
-
-                                <div className="business-text">
-                                    <NavLink to={`/business/${bus.id}`}>
+                        <NavLink to={`/business/${bus.id}`}>
+                            <div className="busCard" key={bus.id}>
+                                <div className="businessDiv">
+                                    <div className="businessImage">
+                                        <img src={bus.imageUrl} className="bizphoto"></img>
+                                    </div>
+                                    <div className="business-text">
                                         <div className="name">
                                             {bus.name},
                                         </div>
-                                        <div className="businessImages">
-                                            <img src={bus.imageUrl} className="businessImages"></img>
+                                        <div className="address">
+                                            {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}
                                         </div>
-                                    </NavLink>
-                                    <div className="address">
-                                        {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}
+                                        <div className="phone-number">
+                                            {bus.phoneNumber}
+                                        </div>
                                     </div>
-                                    <div className="phone-number">
-                                        {bus.phoneNumber}
-                                    </div>
-                                </div>
 
+
+                                </div>
                             </div>
-                        </div>
+                        </NavLink>
                     ))}
             </div>
 
