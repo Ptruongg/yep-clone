@@ -21,11 +21,7 @@ const BusinessDetails = () => {
     const businessReviews = allReviews.filter(
         (review) => review.business_id === businessId
     )
-        console.log(businesses?.imageUrl, 'businessesssssssssss')
-    // console.log(reviewsArr, 'arrrrrrrr')
-    // const reviewsArr = Object.values(allReviews)
-    // console.log('BIZZZZREVIEWS', businessReviews)
-    console.log('reviewssssssss', allReviews)
+
     const sessionUser = useSelector((state) => state.session.user);
     // const reviews = useSelector((state) => Object.values(state?.reviews));
     // const reviewsString = JSON.stringify(reviews);
