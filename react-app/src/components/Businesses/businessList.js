@@ -58,7 +58,6 @@ const BusinessesList = () => {
                         </NavLink>
                     ))}
             </div>
-
         </div>
     )
 }
