@@ -22,7 +22,7 @@
     align-items: center;
 }
 .businessDiv {
-    display: grid;
+    display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid lightgrey;
@@ -33,7 +33,7 @@
     border-bottom: 1px solid #ebebeb; */
     height: 275px;
     width: 500px;
-    align-items: center;
+
 }
 .busCard {
     max-width: 750px;

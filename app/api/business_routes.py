@@ -45,6 +45,7 @@ def get_review_id(business_id):
 
 # create a busines
 @business_routes.route("/", methods=['POST'])
+@login_required
 def create_business():
     new_business = BusinessForm()
     new_business["csrf_token"].data = request.cookies["csrf_token"]
@@ -84,7 +85,7 @@ def create_business():
 
 # edit a business
 @business_routes.route("/<business_id>", methods=["PUT"])
-# @login_required
+@login_required
 def edit_business(business_id):
     # print('id', id)
     business = Business.query.get(business_id)
@@ -125,6 +126,7 @@ def edit_business(business_id):
 
 
 @business_routes.route("/<business_id>", methods=['DELETE'])
+@login_required
 def delete_tweet(business_id):
     business = Business.query.get(business_id)
     if not business:
