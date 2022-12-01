@@ -9,7 +9,7 @@
 .businesses-list {
     display: grid;
     /* border: 0.25px solid lightgrey; */
-    grid-template-columns: minmax(0px, 2fr);
+    grid-template-columns: 500px 500px;
     gap: 32px;
     border-radius: 10px;
     margin: 15px;
@@ -32,13 +32,26 @@
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
     height: 275px;
-    width: 275px;
-    margin: 20px;
+    width: 500px;
     align-items: center;
 }
+.busCard {
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
 
-.businessImages {
-    height: 275px;
-    width: 275px;
+}
+.business-text {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+
+}
+.bizphoto {
+    height: 200px;
+    width: 200px;
     object-fit: cover;
+    display: flex;
+    justify-content: flex-end;
 }
