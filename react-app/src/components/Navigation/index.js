@@ -63,6 +63,9 @@ function Navigation({ isLoaded }) {
                     <div className='name'>
                         Developed by Philip Truong
                     </div>
+                    <div>
+                        <ProfileButton user={sessionUser}/>
+                    </div>
                 </div>
                 {isLoaded && sessionLinks}
             </div>
