@@ -19,7 +19,7 @@ class Business(db.Model):
     imageUrl = db.Column(db.String, nullable=False)
 
     #relationships
-    user = db.relationship("User", back_populates='business', foreign_keys=[user_id])
+    user = db.relationship("User", back_populates='business')
     review = db.relationship("Review", back_populates='business', cascade="all, delete")
 
     def to_dict(self):

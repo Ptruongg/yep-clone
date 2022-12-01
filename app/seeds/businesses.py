@@ -51,7 +51,7 @@ def seed_businesses():
     )
     business5 = Business(
         name = "EJ Auto Repair",
-        description = "At EJ Auto Repair we specialize in EJ engines specifically Subarus but we also work on other JDM cars. Our expertise range from maintenance to tuning. We also work on suspension and exterior work. ",
+        description = "At EJ Auto Repair we specialize in EJ engines specifically Subarus but we also work on other JDM cars. Our expertise range from maintenance to tuning. We also work on suspension and exterior work.",
         address = "1660 Almaden Rd",
         city = "Fremont",
         state = "CA",

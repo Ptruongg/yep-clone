@@ -16,7 +16,7 @@ def seed_reviews():
     review3 = Review(
         review = "I've been bringing my Lexus GS in for service and repairs a few times now and am happy with their pricing, service, and quick turnaround time. Would recommend!",
         rating = 5,
-        user_id = 2,
+        user_id = 3,
         business_id = 3
     )
     review4 = Review(
