@@ -15,13 +15,16 @@ import BusinessDetails from './components/BusinessDetails';
 import CreateReviews from './components/BusinessDetails/createReview';
 import DeleteReview from './components/DeleteReview/DeleteReview';
 import EditReview from './components/EditReview/editReview';
+import DemoUser from "./components/DemoUser";
+import Navigation from './components/Navigation';
+import ProfileButton from './components/Navigation/ProfileButton';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -32,45 +35,55 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>Yep</h1>
-          <BusinessesList />
-        </ProtectedRoute>
-        <Route path='/business/create' exact={true}>
-          <CreateBusiness />
-        </Route>
-        <Route path='/business/:businessId/edit' >
-          <EditBusiness />
-        </Route>
-        <Route path='/business/:businessId/createReview' >
-          <CreateReviews />
-        </Route>
-        <Route path='/business/:businessId/editReview'>
-          <EditReview />
-        </Route>
-        <Route path='/business/:businessId/delete'>
-          <DeleteReview />
-        </Route>
-        <Route path='/business/:businessId'>
-          <BusinessDetails />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <>
+
+      <Navigation isLoaded={loaded} />
+      {loaded && (
+
+
+        <BrowserRouter>
+          <NavBar />
+          <Switch>
+            <Route path='/login' exact={true}>
+              {/* <LoginForm /> */}
+              {/* <DemoUser /> */}
+            </Route>
+            <Route path='/sign-up' exact={true}>
+              <SignUpForm />
+              <ProfileButton />
+            </Route>
+            <ProtectedRoute path='/users' exact={true} >
+              <UsersList />
+            </ProtectedRoute>
+            <ProtectedRoute path='/users/:userId' exact={true} >
+              <User />
+            </ProtectedRoute>
+            <ProtectedRoute path='/' exact={true} >
+
+              <BusinessesList />
+            </ProtectedRoute>
+            <Route path='/business/create' exact={true}>
+              <CreateBusiness />
+            </Route>
+            <Route path='/business/:businessId/edit' >
+              <EditBusiness />
+            </Route>
+            <Route path='/business/:businessId/createReview' >
+              <CreateReviews />
+            </Route>
+            <Route path='/business/:businessId/editReview'>
+              <EditReview />
+            </Route>
+            <Route path='/business/:businessId/delete'>
+              <DeleteReview />
+            </Route>
+            <Route path='/business/:businessId'>
+              <BusinessDetails />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      )}
+    </>
   );
 }
 

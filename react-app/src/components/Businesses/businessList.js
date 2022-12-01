@@ -39,7 +39,7 @@ const BusinessesList = () => {
                         <NavLink to={`/business/${bus.id}`}>
                             <div className="busCard" key={bus.id}>
                                 <div className="businessDiv">
-                                    <div className="businessImage">
+                                    <div className="businessImage" style={{fontFamily: "Times-new-roman"}}>
                                         <img src={bus.imageUrl} className="bizphoto"></img>
                                     </div>
                                     <div className="business-text">
