@@ -1,6 +1,42 @@
-.busCard {
+.homepage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px 2px 2px 2px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.businesses-list {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 0.25px solid lightgrey;
+    border-radius: 10px;
+    margin: 15px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding:0 32px;
+    box-sizing: border-box;
+    width: 80vw;
+    align-items: center;
+}
+.businessDiv {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid lightgrey;
+    text-align: left;
+    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    height: 275px;
+    width: 275px;
+    margin: 20px;
+    align-items: center;
+}
+
+.businessImages {
+    height: 275px;
+    width: 275px;
 }

@@ -32,17 +32,30 @@ const BusinessesList = () => {
     // }
 
     return (
-        <div className="all-bussinesses">
-            <div className="businesses">
+        <div className="homepage">
+            <div className="businesses-list">
                 {business &&
                     business.map((bus) => (
                         <div className="busCard" key={bus.id}>
-                            <div>
-                                <NavLink to={`/business/${bus.id}`}>
-                                    Business
-                                </NavLink>
-                                {bus.name}, {bus.description}, {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}, {bus.phoneNumber}
-                                <img src={bus.imageUrl} className="businessImages"></img>
+                            <div className="businessDiv">
+
+                                <div className="business-text">
+                                    <NavLink to={`/business/${bus.id}`}>
+                                        <div className="name">
+                                            {bus.name},
+                                        </div>
+                                        <div className="businessImages">
+                                            <img src={bus.imageUrl} className="businessImages"></img>
+                                        </div>
+                                    </NavLink>
+                                    <div className="address">
+                                        {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}
+                                    </div>
+                                    <div className="phone-number">
+                                        {bus.phoneNumber}
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     ))}
