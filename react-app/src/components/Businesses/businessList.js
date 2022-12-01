@@ -53,8 +53,6 @@ const BusinessesList = () => {
                                             {bus.phoneNumber}
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </NavLink>
