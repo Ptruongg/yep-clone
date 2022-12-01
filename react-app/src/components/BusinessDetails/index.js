@@ -25,7 +25,7 @@ const BusinessDetails = () => {
     const sessionUser = useSelector((state) => state.session.user);
     // const reviews = useSelector((state) => Object.values(state?.reviews));
     // const reviewsString = JSON.stringify(reviews);
-    // console.log(reviews)
+
     const user = useSelector((state) => state.session.user);
 
     // const [isLoaded, setIsLoaded] = useState(false);
