@@ -37,11 +37,11 @@ const NavBar = () => {
   return (
     <nav>
       <div>
-        <div>
+        {/* <div>
           <NavLink to='/' exact={true} activeClassName='active'>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaT-NcnLo4dUZBCe2abefSWdmECMUixI4AQw&usqp=CAU"></img>
           </NavLink>
-        </div>
+        </div> */}
 
         {/* <div>
           <NavLink to='/login' exact={true} activeClassName='active'>
