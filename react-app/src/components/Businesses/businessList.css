@@ -4,12 +4,13 @@
     justify-content: center;
     margin: 2px 2px 2px 2px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
+    border: 0.25px solid lightgrey;
 }
 .businesses-list {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    border: 0.25px solid lightgrey;
+    /* border: 0.25px solid lightgrey; */
+    grid-template-columns: minmax(0px, 2fr);
+    gap: 32px;
     border-radius: 10px;
     margin: 15px;
     align-items: center;
@@ -17,11 +18,11 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding:0 32px;
     box-sizing: border-box;
-    width: 80vw;
+    width: 300px;
     align-items: center;
 }
 .businessDiv {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     border: 1px solid lightgrey;
@@ -39,4 +40,5 @@
 .businessImages {
     height: 275px;
     width: 275px;
+    object-fit: cover;
 }
