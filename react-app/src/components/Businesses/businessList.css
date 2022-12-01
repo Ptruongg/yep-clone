@@ -41,6 +41,15 @@
     flex-direction: column;
 
 }
+.name {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    display: flex;
+    margin-top: 50px;
+}
 .business-text {
     margin: 0px;
     padding: 0px;
@@ -49,8 +58,14 @@
     display: grid;
     align-items: center;
     margin-right: auto;
-
-
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: black;
+    justify-content: space-between;
+    margin-bottom: 150px;
+}
+.address {
+    margin-top: 50px;
 }
 .bizphoto {
     height: 200px;
@@ -58,4 +73,7 @@
     object-fit: cover;
     display: flex;
     justify-content: flex-end;
+}
+a:link {
+    text-decoration: none;
 }
