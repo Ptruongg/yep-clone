@@ -1,0 +1,74 @@
+.signUpForm label {
+    width: 100%;
+    margin: 8px 0;
+    display: flex;
+    float: left;
+    padding: 0px;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.formDiv {
+    height: 100vh;
+    margin: 100px auto 0 auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+}
+
+.signUpForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.signUpForm input {
+    height: 30px;
+    border: #d3d3d3 1.5px solid;
+    width: 100%;
+    border-radius: 5px;
+    color: gray;
+}
+
+.signUp {
+    height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.signUpButton {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.backgroundImg {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.background {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+
+}

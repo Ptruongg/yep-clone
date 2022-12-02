@@ -56,7 +56,7 @@ function Navigation({ isLoaded }) {
                     </NavLink>
                 </div>
                 <div className='aboutMe'>
-                    <div className='github' onClick={() => newTab('https://github.com/Ptruongg/airbnb-cl0ne')}>
+                    <div className='github' onClick={() => newTab('https://github.com/Ptruongg/yep-clone')}>
                         Github
                     </div>
                     <div className='name'>
