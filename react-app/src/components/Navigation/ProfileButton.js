@@ -7,6 +7,7 @@ import "./Navigation.css"
 function ProfileButton({user}) {
     const dispatch = useDispatch();
     const history = useHistory();
+    console.log("user,", user)
 
     const [showMenu, setShowMenu] = useState(false);
 
@@ -42,9 +43,12 @@ function ProfileButton({user}) {
                 </button>
                 {showMenu && (
                     <div id="menu">
-                        {/* <div className="userName">{user.username}</div> */}
-                        <div className="email">{user?.email}</div>
-                        <div className="=name">{user?.first_name}</div>
+                        <li>
+                            <div>{user.first_name}</div>
+                        </li>
+                        <li>
+                            <div>{user.email}</div>
+                        </li>
                         <li>
                             <div onClick={logout}>Log Out</div>
                         </li>
