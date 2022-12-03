@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../auth/index';
 import * as sessionActions from "../../store/session"
+import CreateBusiness from '../CreateBusiness/createBusiness';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -62,6 +63,11 @@ function Navigation({ isLoaded }) {
                     <div className='name'>
                         Developed by Philip Truong
                     </div>
+                </div>
+                <div>
+                <button>
+                    <NavLink to="/business/create" exact={true}>Create Your Business</NavLink>
+                </button>
                 </div>
                 {isLoaded && sessionLinks}
             </div>

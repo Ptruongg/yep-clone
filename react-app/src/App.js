@@ -51,7 +51,7 @@ function App() {
             <Route exact path="/">
               <BusinessesList />
             </Route>
-            <Route path="/business/create" exact={true}>
+            <Route path="/business/create" >
               <CreateBusiness />
             </Route>
             <Route path="/business/:businessId/edit">
