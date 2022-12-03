@@ -1,0 +1,8 @@
+.images {
+    display: flex;
+    object-fit: cover;
+    /* object-position: 0%; */
+    /* background-size: cover; */
+    height: 50em;
+    width: 100%;
+}

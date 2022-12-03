@@ -20,8 +20,9 @@ const CreateBusiness = () => {
     const [country, setCountry] = useState('');
     // const [userId, setUserId] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [imageUrl, setImageUrl] = useState('')
     const [errors, setErrors] = useState([]);
-    const [submitSuccess, setSubmitSuccess] = useState(false);
+    // const [submitSuccess, setSubmitSuccess] = useState(false);
 
     // if (submitSuccess) {
     //     return <Redirect to={`/businesses/${businessId}/create`} />
@@ -53,6 +54,9 @@ const CreateBusiness = () => {
         if (!phoneNumber) {
             errors.push('Please enter in a phone number')
         }
+        if (!imageUrl) {
+            errors.push('Please enter in an image')
+        }
         return errors;
 
 
@@ -69,7 +73,8 @@ const CreateBusiness = () => {
             zipcode: zipcode,
             country: country,
             phoneNumber: phoneNumber,
-            user_id: user.id
+            user_id: user.id,
+            imageUrl: imageUrl
         }
         const errors = validations();
         if (errors.length) {
@@ -187,6 +192,18 @@ const CreateBusiness = () => {
                             placeholder="Phone Number"
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>
+                            ImageUrl:
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Image"
+                            value={imageUrl}
+                            onChange={(e) => setImageUrl(e.target.value)}
                             required
                         />
                     </div>

@@ -12,6 +12,8 @@
     gap: 10px;
     min-width: 35vw;
     min-height: 35vh;
+    margin-right: 10%;
+    background-color: white;
 }
 
 .welcomeContainer {
@@ -40,7 +42,7 @@
     border: #d3d3d3 1.5px solid;
     width: 100%;
     border-radius: 5px;
-    color: gray;
+    color: white;
     margin-bottom: 15px;
     width: 100%;
     padding: 5px;
@@ -87,3 +89,52 @@
 .button:hover {
     cursor: pointer;
 }
+
+.loginInput {
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+}
+.passInput {
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+}
+
+.mail {
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    display: flex;
+}
+.pass {
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin-top: 10px;
+    display: flex;
+}
+.passInput {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    object-fit: cover;
+}
+
+/* .loginformmodal {
+    margin-left: 50%;
+    margin-right: 20%;
+    margin-top: 7%;
+    padding: 40px 55px;
+    background-color: white;
+    border-radius: 5px;
+    gap: 20px;
+} */

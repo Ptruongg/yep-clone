@@ -72,16 +72,11 @@ const BusinessDetails = () => {
         // <div>hi</div>
 
         <div className="businessDetailPage">
+            <div>
+                <img src={businesses?.imageUrl} className='images'></img>
+            </div>
             <div className="businessDetails">
                 {businesses?.name}, {businesses?.description}, {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}, {businesses?.country}, {businesses?.phoneNumber}
-            </div>
-            <div>
-                {/* {
-                    businesses?.imageUrl.map((img) => (
-                        <img className="bizimg" src={businesses?.imageUrl}></img>
-                    ))
-                } */}
-                <img src={businesses?.imageUrl} className='images'></img>
             </div>
             <div>
                 {sessionUser && sessionUser.id === businesses?.user_id && (
