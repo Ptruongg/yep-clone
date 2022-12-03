@@ -73,6 +73,7 @@ const BusinessDetails = () => {
 
         <div className="businessDetailPage">
             <div>
+                <h2>{businesses?.name}</h2>
                 <img src={businesses?.imageUrl} className='images'></img>
             </div>
             <div className="businessDetails">

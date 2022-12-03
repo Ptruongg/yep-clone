@@ -44,6 +44,15 @@
     position: relative;
     cursor: pointer;
 }
+.loginNavBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
 
 .navButton {
     display: flex;
@@ -63,6 +72,7 @@
     align-items: center;
     cursor: pointer;
 }
+
 
 #signUp {
     color: red;
@@ -178,4 +188,16 @@
     cursor: pointer;
     justify-content: center;
     align-items: center;
+}
+.create-business-button a {
+    text-decoration: none;
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 5px;
 }

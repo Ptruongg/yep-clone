@@ -1,14 +1,15 @@
 .homepage {
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
     margin: 2px 2px 2px 2px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 0.25px solid lightgrey;
 }
+
 .businesses-list {
-    display: grid;
-    /* border: 0.25px solid lightgrey; */
+    /* display: grid;
+    border: 0.25px solid lightgrey;
     grid-template-columns: 500px 500px;
     gap: 32px;
     border-radius: 10px;
@@ -16,10 +17,23 @@
     align-items: center;
     justify-content: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding:0 32px;
+    padding: 0 32px;
     box-sizing: border-box;
     width: 300px;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    /* border: 1px solid rgba(0, 0, 0, 0.1);s */
+    /* border-radius: 10px; */
+    margin-left: 50px;
+    margin-right: 50px;
+    transition: box-shadow 0.9s ease;
+    justify-content: center;
     align-items: center;
+}
+.businesses-list a {
+    width: 800px;
+    height: 300px;
 }
 .businessDiv {
     display: flex;
@@ -32,16 +46,22 @@
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb; */
     height: 275px;
-    width: 500px;
+    width: 700px;
     margin-right: 100px;
     margin-left: 100px;
 
 }
+
 .busCard {
-    max-width: 750px;
+    /* max-width: 750px; */
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+}
+.busCard a {
+    width: 800px;
 }
 .name {
     text-decoration: none;
@@ -52,6 +72,7 @@
     display: flex;
     margin-top: 50px;
 }
+
 .business-text {
     /* margin: 0px; */
     padding: 0px;
@@ -68,40 +89,50 @@
     font-size: 15px;
     object-fit: cover;
     border-radius: 33px;
+    height: 150px
 }
+
 .address {
     margin-top: 50px;
     justify-content: center;
     align-items: center;
 }
+
 .bizphoto {
     height: 275px;
-    width: 265px;
+    width: 300px;
     object-fit: cover;
     display: flex;
     justify-content: flex-end;
+    margin-right: 35px;
 }
-.phonenumber{
+
+.phonenumber {
     justify-content: center;
     align-items: center;
 }
+
 a:link {
     text-decoration: none;
 }
 
 .image-scroll {
-    animation: fadeIn 2s;
-    opacity: 1;
-    animation-name: fadeInOpacity;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in;
-    animation-duration: 2s;
+    height: 50vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    width: 2000px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 @keyframes fadeInOpacity {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
