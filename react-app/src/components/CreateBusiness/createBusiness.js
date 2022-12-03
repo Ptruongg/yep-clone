@@ -88,133 +88,138 @@ const CreateBusiness = () => {
     }
 
     return (
-        <div className="createBusinessContainer">
-            <form className="business" onSubmit={handleSubmit}>
-                <div className="businessTitle">Create Your Business</div>
-                {errors ?? (
-                    <ul>
-                        {errors.map((error, idx) => (
-                            <div key={idx}>{error}</div>
-                        ))}
-                    </ul>
-                )}
+        <div className="background" >
+            <div className="formContainer">
                 <div>
-                    <div>
-                        <label>
-                            Name:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Business Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            Description:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            Address:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Address"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            City:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="City"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            State:
-                        </label>
-                        <input
-                            type="state"
-                            placeholder="State"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            Zipcode:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Zipcode"
-                            value={zipcode}
-                            onChange={(e) => setZipcode(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            Country:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Country"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            Phone Number:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Phone Number"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            ImageUrl:
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Image"
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
-                            required
-                        />
-                    </div>
+                    <h2 style={{color: "white"}}>Create Your Business</h2>
                 </div>
-                <div>
-                    <button className="createBusinessButton" type="submit">
-                        Create Your Business
-                    </button>
-                </div>
-            </form >
-        </div >
+                <form className="business" onSubmit={handleSubmit}>
+                    {/* <div className="businessTitle">Create Your Business</div> */}
+                    {errors ?? (
+                        <ul>
+                            {errors.map((error, idx) => (
+                                <div key={idx}>{error}</div>
+                            ))}
+                        </ul>
+                    )}
+                    <div>
+                        <div>
+                            <label>
+                                Name:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Business Name"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                Description:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Description"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                Address:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Address"
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                City:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="City"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                State:
+                            </label>
+                            <input
+                                type="state"
+                                placeholder="State"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                Zipcode:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Zipcode"
+                                value={zipcode}
+                                onChange={(e) => setZipcode(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                Country:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Country"
+                                value={country}
+                                onChange={(e) => setCountry(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                Phone Number:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Phone Number"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>
+                                ImageUrl:
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Image"
+                                value={imageUrl}
+                                onChange={(e) => setImageUrl(e.target.value)}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <button className="createBusinessButton" type="submit">
+                            Create Your Business
+                        </button>
+                    </div>
+                </form >
+            </div >
+        </div>
     )
 }
 export default CreateBusiness;

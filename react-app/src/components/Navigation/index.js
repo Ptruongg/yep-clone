@@ -27,8 +27,13 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <>
-                <div id='navBarRight'>
-                    <ProfileButton user={sessionUser} />
+                <div className='loginNavBar'>
+                    <button className='create-business-button'>
+                        <NavLink to="/business/create" exact={true}>Create Your Business</NavLink>
+                    </button>
+                    <div id='navBarRight'>
+                        <ProfileButton user={sessionUser} />
+                    </div>
                 </div>
             </>
         );
@@ -36,6 +41,9 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <div id='navBarRightLoad'>
+                    <div>
+
+                    </div>
                     <div id='loginButtonDiv'>
                         <LoginFormModal />
                         <div>
@@ -64,11 +72,7 @@ function Navigation({ isLoaded }) {
                         Developed by Philip Truong
                     </div>
                 </div>
-                <div>
-                <button>
-                    <NavLink to="/business/create" exact={true}>Create Your Business</NavLink>
-                </button>
-                </div>
+
                 {isLoaded && sessionLinks}
             </div>
         </nav>
