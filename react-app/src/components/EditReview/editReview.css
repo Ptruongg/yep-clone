@@ -1,0 +1,62 @@
+.submit-button {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.edit-comment-errors {
+    color: red;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.review-form {
+    height: 300px;
+    width: 500px;
+    padding: 15px;
+
+}
+
+.edit-btn {
+    width: 75px;
+    height: 36px;
+    font-weight: bold;
+    border: none;
+    color: #e6fdff;
+    background-color: rgb(29, 155, 240);
+    border-radius: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.review-inputs {
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 20px;
+    margin: 30px 0;
+    margin-left: 10px;
+    font-weight: lighter;
+    height: 100px;
+    width: 470px;
+    background-color: #15202B;
+    color: rgba(255, 255, 255, 0.951);
+}
+
+.edit-comment-input {
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn-div {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.edit-review-header {
+    font-size: 28px;
+    margin-top: 10px;
+    margin-left: 10px;
+}

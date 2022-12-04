@@ -47,9 +47,7 @@ const SignUpForm = () => {
   return (
     <div className='formDiv'>
       <h2 className="signUp"> Sign Up </h2>
-      <div className='background'>
-        <img className='backgroundImg' src={signupImg} />
-      </div>
+
       <form className="signUpForm" onSubmit={onSignUp}>
         <div>
           {errors.map((error, ind) => (

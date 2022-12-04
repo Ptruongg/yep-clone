@@ -91,7 +91,7 @@ const CreateBusiness = () => {
         <div className="background" >
             <div className="formContainer">
                 <div>
-                    <h2 style={{color: "white"}}>Create Your Business</h2>
+                    <h2>Create Your Business</h2>
                 </div>
                 <form className="business" onSubmit={handleSubmit}>
                     {/* <div className="businessTitle">Create Your Business</div> */}
@@ -102,7 +102,7 @@ const CreateBusiness = () => {
                             ))}
                         </ul>
                     )}
-                    <div>
+                    <div className="form">
                         <div>
                             <label>
                                 Name:

@@ -18,12 +18,7 @@ const CreateReviews = () => {
 
     const validations = () => {
         const errors = [];
-        if (review.length < 5) {
-            errors.push("Review must be greater than 5 characters")
-        }
-        if (rating > 5 || rating < 1) {
-            errors.push('Please enter a number from 1 to 5 stars')
-        }
+
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,6 +28,15 @@ const CreateReviews = () => {
             user_id: user.id,
             business_id: businessId
         };
+
+        if (review.length < 5) {
+            setErrors(["Review must be greater than 5 characters"])
+            return;
+        }
+        if (rating > 5 || rating < 1) {
+            setErrors(['Please enter a number from 1 to 5 stars'])
+            return
+        }
 
         // const errors = validations();
         // if (errors.length) {
