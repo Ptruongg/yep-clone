@@ -9,6 +9,7 @@ const CreateReviews = () => {
     const history = useHistory();
     let { businessId } = useParams();
     businessId = Number(businessId);
+    const business = useSelector((state) => state.businessReducer[businessId]);
     const user = useSelector((state) => state.session.user);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState('');
@@ -45,6 +46,9 @@ const CreateReviews = () => {
     };
     return (
         <div className="reviewContainer">
+            <div>
+            <h2>{business?.name}</h2>
+            </div>
             <form className="businessReviews" onSubmit={handleSubmit}>
                 <div className="reviewTitle">Create Your Review</div>
                 {errors ?? (

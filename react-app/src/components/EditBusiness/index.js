@@ -8,12 +8,12 @@ function EditBusinessModal({ business }) {
 
     return (
         <>
-        <div className='edit-business-button' onClick={() => setShowModal(true)}>Edit</div>
-        {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-                <EditBusiness business={business} onClick={() => setShowModal(false)} />
-            </Modal>
-        )}
+            <div className='edit-bus-button' onClick={() => setShowModal(true)}>Edit</div>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <EditBusiness business={business} onClick={() => setShowModal(false)} />
+                </Modal>
+            )}
         </>
     )
 }

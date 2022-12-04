@@ -90,10 +90,11 @@ const BusinessDetails = () => {
             <div>
                 {sessionUser && sessionUser.id === businesses?.user_id && (
                     <div phoneNumber="editAndDeleteButtons">
-                        <button phoneNumber="editButton" onClick={handleEditClick}>
+                        <button class="editBusinessButton" onClick={handleEditClick}>
                             Edit Business
+                            <EditBusinessModal businessId={businessId}/>
                         </button>
-                        <button phoneNumber="deleteButton" onClick={handleDeleteClick}>
+                        <button class="deleteButton" onClick={handleDeleteClick}>
                             Delete Business
                         </button>
                     </div>

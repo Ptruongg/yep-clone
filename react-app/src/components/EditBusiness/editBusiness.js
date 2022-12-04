@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { editBusiness, getAllBusinesses } from "../../store/businesses";
+import { editBusiness, getAllBusinesses, getBusinessDetails } from "../../store/businesses";
 import "./editBusiness.css"
 
-const EditBusiness = () => {
+const EditBusiness = ({onClick}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -87,10 +87,9 @@ const EditBusiness = () => {
             // user_id: user.id
         };
 
-        let updatedBusiness = await dispatch(editBusiness(payload, business.id));
-        if (updatedBusiness) {
-            history.push(`/business/${businessId}`);
-        }
+        await dispatch(editBusiness(payload, business.id));
+        dispatch(getBusinessDetails);
+        onClick();
 
 
 

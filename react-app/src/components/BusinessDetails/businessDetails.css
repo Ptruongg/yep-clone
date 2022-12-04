@@ -2,9 +2,94 @@
     display: flex;
     object-fit: cover;
     /* object-position: 0%; */
-    /* background-size: cover; */
+    background-size: cover;
     height: 50em;
     width: 100%;
     align-items: center;
     justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.businessImg {
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.editAndDeleteButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.editButton {
+    background: red;
+    color: white;
+    font-weight: 200;
+    height: 40px;
+    width: 75%;
+    /* margin-bottom: 15px; */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.edit-business-button {
+    background: red;
+    color: white;
+    font-weight: 200;
+    height: 40px;
+    width: 75%;
+    /* margin-bottom: 15px; */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.deleteButton {
+    background: red;
+    color: white;
+    font-weight: 200;
+    height: 40px;
+    width: 75%;
+    /* margin-bottom: 15px; */
+    border-radius: 5px;
+    cursor: pointer;
+}
+.businessDetails {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 3fr 2fr;
+
+}
+.about-content {
+    display: grid;
+}
+.reviews-header {
+    display: grid;
+
+}
+.reviewButton {
+    background: red;
+    color: white;
+    font-weight: 200;
+    height: 40px;
+    width: 8%;
+    /* margin-bottom: 15px; */
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.busDetails-scroll {
+    display: table-cell;
+    box-sizing: border-box;
+    vertical-align: top;
+    height: 100%;
+}
+.side-bar {
+    display: grid;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
 }

@@ -174,20 +174,26 @@
 }
 
 .aboutMe {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
+
 }
 .name {
-    margin-left: 10px;
+
     justify-content: center;
     align-items: center;
+    display: flex;
+
 }
 .github {
     color: red;
     cursor: pointer;
     justify-content: center;
     align-items: center;
+    display: flex;
+
+
 }
 .create-business-button a {
     text-decoration: none;

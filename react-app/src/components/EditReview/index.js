@@ -9,12 +9,12 @@ function EditReviewModal({ reviewId, businessId }) {
 
     return (
         <>
-        <div className='edit-review-button' onClick={() => setShowModal(true)}>Edit</div>
-        {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-                <EditReview reviewId={reviewId} businessId={businessId} onClick={() => setShowModal(false)} />
-            </Modal>
-        )}
+            <div className='edit-review-button' onClick={() => setShowModal(true)}>Edit</div>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <EditReview reviewId={reviewId} businessId={businessId} onClick={() => setShowModal(false)} />
+                </Modal>
+            )}
         </>
     )
 }
