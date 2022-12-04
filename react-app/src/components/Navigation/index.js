@@ -28,10 +28,11 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <div className='loginNavBar'>
-                    <button className='create-business-button'>
-                        <NavLink to="/business/create" exact={true}>Create Your Business</NavLink>
-                    </button>
+
                     <div id='navBarRight'>
+                        <button className='create-business-button'>
+                            <NavLink to="/business/create" exact={true} style={{textDecoration: "none", color: "red" }}>Create Your Business</NavLink>
+                        </button>
                         <ProfileButton user={sessionUser} />
                     </div>
                 </div>
@@ -68,7 +69,7 @@ function Navigation({ isLoaded }) {
                     <div className='github' onClick={() => newTab('https://github.com/Ptruongg/yep-clone')}>
                         Github
                     </div>
-                   Developed by Philip Truong
+                    Developed by Philip Truong
                 </div>
 
                 {isLoaded && sessionLinks}

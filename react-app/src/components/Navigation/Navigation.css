@@ -35,7 +35,7 @@
     cursor: pointer;
 }
 
-#navBarRightLoad {
+#navBarRight {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30%;
+    /* width: 30%; */
     height: 100%;
     position: relative;
     cursor: pointer;
@@ -195,15 +195,37 @@
 
 
 }
-.create-business-button a {
+.create-business-button {
     text-decoration: none;
-    color: red;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-left: 5px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    width: 120px;;
+    height: 50px;
+
+
+}
+.navBar {
+    color: gray;
+    background-color: white;
+    margin-bottom: 10px;
+    border: white;
+    border-radius: 20px;
+    height: 40px;
+    width: 80px;
+    padding-left: 15px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 15px;
+    text-align: start;
+    align-items: center;
+    border: 1px solid #dddddd;
+    cursor: pointer;
+
 }

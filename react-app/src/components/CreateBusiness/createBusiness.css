@@ -1,4 +1,4 @@
-.createBusinessButton {
+/* .createBusinessButton {
     text-decoration: none;
     color: red;
     font-size: 16px;
@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
+} */
 .background {
     background-image: url('https://photos.smugmug.com/photos/i-zQvX2Kt/2/X2/i-zQvX2Kt-X2.jpg');
     top: 0;
@@ -29,7 +29,8 @@
     padding-right: 25px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10%;
+    margin-bottom: 20%;
+    background-color: lightgrey;
 }
 
 .business label {
@@ -42,7 +43,7 @@
 
 }
 
-.createSpot {
+.createBusinessButton {
     background-color: red;
     border: none;
     color: white;
@@ -56,4 +57,9 @@
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.form {
+    justify-content: center;
+    align-items: center;
 }
