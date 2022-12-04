@@ -17,11 +17,13 @@ const BusinessDetails = ({ onClick }) => {
     let { businessId } = useParams();
     businessId = Number(businessId);
     const businesses = useSelector((state) => state.businessReducer[businessId]);
-    // console.log(businesses, "business")
     const allReviews = useSelector((state) => Object.values(state.reviewsReducer))
     const businessReviews = allReviews.filter(
         (review) => review.business_id === businessId
     )
+    const allUsers = useSelector((state) => state.usersReducer)
+    console.log('all usersssssss', allUsers)
+
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
     const sessionUser = useSelector((state) => state.session.user);
@@ -39,7 +41,8 @@ const BusinessDetails = ({ onClick }) => {
     useEffect(() => {
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
-    }, [dispatch, JSON.stringify(businesses), JSON.stringify(businessReviews)])
+        dispatch(getAllUsers())
+    }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews)])
     // useEffect(() => {
     //     dispatch(getReviewsThunk())
     // }, [dispatch, businesses, JSON.stringify(businessReviews)])
@@ -60,7 +63,15 @@ const BusinessDetails = ({ onClick }) => {
         e.preventDefault();
         history.push(`/business/${businessId}/createReview`);
     };
-
+    const fetchUserbyId = (userId) => {
+        if(!user[userId]) {
+            return ''
+        } else {
+            const firstName = user[userId].firstName
+            return firstName
+        }
+    }
+    console.log(businessReviews, 'ddddddddd')
     // let business = business[businessId];
     // const getBusinessReviews = reviews.filter((review) => {
     //     return review.businessId === businessId;
@@ -132,7 +143,13 @@ const BusinessDetails = ({ onClick }) => {
 
                         {businessReviews.map((rev) => (
                             <div className="each-review-container" key={rev.id}>
-                                <div className="reviewContent"> {rev.user_id} {rev.review}</div>
+                                <div className="userName">
+                                   Name: {fetchUserbyId(rev.user_id)}
+                                </div>
+                                <div className="reviewContent">  {rev.review}</div>
+                                <div className="rating">
+                                    {rev.rating}
+                                </div>
                                 <div className="edit-review">
                                     <EditReviewModal reviewId={rev.id} businessId={businessId} />
                                 </div>

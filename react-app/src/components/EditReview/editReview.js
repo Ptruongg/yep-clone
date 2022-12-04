@@ -22,22 +22,31 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
     const updatedRating = (e) => setRating(e.target.value);
 
 
-    useEffect(() => {
-        const errorNotifications = [];
+    // useEffect(() => {
+    //     const errorNotifications = [];
+    //     setErrors(errorNotifications)
 
-        if (!review) errorNotifications.push("Review is required")
-        if (!rating) errorNotifications.push("Rating is required")
-
-        setErrors(errorNotifications)
-
-    }, [review, rating])
+    // }, [review, rating])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (errors.length > 0) {
+        if (!review) {
+            setErrors("Review is required")
             return;
         }
+        if (!rating) {
+            setErrors("Rating is required")
+            return;
+        }
+        if (rating < 0 || rating > 6 ) {
+            setErrors("Rating must be between 1 and 5")
+            return;
+        }
+
+        // if (errors.length > 0) {
+        //     return;
+        // }
 
         if (review.length < 1) {
             setErrors(['Please enter in a valid review'])
