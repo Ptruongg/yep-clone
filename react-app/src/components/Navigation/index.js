@@ -68,9 +68,7 @@ function Navigation({ isLoaded }) {
                     <div className='github' onClick={() => newTab('https://github.com/Ptruongg/yep-clone')}>
                         Github
                     </div>
-                    <div className='name'>
-                        Developed by Philip Truong
-                    </div>
+                   Developed by Philip Truong
                 </div>
 
                 {isLoaded && sessionLinks}

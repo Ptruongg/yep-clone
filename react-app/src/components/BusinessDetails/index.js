@@ -7,10 +7,11 @@ import DeleteReviewModal from "../DeleteReview";
 import "./businessDetails.css"
 import DeleteReview from "../DeleteReview/DeleteReview";
 import EditBusiness from "../EditBusiness/editBusiness";
+import { getAllUsers } from "../../store/user";
 import EditBusinessModal from "../EditBusiness";
 import EditReviewModal from "../EditReview";
 
-const BusinessDetails = () => {
+const BusinessDetails = ({ onClick }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     let { businessId } = useParams();
@@ -21,6 +22,7 @@ const BusinessDetails = () => {
     const businessReviews = allReviews.filter(
         (review) => review.business_id === businessId
     )
+    // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
     const sessionUser = useSelector((state) => state.session.user);
     // const reviews = useSelector((state) => Object.values(state?.reviews));
@@ -72,18 +74,15 @@ const BusinessDetails = () => {
         // <div>hi</div>
 
         <div className="businessDetailPage">
-            <div>
+            <div className="header">
                 <h2>{businesses?.name}</h2>
-                <img src={businesses?.imageUrl} className='images'></img>
-            </div>
-            <div className="businessDetails">
-                {businesses?.name}, {businesses?.description}, {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}, {businesses?.country}, {businesses?.phoneNumber}
-            </div>
-            <div>
                 {sessionUser && sessionUser.id === businesses?.user_id && (
                     <div className="editAndDeleteButtons">
-                        <button className="editButton" onClick={handleEditClick}>
+                        {/* <button className="editButton" onClick={handleEditClick}>
                             Edit Business
+                        </button> */}
+                        <button className="editButton">
+                            <EditBusinessModal />
                         </button>
                         <button className="deleteButton" onClick={handleDeleteClick}>
                             Delete Business
@@ -91,8 +90,27 @@ const BusinessDetails = () => {
                     </div>
                 )}
             </div>
-            <div className="businessReviews">
-                {/* <div className="reviewStars">
+            <div className="businessImg">
+                <img src={businesses?.imageUrl} className='images'></img>
+            </div>
+            <div className="businessDetails">
+                <div className="about-content">
+                    <div className="businessDescription">
+                        <h2>About the Business</h2>
+                        {businesses?.description}
+                    </div>
+                    <div className="location">
+                        <h2>Location</h2>
+                        {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}, {businesses?.country}
+                    </div>
+                    <div className="phoneNumber">
+                        <h2>Phone Number</h2>
+                        {businesses?.phoneNumber}
+                    </div>
+
+
+                    <div className="businessReviews">
+                        {/* <div className="reviewStars">
                     <div className="starIcon">{<i className="fas fa-star"></i>}</div>
 
                     <div className="circleBottom">
@@ -100,27 +118,43 @@ const BusinessDetails = () => {
                     </div>
 
                 </div> */}
+                        <div className="reviews-header">
+                            <h2>Reviews</h2>
+                            {sessionUser && (
+                                <div>
+                                    <button className="reviewButton" onClick={handleCreateReview}>
+                                        Create Review
+                                    </button>
+                                </div>
+                            )}
+                        </div>
 
-                {sessionUser && (
-                    <div>
-                        <button className="reviewButton" onClick={handleCreateReview}>
-                            Create Review
-                        </button>
+                        {businessReviews.map((rev) => (
+                            <div key={rev.id}>
+                                <div className="reviewContent"> {rev.user_id} {rev.review}</div>
+                                <div className="edit-review">
+                                    <EditReviewModal reviewId={rev.id} businessId={businessId} />
+                                </div>
+                                <div className='delete-review' >
+                                    <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                )}
-                {businessReviews.map((rev) => (
-                    <div key={rev.id}>
-                        <div className="reviewContent"> Review: {rev.review}</div>
-                        <div className="edit-review">
-                            <EditReviewModal reviewId={rev.id} businessId={businessId} />
+                </div>
+                <div className="busDetails-scroll">
+                    <div className="side-bar">
+                        <div className="address">
+                        {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}
+                        <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em"}}/>
                         </div>
-                        <div className='delete-review' >
-                            <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
+                        <div className="phone-Number">
+                            {businesses?.phoneNumber}
+                            <img src={'https://static.vecteezy.com/system/resources/previews/003/720/498/original/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                         </div>
                     </div>
-                ))}
+                </div>
             </div>
-
 
         </div>
     )
