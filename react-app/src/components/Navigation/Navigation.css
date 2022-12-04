@@ -196,18 +196,24 @@
 
 }
 .create-business-button {
+    border: none;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+.create-business-button a {
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border: 1px solid gray;
-    border-radius: 20px;
-    width: 120px;;
-    height: 50px;
+    /* border: 1px solid gray;
+    border-radius: 20px; */
+    width: 180px;
+    height: 40px;
 
 
 }
@@ -221,7 +227,8 @@
     width: 80px;
     padding-left: 15px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     font-size: 15px;
     text-align: start;
     align-items: center;

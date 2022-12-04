@@ -31,7 +31,7 @@ function Navigation({ isLoaded }) {
 
                     <div id='navBarRight'>
                         <button className='create-business-button'>
-                            <NavLink to="/business/create" exact={true} style={{textDecoration: "none", color: "red" }}>Create Your Business</NavLink>
+                            <NavLink to="/business/create" exact={true} style={{textDecoration: "none", color: "red", border: "none"}}>Create Your Business</NavLink>
                         </button>
                         <ProfileButton user={sessionUser} />
                     </div>

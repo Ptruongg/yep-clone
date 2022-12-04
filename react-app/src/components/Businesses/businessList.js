@@ -13,16 +13,16 @@ const BusinessesList = () => {
     const [url, setUrl] = useState('https://photos.smugmug.com/photos/i-ZcW3j56/0/X4/i-ZcW3j56-X4.jpg');
     const [index, setIndex] = useState(0);
     useEffect(() => {
-        const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg'];
+        const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg','https://i.imgur.com/fXZuXu8.jpg'];
         let scroll = setInterval(() => {
-            if(index === 2) {
+            if(index === 3) {
                 setIndex(0)
             }
             else {
                 setIndex((index) => index + 1)
             }
             return setUrl(images[index])
-        }, 3000)
+        }, 4000)
         return () => clearInterval(scroll)
     }, [index, url])
 
@@ -66,9 +66,11 @@ const BusinessesList = () => {
                                         </div>
                                         <div className="address">
                                             {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}
+                                            <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em"}}/>
                                         </div>
                                         <div className="phone-number">
                                             {bus.phoneNumber}
+                                            <img src={'https://static.vecteezy.com/system/resources/previews/003/720/498/original/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                                         </div>
                                     </div>
                                 </div>

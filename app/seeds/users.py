@@ -13,12 +13,35 @@ def seed_users():
         username='CalvinGOAT', email='goatness@aa.io', first_name='Calvin', last_name='Goat', password='password', user_image='https://upload.wikimedia.org/wikipedia/commons/f/ff/Domestic_goat_kid_in_capeweed.jpg')
     danny = User(
         username='dancingdanny', email='dancingdanny@aa.io', first_name='Danny', last_name='Dancing', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
+    barnie = User(
+        username='barnie', email='barnie@aa.io', first_name='barnie', last_name='Dancing', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
+    rm = User(
+        username='rm', email='rm@aa.io', first_name='rm', last_name='joon', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
+    jungkook = User(
+        username='jungkook', email='jungkook@aa.io', first_name='jungkook', last_name='jeon', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
+    nayeon = User(
+        username='nayeon', email='nayeon@aa.io', first_name='im', last_name='nayeon', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
+    mina = User(
+        username='mina', email='mina@aa.io', first_name='mina', last_name='myoi', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
+    naeun = User(
+        username='naeun', email='naeun@aa.io', first_name='naeun', last_name='son', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
+    gdragon = User(
+        username='gdragon', email='gdragon@aa.io', first_name='g', last_name='dragon', password='password', user_image='https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg')
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
     db.session.add(calvin)
     db.session.add(danny)
+    db.session.add(barnie)
+    db.session.add(rm)
+    db.session.add(jungkook)
+    db.session.add(nayeon)
+    db.session.add(mina)
+    db.session.add(naeun)
+    db.session.add(gdragon)
+
+
 
     db.session.commit()
 

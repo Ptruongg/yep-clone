@@ -38,10 +38,11 @@ const BusinessDetails = ({ onClick }) => {
     // const reviewsString = JSON.stringify(reviews)
     useEffect(() => {
         dispatch(getAllBusinesses());
-    }, [dispatch])
-    useEffect(() => {
         dispatch(getReviewsThunk())
-    }, [dispatch, businesses, JSON.stringify(businessReviews)])
+    }, [dispatch, JSON.stringify(businesses), JSON.stringify(businessReviews)])
+    // useEffect(() => {
+    //     dispatch(getReviewsThunk())
+    // }, [dispatch, businesses, JSON.stringify(businessReviews)])
     // useEffect(() => {
     //     dispatch(getAllUsers);
     // }, [dispatch, usersString])
@@ -130,7 +131,7 @@ const BusinessDetails = ({ onClick }) => {
                         </div>
 
                         {businessReviews.map((rev) => (
-                            <div key={rev.id}>
+                            <div className="each-review-container" key={rev.id}>
                                 <div className="reviewContent"> {rev.user_id} {rev.review}</div>
                                 <div className="edit-review">
                                     <EditReviewModal reviewId={rev.id} businessId={businessId} />

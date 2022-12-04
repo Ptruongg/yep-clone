@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 import { reviewsReducer } from '../../store/reviews'
 import { editReviewThunk, getReviewsThunk } from '../../store/reviews'
+import './editReview.css'
 
-const EditReview = ({reviewId, businessId, onClick}) => {
+const EditReview = ({ reviewId, businessId, onClick }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -56,9 +57,7 @@ const EditReview = ({reviewId, businessId, onClick}) => {
     }
     return (
         <div className='editReviewDiv'>
-            <div>
-                <h2>Edit your Review</h2>
-            </div>
+
             <form className='review-form' onSubmit={handleSubmit}>
                 {errors ?? (
                     <ul>
@@ -67,6 +66,9 @@ const EditReview = ({reviewId, businessId, onClick}) => {
                         ))}
                     </ul>
                 )}
+                <div>
+                    <h2>Edit your Review</h2>
+                </div>
                 <div className='review-inputs'>
                     <div>
                         <label>
@@ -92,9 +94,11 @@ const EditReview = ({reviewId, businessId, onClick}) => {
                             />
                         </label>
                     </div>
-                    <button className='submit-button' type="submit" onClick={handleSubmit} >
-                        Submit
-                    </button>
+                    <div className='edit-btn-div'>
+                        <button className='submit-button' type="submit" onClick={handleSubmit} >
+                            Submit
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

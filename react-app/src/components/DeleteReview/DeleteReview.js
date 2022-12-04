@@ -2,6 +2,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import { getBusinessDetails } from "../../store/businesses";
 import { deleteReviewThunk, getReviewsThunk } from "../../store/reviews";
 
 
@@ -13,7 +14,9 @@ function DeleteReview({reviewId, businessId, onClick}) {
         dispatch(deleteReviewThunk(reviewId));
         // history.push(`/business/${businessId}`)
         dispatch(getReviewsThunk());
+        dispatch(getBusinessDetails(businessId))
         onClick()
+
     };
 
     return (
