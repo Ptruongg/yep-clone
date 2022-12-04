@@ -19,7 +19,7 @@ const usersReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_USERS: {
       const newState = {};
-      action.users.forEach((user) => (newState[user.id] = user));
+      action.users.users.forEach((user) => (newState[user.id] = user));
       return newState;
     }
 

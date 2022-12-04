@@ -13,5 +13,5 @@ class BusinessForm(FlaskForm):
     country = StringField("Country", validators=[DataRequired('Country is required')])
     user_id = IntegerField("Owner of business", validators=[DataRequired()])
     phoneNumber = StringField("Phone Number", validators=[DataRequired('Phone Number is required'), Length(min=10, max=10, message="Phone Number must be 10 digits")])
-    imageUrl = StringField("imageUrl", validators=[DataRequired()])
+    imageUrl = StringField("imageUrl", validators=[DataRequired('Please enter in an image url')])
     # submit = SubmitField("Submit")

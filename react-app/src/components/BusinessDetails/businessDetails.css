@@ -120,4 +120,31 @@
     margin-left: 100px;
     justify-content: flex-end;
     margin-right: 10px;
+    background: red;
+    color: white;
+    font-weight: 200;
+    height: 40px;
+    width: 80px;
+    /* margin-bottom: 15px; */
+    border-radius: 5px;
+    cursor: pointer;
+}
+.delete-review {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    background: red;
+    color: white;
+    font-weight: 200;
+    height: 40px;
+    width: 80px;
+    /* margin-bottom: 15px; */
+    border-radius: 5px;
+    cursor: pointer;
+}
+.delete-review-button {
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
