@@ -39,7 +39,7 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
             setErrors("Rating is required")
             return;
         }
-        if (rating < 0 || rating > 6 ) {
+        if (rating < 0 || rating > 6) {
             setErrors("Rating must be between 1 and 5")
             return;
         }
@@ -68,15 +68,17 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
         <div className='editReviewDiv'>
 
             <form className='review-form' onSubmit={handleSubmit}>
-                {errors ?? (
-                    <ul>
-                        {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
-                        ))}
-                    </ul>
-                )}
+                <div style={{ color: "red" }}>
+                    {errors ?? (
+                        <ul>
+                            {errors.map((error, idx) => (
+                                <li key={idx}>{error.split(":")[1]}</li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
                 <div>
-                    <h2>Edit your Review</h2>
+                    <h2>Edit your Review </h2>
                 </div>
                 <div className='review-inputs'>
                     <div className='textinput'>
@@ -84,7 +86,7 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
                             Review:
                             <input
                                 type="text"
-                                value={review} style={{height: '100%', width: "200%"}}
+                                value={review} style={{ height: '100%', width: "200%" }}
                                 onChange={updatedReview}
                                 required
                             />
@@ -95,18 +97,18 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
                             Rating:
                             <input
                                 type="number"
-                                value={rating} style={{height: '100%', width: "100%"}}
+                                value={rating} style={{ height: '100%', width: "100%" }}
                                 onChange={updatedRating}
                                 min={1}
                                 max={5}
                                 required
                             />
                         </label>
-                    </div>
-                    <div className='edit-btn-div'>
-                        <button className='submit-button' type="submit" onClick={handleSubmit} >
-                            Submit
-                        </button>
+                        <div className='edit-btn-div'>
+                            <button className='submit-button' type="submit" onClick={handleSubmit} >
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>

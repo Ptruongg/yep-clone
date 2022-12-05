@@ -13,9 +13,9 @@ const BusinessesList = () => {
     const [url, setUrl] = useState('https://photos.smugmug.com/photos/i-ZcW3j56/0/X4/i-ZcW3j56-X4.jpg');
     const [index, setIndex] = useState(0);
     useEffect(() => {
-        const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg','https://i.imgur.com/fXZuXu8.jpg'];
+        const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg', 'https://i.imgur.com/fXZuXu8.jpg'];
         let scroll = setInterval(() => {
-            if(index === 3) {
+            if (index === 3) {
                 setIndex(0)
             }
             else {
@@ -48,7 +48,8 @@ const BusinessesList = () => {
 
     return (
         <div className="homepage">
-            <div>
+            <div className="website-description">Yep is a Yelp clone that has core CRUD features for Businesses and Reviews</div>
+            <div className="header">
                 <img src={url} alt="" className="image-scroll"></img>
             </div>
             <div className="businesses-list">
@@ -57,8 +58,12 @@ const BusinessesList = () => {
                         <NavLink to={`/business/${bus.id}`}>
                             <div className="busCard" key={bus.id}>
                                 <div className="businessDiv">
-                                    <div className="businessImage" style={{fontFamily: "Times-new-roman"}}>
-                                        <img src={bus.imageUrl} className="bizphoto"></img>
+                                    <div className="businessImage" style={{ fontFamily: "Times-new-roman" }}>
+                                        <img src={bus.imageUrl} className="bizphoto" onError={({ currentTarget }) => {
+                                            currentTarget.onerror = null; // prevents looping
+                                            currentTarget.src =
+                                                "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg";
+                                        }}></img>
                                     </div>
                                     <div className="business-text">
                                         <div className="name">
@@ -66,7 +71,7 @@ const BusinessesList = () => {
                                         </div>
                                         <div className="address">
                                             {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}
-                                            <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em"}}/>
+                                            <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                                         </div>
                                         <div className="phone-number">
                                             {bus.phoneNumber}

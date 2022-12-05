@@ -34,9 +34,9 @@ const LoginForm = () => {
   return (
     <div className='modal'>
       <form className="loginContainer" onSubmit={onLogin}>
-        <div className='errors_login'>
+        <div className='errors_login' style={{color: "red"}}>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind}>{error.split(':')[1]}</div>
           ))}
         </div>
         <div>
@@ -48,6 +48,7 @@ const LoginForm = () => {
             placeholder='Email'
             value={email}
             onChange={updateEmail}
+            style={{width: "100%"}}
           />
         </div>
         <div>
@@ -59,7 +60,7 @@ const LoginForm = () => {
             placeholder='Password'
             value={password}
             onChange={updatePassword}
-
+            style={{width: "100%"}}
           />
 
           <button className='loginButton' type='submit'>

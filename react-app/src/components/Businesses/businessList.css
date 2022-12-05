@@ -139,3 +139,19 @@ a:link {
         opacity: 1;
     }
 }
+
+.header {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.website-description {
+    display: flex;
+    /* width: 50px; */
+    justify-content: flex-start;
+    height: 25px;
+    font-size: 20px;
+    font-family: 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-bottom: 30px;
+    margin-left: 25px;
+}
