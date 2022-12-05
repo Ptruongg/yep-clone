@@ -67,7 +67,10 @@ function Navigation({ isLoaded }) {
                 </div>
                 <div className='aboutMe'>
                     <div className='github' onClick={() => newTab('https://github.com/Ptruongg/yep-clone')}>
-                        Github
+                        <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style={{height: "30px", width: "30px", marginLeft: "10px", marginRight:"10px"}}/>
+                    </div>
+                    <div className='linkedin' onClick={() => newTab('https://www.linkedin.com/in/truongphilip408/')}>
+                       <img src='https://cdn-icons-png.flaticon.com/512/174/174857.png' style={{height: "30px", width: "30px", marginLeft: "10px", marginRight:"10px"}} />
                     </div>
                     Developed by Philip Truong
                 </div>

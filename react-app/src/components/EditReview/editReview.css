@@ -41,8 +41,10 @@
     font-weight: lighter;
     height: 100px;
     width: 470px;
-    background-color: lightgrey;
+    /* background-color: lightgrey; */
     color: black;
+    justify-content: center;
+    align-items: center;
 }
 
 .edit-comment-input {

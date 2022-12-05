@@ -121,19 +121,10 @@ const BusinessDetails = ({ onClick }) => {
                         <h2>Phone Number</h2>
                         {businesses?.phoneNumber}
                     </div>
-
-
                     <div className="businessReviews">
-                        {/* <div className="reviewStars">
-                    <div className="starIcon">{<i className="fas fa-star"></i>}</div>
-
-                    <div className="circleBottom">
-                        <i className="fas fa-circle"></i>{" "}
-                    </div>
-
-                </div> */}
                         <div className="reviews-header">
-                            <h2>Reviews</h2>
+                            <h2>Reviews ({businessReviews.length})</h2>
+
                             {sessionUser && (
                                 <div>
                                     <button className="reviewButton" onClick={handleCreateReview}>
@@ -149,21 +140,26 @@ const BusinessDetails = ({ onClick }) => {
                                     {fetchUserbyId(rev.user_id)}
                                 </div>
 
-                                    <div className="reviewContent">  {rev.review}</div>
-                                    <div className="rating">
-                                        {rev.rating}
-                                    </div>
-
-                                {sessionUser && sessionUser.id === rev.user_id && (
+                                <div className="reviewContent">
+                                    {rev.review}
+                                    {sessionUser && sessionUser.id === rev.user_id && (
                                     <div className="edit-n-delete-buttons">
-                                        <div className="edit-review">
+                                        <div className="edit-review" style={{justifycontent: "center", alignitems: "center"}}>
                                             <EditReviewModal reviewId={rev.id} businessId={businessId} />
                                         </div>
-                                        <div className='delete-review' >
+                                        <div className='delete-review' style={{justifycontent: "center", alignitems: "center"}} >
                                             <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
                                         </div>
                                     </div>
                                 )}
+                                </div>
+                                <div className="stars">
+                                    <div className="starIcon" style={{marginright: '10px'}}>{<i className="fas fa-star"></i>}</div>
+                                    <div className="rating">
+                                        {rev.rating}
+                                    </div>
+                                </div>
+
 
                             </div>
                         ))}
