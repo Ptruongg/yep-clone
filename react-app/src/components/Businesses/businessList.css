@@ -148,7 +148,9 @@ a:link {
 .website-description {
     display: flex;
     /* width: 50px; */
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
     height: 25px;
     font-size: 20px;
     font-family: 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
