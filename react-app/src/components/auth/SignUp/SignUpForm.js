@@ -9,6 +9,8 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -17,10 +19,12 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, first_name, last_name));
       if (data) {
         setErrors(data)
       }
+    } else {
+      return setErrors(["Password fields must match"])
     }
   };
 
@@ -31,6 +35,14 @@ const SignUpForm = () => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  }
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -51,7 +63,7 @@ const SignUpForm = () => {
       <form className="signUpForm" onSubmit={onSignUp}>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div key={ind}>{error.spl}</div>
           ))}
         </div>
         <div>
@@ -73,6 +85,24 @@ const SignUpForm = () => {
           ></input>
         </div>
         <div>
+          <label>First Name</label>
+          <input
+            type='text'
+            name='first name'
+            onChange={updateFirstName}
+            value={first_name}
+          ></input>
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input
+            type='text'
+            name='last name'
+            onChange={updateLastName}
+            value={last_name}
+          ></input>
+        </div>
+        <div>
           <label>Password</label>
           <input
             type='password'
@@ -88,10 +118,9 @@ const SignUpForm = () => {
             name='repeat_password'
             onChange={updateRepeatPassword}
             value={repeatPassword}
-            required={true}
           ></input>
         </div>
-        <button className='signUpButton' type='submit'>Sign Up</button>
+        <button className='signUpButton' type='submit' >Sign Up</button>
       </form>
     </div>
   );

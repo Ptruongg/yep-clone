@@ -73,3 +73,9 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.business-form {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

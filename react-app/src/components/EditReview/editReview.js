@@ -79,23 +79,23 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
                     <h2>Edit your Review</h2>
                 </div>
                 <div className='review-inputs'>
-                    <div>
+                    <div className='textinput'>
                         <label>
                             Review:
                             <input
                                 type="text"
-                                value={review}
+                                value={review} style={{height: '100%', width: "200%"}}
                                 onChange={updatedReview}
                                 required
                             />
                         </label>
                     </div>
-                    <div>
+                    <div className='ratinginput'>
                         <label>
                             Rating:
                             <input
                                 type="number"
-                                value={rating}
+                                value={rating} style={{height: '100%', width: "100%"}}
                                 onChange={updatedRating}
                                 min={1}
                                 max={5}

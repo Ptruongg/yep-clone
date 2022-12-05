@@ -114,6 +114,7 @@ const EditBusiness = ({onClick}) => {
                             type="text"
                             value={name}
                             onChange={updatedName}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                             required
                         />
                     </label>
@@ -124,6 +125,7 @@ const EditBusiness = ({onClick}) => {
                         <textarea
                             value={description}
                             onChange={updatedDescription}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                             required
                         />
                     </label>
@@ -136,6 +138,7 @@ const EditBusiness = ({onClick}) => {
                             // placeholder="Address"
                             value={address}
                             onChange={updatedAddress}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                             required
                         />
                     </label>
@@ -147,6 +150,7 @@ const EditBusiness = ({onClick}) => {
                             type="text"
                             value={city}
                             onChange={updatedCity}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                             required
                         />
                     </label>
@@ -158,6 +162,7 @@ const EditBusiness = ({onClick}) => {
                             type="text"
                             value={state}
                             onChange={updatedState}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                             required
                         />
                     </label>
@@ -169,6 +174,7 @@ const EditBusiness = ({onClick}) => {
                             type="number"
                             value={zipcode}
                             onChange={updatedZipcode}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                             required
                         />
                     </label>
@@ -181,6 +187,7 @@ const EditBusiness = ({onClick}) => {
                             type="text"
                             value={country}
                             onChange={updatedCountry}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                             required
                         />
                     </label>
@@ -192,6 +199,7 @@ const EditBusiness = ({onClick}) => {
                             type="text"
                             value={phoneNumber}
                             onChange={updatedPhoneNumber}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                         />
                     </label>
                 </div>
@@ -202,6 +210,7 @@ const EditBusiness = ({onClick}) => {
                             type="text"
                             value={imageUrl}
                             onChange={setImageUrl}
+                            style={{marginTop: "10px", marginBottom: "20px", width: "100%"}}
                         />
                     </label>
                 </div>
