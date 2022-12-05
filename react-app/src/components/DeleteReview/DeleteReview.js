@@ -16,7 +16,6 @@ function DeleteReview({reviewId, businessId, onClick}) {
         dispatch(getReviewsThunk());
         dispatch(getBusinessDetails(businessId))
         onClick()
-
     };
 
     return (
