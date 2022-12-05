@@ -22,7 +22,7 @@ const BusinessDetails = ({ onClick }) => {
         (review) => review.business_id === businessId
     )
     const allUsers = useSelector((state) => state.usersReducer)
-    console.log('all usersssssss', allUsers)
+
 
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
@@ -63,15 +63,17 @@ const BusinessDetails = ({ onClick }) => {
         e.preventDefault();
         history.push(`/business/${businessId}/createReview`);
     };
-    const fetchUserbyId = (userId) => {
-        if(!user[userId]) {
+    const fetchUserbyId = (user_id) => {
+        if (!allUsers[user_id]) {
             return ''
         } else {
-            const firstName = user[userId].firstName
-            return firstName
+            const firstName = allUsers[user_id].first_name
+            const lastName = allUsers[user_id].last_name
+            return [firstName, ' ', lastName]
         }
     }
     console.log(businessReviews, 'ddddddddd')
+
     // let business = business[businessId];
     // const getBusinessReviews = reviews.filter((review) => {
     //     return review.businessId === businessId;
@@ -144,18 +146,25 @@ const BusinessDetails = ({ onClick }) => {
                         {businessReviews.map((rev) => (
                             <div className="each-review-container" key={rev.id}>
                                 <div className="userName">
-                                   Name: {fetchUserbyId(rev.user_id)}
+                                    {fetchUserbyId(rev.user_id)}
                                 </div>
-                                <div className="reviewContent">  {rev.review}</div>
-                                <div className="rating">
-                                    {rev.rating}
-                                </div>
-                                <div className="edit-review">
-                                    <EditReviewModal reviewId={rev.id} businessId={businessId} />
-                                </div>
-                                <div className='delete-review' >
-                                    <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
-                                </div>
+
+                                    <div className="reviewContent">  {rev.review}</div>
+                                    <div className="rating">
+                                        {rev.rating}
+                                    </div>
+
+                                {sessionUser && sessionUser.id === rev.user_id && (
+                                    <div className="edit-n-delete-buttons">
+                                        <div className="edit-review">
+                                            <EditReviewModal reviewId={rev.id} businessId={businessId} />
+                                        </div>
+                                        <div className='delete-review' >
+                                            <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
+                                        </div>
+                                    </div>
+                                )}
+
                             </div>
                         ))}
                     </div>
@@ -163,8 +172,8 @@ const BusinessDetails = ({ onClick }) => {
                 <div className="busDetails-scroll">
                     <div className="side-bar">
                         <div className="address">
-                        {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}
-                        <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em"}}/>
+                            {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}
+                            <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                         </div>
                         <div className="phone-Number">
                             {businesses?.phoneNumber}

@@ -28,42 +28,60 @@ const CreateBusiness = () => {
     //     return <Redirect to={`/businesses/${businessId}/create`} />
     // }
 
-    const validations = () => {
-        const errors = [];
-        if (!name) {
-            errors.push('Please enter in a name')
-        };
-        if (!description) {
-            errors.push('Please enter in a description')
-        }
-        if (!address) {
-            errors.push('Please enter in an address')
-        }
-        if (!city) {
-            errors.push('Please enter in a city')
-        }
-        if (!state) {
-            errors.push('Please enter in a state')
-        }
-        if (!zipcode) {
-            errors.push('Please enter in a zipcode')
-        }
-        if (!country) {
-            errors.push('Please enter in a country')
-        }
-        if (!phoneNumber) {
-            errors.push('Please enter in a phone number')
-        }
-        if (!imageUrl) {
-            errors.push('Please enter in an image')
-        }
-        return errors;
+    // const validations = () => {
+    //     const errors = [];
 
 
-    }
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!name) {
+            setErrors(['Please enter in a name'])
+            return;
+        };
+        if (!description) {
+            setErrors(['Please enter in a description'])
+            return;
+        }
+        if (!address) {
+            setErrors(['Please enter in an address'])
+            return;
+        }
+        if (!city) {
+            setErrors(['Please enter in a city'])
+            return;
+        }
+        if (!state) {
+            setErrors(['Please enter in a state'])
+            return;
+        }
+        if (!zipcode) {
+            setErrors(['Please enter in a zipcode'])
+            return;
+        }
+        if (!country) {
+            setErrors(['Please enter in a country'])
+            return;
+        }
+        if (!phoneNumber) {
+            setErrors(['Please enter in a phone number'])
+            return;
+        }
+        if(phoneNumber.length >= 11 || phoneNumber <= 10) {
+            setErrors(['Phone Number format must be 0001112222'])
+            return;
+        }
+        if (!imageUrl) {
+            setErrors(['Please enter in an image'])
+            return;
+        }
+
+        // if (errors.length) {
+        //     setErrors(errors);
+        //     return;
+        // }
         let data = {
             name: name,
             description: description,
@@ -75,11 +93,6 @@ const CreateBusiness = () => {
             phoneNumber: phoneNumber,
             user_id: user.id,
             imageUrl: imageUrl
-        }
-        const errors = validations();
-        if (errors.length) {
-            setErrors(errors);
-            return;
         }
         let created = await dispatch(businessActions.createBusiness(data))
         if (created) {
@@ -112,7 +125,7 @@ const CreateBusiness = () => {
                                 placeholder="Business Name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                required
+
                             />
                         </div>
                         <div>
@@ -124,7 +137,7 @@ const CreateBusiness = () => {
                                 placeholder="Description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                required
+
                             />
                         </div>
                         <div>
@@ -136,7 +149,6 @@ const CreateBusiness = () => {
                                 placeholder="Address"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
-                                required
                             />
                         </div>
                         <div>
@@ -148,7 +160,6 @@ const CreateBusiness = () => {
                                 placeholder="City"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
-                                required
                             />
                         </div>
                         <div>
@@ -160,7 +171,6 @@ const CreateBusiness = () => {
                                 placeholder="State"
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
-                                required
                             />
                         </div>
                         <div>
@@ -172,7 +182,6 @@ const CreateBusiness = () => {
                                 placeholder="Zipcode"
                                 value={zipcode}
                                 onChange={(e) => setZipcode(e.target.value)}
-                                required
                             />
                         </div>
                         <div>
@@ -184,7 +193,6 @@ const CreateBusiness = () => {
                                 placeholder="Country"
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
-                                required
                             />
                         </div>
                         <div>
@@ -196,7 +204,6 @@ const CreateBusiness = () => {
                                 placeholder="Phone Number"
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
-                                required
                             />
                         </div>
                         <div>
@@ -208,12 +215,11 @@ const CreateBusiness = () => {
                                 placeholder="Image"
                                 value={imageUrl}
                                 onChange={(e) => setImageUrl(e.target.value)}
-                                required
                             />
                         </div>
                     </div>
                     <div>
-                        <button className="createBusinessButton" type="submit">
+                        <button className="createBusinessButton" type="submit" onClick={handleSubmit}>
                             Create Your Business
                         </button>
                     </div>

@@ -19,7 +19,12 @@
 
 #modal-content {
     position: absolute;
-    width: auto;
+    width: 90%;
+    height: 100%;
     background-color: lightgrey;
     border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    margin-top: 15%;
 }

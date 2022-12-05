@@ -23,7 +23,7 @@
     font-weight: bold;
     border: none;
     color: #e6fdff;
-    background-color: rgb(29, 155, 240);
+    background-color: rgb(236, 127, 119);
     border-radius: 30px;
     margin-top: 10px;
     cursor: pointer;
@@ -41,8 +41,8 @@
     font-weight: lighter;
     height: 100px;
     width: 470px;
-    background-color: #15202B;
-    color: rgba(255, 255, 255, 0.951);
+    background-color: lightgrey;
+    color: black;
 }
 
 .edit-comment-input {
@@ -60,4 +60,15 @@
     font-size: 28px;
     margin-top: 10px;
     margin-left: 10px;
+}
+
+.textinput {
+    width: 50%;
+    height: 80%;
+    margin-bottom: 50px;
+}
+
+.ratinginput {
+    height: 20%;
+    margin-bottom: 50px;
 }
