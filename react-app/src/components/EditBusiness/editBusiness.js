@@ -90,9 +90,6 @@ const EditBusiness = ({ onClick }) => {
         await dispatch(editBusiness(payload, business.id));
         dispatch(getBusinessDetails);
         onClick();
-
-
-
     }
     return (
         <div className="editBusinessDiv">
