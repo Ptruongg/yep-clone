@@ -52,7 +52,7 @@ const EditBusiness = ({ onClick }) => {
         if (!zipcode) errorNotifications.push("Zipcode is required");
         if (!country) errorNotifications.push("Country is required")
         if (!phoneNumber) errorNotifications.push("Phone number is required")
-        if (!imageUrl) errorNotifications.push("Image is required")
+        // if (!imageUrl) errorNotifications.push("Image is required")
         setErrors(errorNotifications)
 
     }, [name, description, address, city, state, zipcode, country, phoneNumber, imageUrl])
@@ -205,7 +205,7 @@ const EditBusiness = ({ onClick }) => {
                         />
                     </label>
                 </div>
-                <div>
+                {/* <div>
                     <label>
                         Images
                         <input
@@ -215,7 +215,7 @@ const EditBusiness = ({ onClick }) => {
                             style={{ marginTop: "10px", marginBottom: "20px", width: "465px" }}
                         />
                     </label>
-                </div>
+                </div> */}
                 <div className="submitContainer">
                     <button className="confirmEditButton" onClick={handleSubmit} type="submit">
                         Confirm Edit
