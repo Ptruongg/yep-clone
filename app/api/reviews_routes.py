@@ -13,7 +13,8 @@ review_routes = Blueprint('reviews', __name__)
 @review_routes.route('/')
 def get_all_reviews():
     all_reviews = Review.query.all()
-    return {"reviews": [reviews.to_dict() for reviews in all_reviews]}
+    review_dicts = [reviews.to_dict() for reviews in all_reviews]
+    return jsonify(review_dicts)
 
 # get review by id
 # @review_routes.route('/<business_id/rev>/')
