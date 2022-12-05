@@ -176,7 +176,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin-right: 200px;
 }
 .name {
     justify-content: center;
