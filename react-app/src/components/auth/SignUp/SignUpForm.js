@@ -24,7 +24,7 @@ const SignUpForm = () => {
         setErrors(data)
       }
     } else {
-      return setErrors(["Password fields must match"])
+      return setErrors(["password: Password fields must match"])
     }
   };
 
@@ -61,7 +61,7 @@ const SignUpForm = () => {
       <h2 className="signUp"> Sign Up </h2>
 
       <form className="signUpForm" onSubmit={onSignUp}>
-        <div>
+        <div style={{color: "red"}}>
           {errors.map((error, ind) => (
             <div key={ind}>{error.split(':')[1]}</div>
           ))}
