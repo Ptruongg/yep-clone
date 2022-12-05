@@ -9,63 +9,60 @@ Live site: https://yepyep-capstone.herokuapp.com/
 
 # Technologies
 ```
-*Javascript
-*Flask
-*React
-*Redux
-*Python
-*SQLAlchemy
-*SQLite3
-*PostgreSQL
-*Heroku
-*CSS
-*HTML
-*Dockerfile
+* Javascript
+* Flask
+* React
+* Redux
+* Python
+* SQLAlchemy
+* SQLite3
+* PostgreSQL
+* Heroku
+* CSS
+* HTML
+* Dockerfile
 
 ```
-# Landing Page
 ![Alt text](https://i.imgur.com/EXdA5LD.png)
 
 ```
-
 ![Alt text](https://i.imgur.com/mZi892z.png)
-# Sign Up
 
+# Sign Up
+```
 You are able to sign up to Yep to access the main feed of businesses.
 
+```
+![Alt text](https://imgur.com/a/37I0Rx3)
 
+# Login
 
 ```
-
-# Log In
-
 You are able to sign in as a Demo User or Log in using an existing account and be able to have access with all of Yep features.
 
-![Alt text](https://imgur.com/a/37I0Rx3)
 ```
+![Alt text](https://i.imgur.com/ySkVEmj.png)
 
 # Business Details
-
+```
 Once you click on a business you are able to see all of the details of that business including the name, address, description, phone number, the reviews and it's ratings.
 
-
-![Alt text](https://i.imgur.com/ySkVEmj.png)
-44
 ```
-```
+![Alt text](https://i.imgur.com/rFJUVus.png)
 
 # Creating a Business
 
+```
+
 When clicking on Create your business you are able to create a business with all of it's information.
 
-![Alt text](https://i.imgur.com/rFJUVus.png)
-
 ```
+![Alt text](https://https://i.imgur.com/Y3i7Ky2.png)
 
 # Creating a Review
 
+```
 When clicking on Create Review you are able to create a review for that business with a message and it's rating.
 
-![Alt text](https://https://i.imgur.com/Y3i7Ky2.png)
 
 ```
