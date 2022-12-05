@@ -65,6 +65,7 @@
 }
 .about-content {
     display: grid;
+    justify-content: flex-start;
 }
 .reviews-header {
     display: grid;
@@ -122,17 +123,19 @@
     width: 100%;
 }
 .edit-review {
-    margin-left: 100px;
+    align-items: center;
+    display: flex;
     justify-content: flex-end;
     margin-right: 10px;
     background: red;
     color: white;
     font-weight: 200;
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 50px;
     /* margin-bottom: 15px; */
     border-radius: 5px;
     cursor: pointer;
+    justify-content: center;
 }
 .delete-review {
     align-items: center;
@@ -142,21 +145,27 @@
     background: red;
     color: white;
     font-weight: 200;
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 50px;
     /* margin-bottom: 15px; */
     border-radius: 5px;
     cursor: pointer;
+    justify-content: center;
+}
+.edit-review-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .delete-review-button {
-    justify-content: center;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 .edit-n-delete-buttons {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    /* justify-content: flex-end;
+    align-items: flex-end; */
     font-size: 14px;
 }
 .userName {

@@ -29,8 +29,8 @@ const CreateReviews = () => {
             business_id: businessId
         };
 
-        if (review.length < 5) {
-            setErrors(["Review must be greater than 5 characters"])
+        if (review.length < 25 || review.length >= 255) {
+            setErrors(["Review must be greater than 25 and less than 255 characters"])
             return;
         }
         if (rating > 5 || rating < 1) {
@@ -51,17 +51,20 @@ const CreateReviews = () => {
     return (
         <div className="reviewContainer">
             <div>
-            <h2>{business?.name}</h2>
+                <h2>{business?.name}</h2>
             </div>
+            <h2 className="reviewTitle">Create Your Review</h2>
             <form className="businessReviews" onSubmit={handleSubmit}>
-                <div className="reviewTitle">Create Your Review</div>
-                {errors ?? (
-                    <ul>
-                        {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
-                        ))}
-                    </ul>
-                )}
+                <div style={{color: "red"}}>
+                    {errors ?? (
+                        <ul>
+                            {errors.map((error, idx) => (
+                                <li key={idx}>{error.split(':')[1]}</li>
+
+                            ))}
+                        </ul>
+                    )}
+                </div>
                 <div>
                     <div>
                         <label>
@@ -72,6 +75,7 @@ const CreateReviews = () => {
                             placeholder="Review Message"
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
+                            style={{ height: "90px", width: "500px" }}
                             required
                         />
                     </div>
@@ -86,6 +90,7 @@ const CreateReviews = () => {
                             max={5}
                             value={rating}
                             onChange={(e) => setRating(e.target.value)}
+                            style={{ height: "20px", width: "25%", marginTop: "10px" }}
                             required
                         />
                     </div>

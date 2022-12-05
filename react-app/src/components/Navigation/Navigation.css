@@ -19,7 +19,6 @@
     align-items: center;
     border: 1px solid #dddddd;
     cursor: pointer;
-
 }
 
 #demoUser {
@@ -108,16 +107,14 @@
 #menu {
     cursor: pointer;
     position: absolute;
-    top: 60px;
-    right: 95px;
+    top: 50px;
+    left: 5px;
     width: 200px;
     background-color: white;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
-
 }
 
 #menu>* {
@@ -182,11 +179,9 @@
 
 }
 .name {
-
     justify-content: center;
     align-items: center;
     display: flex;
-
 }
 .github {
     color: red;
@@ -222,24 +217,5 @@
     width: 180px;
     height: 40px;
 
-
-}
-.navBar {
-    color: gray;
-    background-color: white;
-    margin-bottom: 10px;
-    border: white;
-    border-radius: 20px;
-    height: 40px;
-    width: 80px;
-    padding-left: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    text-align: start;
-    align-items: center;
-    border: 1px solid #dddddd;
-    cursor: pointer;
 
 }

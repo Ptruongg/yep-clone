@@ -63,7 +63,7 @@ const SignUpForm = () => {
       <form className="signUpForm" onSubmit={onSignUp}>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error.spl}</div>
+            <div key={ind}>{error.split(':')[1]}</div>
           ))}
         </div>
         <div>
@@ -120,7 +120,9 @@ const SignUpForm = () => {
             value={repeatPassword}
           ></input>
         </div>
-        <button className='signUpButton' type='submit' >Sign Up</button>
+        <div>
+          <button className='signUpButton' type='submit' >Sign Up</button>
+        </div>
       </form>
     </div>
   );

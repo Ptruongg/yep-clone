@@ -57,6 +57,7 @@
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .backgroundImg {
@@ -72,4 +73,8 @@
     align-items: center;
     position: relative;
      background-size: cover;
+}
+
+.errors {
+    color: red;
 }

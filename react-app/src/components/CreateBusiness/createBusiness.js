@@ -37,6 +37,16 @@ const CreateBusiness = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const imgRegex = new RegExp(
+            /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
+        );
+        if (imageUrl && !imgRegex.test(imageUrl)) {
+            setErrors([
+                "Invalid Image Url! URL must start with https:// and contain a .png, .jpg, .jpeg, .gif, .png or .svg!",
+            ]);
+            return;
+        };
+
         if (!name) {
             setErrors(['Please enter in a name'])
             return;
@@ -69,7 +79,7 @@ const CreateBusiness = () => {
             setErrors(['Please enter in a phone number'])
             return;
         }
-        if(phoneNumber.length >= 11 || phoneNumber <= 10) {
+        if (phoneNumber.length >= 11 || phoneNumber <= 10) {
             setErrors(['Phone Number format must be 0001112222'])
             return;
         }
@@ -107,14 +117,15 @@ const CreateBusiness = () => {
                     <h2>Create Your Business</h2>
                 </div>
                 <form className="business" onSubmit={handleSubmit}>
-                    {/* <div className="businessTitle">Create Your Business</div> */}
+                    <div className="errors">
                     {errors ?? (
                         <ul>
                             {errors.map((error, idx) => (
-                                <div key={idx}>{error}</div>
+                                <div key={idx}>{error} </div>
                             ))}
                         </ul>
                     )}
+                    </div>
                     <div className="form">
                         <div>
                             <label>

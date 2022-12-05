@@ -20,10 +20,10 @@ function DeleteReview({reviewId, businessId, onClick}) {
     };
 
     return (
-        <div className="delete-post">
+        <div className="delete-post" style={{height: "150px", width: "400px"}}>
             <div className="delete-head">
                 <h3 className="delete-top-modal">Delete post?</h3>
-                <div className="confirmation-delete-msg">
+                <div className="confirmation-delete-msg" style={{color: "black", marginBottom: "10px"}}>
                     Are you sure you want to delete this review?
                 </div>
             </div>
