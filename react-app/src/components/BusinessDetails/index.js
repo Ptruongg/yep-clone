@@ -137,7 +137,7 @@ const BusinessDetails = ({ onClick }) => {
                         {businessReviews.map((rev) => (
                             <div className="each-review-container" key={rev.id}>
                                 <div className="userName">
-                                    {rev.user.first_name}  {rev.user.last_name}
+                                    {rev?.user?.first_name}  {rev?.user?.last_name}
                                 </div>
 
                                 <div className="reviewContent">
