@@ -48,7 +48,7 @@ You are able to sign in as a Demo User or Log in using an existing account and b
 Once you click on a business you are able to see all of the details of that business including the name, address, description, phone number, the reviews and it's ratings.
 
 ```
-![Alt text](https://i.imgur.com/rFJUVus.png)
+![Alt text](https://i.imgur.com/rFJUVus.png](https://i.imgur.com/rFJUVus.png)
 
 # Creating a Business
 
