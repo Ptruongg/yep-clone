@@ -34,5 +34,6 @@ class Business(db.Model):
             "country": self.country,
             "user_id": self.user_id,
             "phoneNumber": self.phoneNumber,
-            "imageUrl": self.imageUrl
+            "imageUrl": self.imageUrl,
+            "user": self.user.to_dict()
         }

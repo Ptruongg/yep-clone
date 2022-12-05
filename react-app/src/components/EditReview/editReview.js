@@ -12,8 +12,8 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
 
     const user = useSelector(state => state.session.user);
     const reviewState = useSelector((state) => state.reviewsReducer[reviewId]);
-    console.log(reviewState, 'ssssssheeeeeeeesh')
-    console.log(reviewId, 'siiiiiiiiiiiiiiiiick')
+    // console.log(reviewState, 'ssssssheeeeeeeesh')
+    // console.log(reviewId, 'siiiiiiiiiiiiiiiiick')
     const [review, setReview] = useState(reviewState?.review);
     const [rating, setRating] = useState(reviewState?.rating);
     const [errors, setErrors] = useState([]);

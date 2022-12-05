@@ -7,7 +7,7 @@ import DeleteReviewModal from "../DeleteReview";
 import "./businessDetails.css"
 import DeleteReview from "../DeleteReview/DeleteReview";
 import EditBusiness from "../EditBusiness/editBusiness";
-import { getAllUsers } from "../../store/user";
+// import { getAllUsers } from "../../store/user";
 import EditBusinessModal from "../EditBusiness";
 import EditReviewModal from "../EditReview";
 
@@ -22,7 +22,7 @@ const BusinessDetails = ({ onClick }) => {
         (review) => review.business_id === businessId
     )
     const allUsers = useSelector((state) => state.usersReducer)
-
+        console.log('bizzzzzzz', businessReviews)
 
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
@@ -41,7 +41,7 @@ const BusinessDetails = ({ onClick }) => {
     useEffect(() => {
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
-        dispatch(getAllUsers())
+        // dispatch(getAllUsers())
     }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews)])
     // useEffect(() => {
     //     dispatch(getReviewsThunk())
@@ -72,7 +72,7 @@ const BusinessDetails = ({ onClick }) => {
             return [firstName, ' ', lastName]
         }
     }
-    console.log(businessReviews, 'ddddddddd')
+    // console.log(businessReviews, 'ddddddddd')
 
     // let business = business[businessId];
     // const getBusinessReviews = reviews.filter((review) => {
@@ -137,7 +137,7 @@ const BusinessDetails = ({ onClick }) => {
                         {businessReviews.map((rev) => (
                             <div className="each-review-container" key={rev.id}>
                                 <div className="userName">
-                                    {fetchUserbyId(rev.user_id)}
+                                    {rev.user.first_name}  {rev.user.last_name}
                                 </div>
 
                                 <div className="reviewContent">

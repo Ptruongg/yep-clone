@@ -24,4 +24,5 @@ class Review(db.Model):
             "rating": self.rating,
             "user_id": self.user_id,
             "business_id": self.business_id,
+            "user": self.user.to_dict()
         }

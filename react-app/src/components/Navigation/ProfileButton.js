@@ -7,7 +7,7 @@ import "./Navigation.css"
 function ProfileButton({user}) {
     const dispatch = useDispatch();
     const history = useHistory();
-    console.log("user,", user)
+    // console.log("user,", user)
 
     const [showMenu, setShowMenu] = useState(false);
 

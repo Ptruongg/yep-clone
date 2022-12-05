@@ -21,7 +21,7 @@ const BusinessDetails = () => {
     const businessReviews = allReviews.filter(
         (review) => review.business_id === businessId
     )
-        console.log(businesses?.imageUrl, 'businessesssssssssss')
+        // console.log(businesses?.imageUrl, 'businessesssssssssss')
     // console.log(reviewsArr, 'arrrrrrrr')
     // const reviewsArr = Object.values(allReviews)
     // console.log('BIZZZZREVIEWS', businessReviews)
