@@ -7,6 +7,9 @@ Yep is a place where you can view automotive businesses and their reviews. As lo
 
 Live site: https://yepyep-capstone.herokuapp.com/
 
+DB Schema: https://github.com/Ptruongg/yep-clone/wiki/Database-Schema
+
+
 # Technologies
 ```
 * Javascript
