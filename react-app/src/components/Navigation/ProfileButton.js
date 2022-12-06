@@ -43,12 +43,12 @@ function ProfileButton({user}) {
                 </button>
                 {showMenu && (
                     <div id="menu">
-                        <li c>
+                        {/* <li >
                             <div>{user.first_name}</div>
                         </li>
                         <li>
                             <div>{user.email}</div>
-                        </li>
+                        </li> */}
                         <li>
                             <div style={{cursor: "pointer"}} onClick={logout}>Log Out</div>
                         </li>
