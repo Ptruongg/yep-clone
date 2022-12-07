@@ -157,3 +157,11 @@ a:link {
     margin-bottom: 30px;
     margin-left: 25px;
 }
+.your-next-review {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}

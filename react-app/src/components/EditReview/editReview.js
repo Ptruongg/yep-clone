@@ -43,15 +43,22 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
             setErrors("Rating must be between 1 and 5")
             return;
         }
-
+        if (review.length < 25 || review.length >= 255) {
+            setErrors(["Review must be greater than 25 and less than 255 characters"])
+            return;
+        }
+        if (rating > 5 || rating < 1) {
+            setErrors(['Please enter a number from 1 to 5 stars'])
+            return
+        }
         // if (errors.length > 0) {
         //     return;
         // }
 
-        if (review.length < 1) {
-            setErrors(['Please enter in a valid review'])
-            return;
-        }
+        // if (review.length < 1) {
+        //     setErrors(['Please enter in a valid review'])
+        //     return;
+        // }
 
         let payload = {
             review,
