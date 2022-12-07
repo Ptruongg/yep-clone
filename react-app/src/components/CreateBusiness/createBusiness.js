@@ -43,6 +43,9 @@ const CreateBusiness = () => {
         const phoneRegex = new RegExp (
             /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
         )
+        const zipcodeRegex = new RegExp (
+            /^\d{5}(?:[-\s]\d{4})?$/
+        )
         if (imageUrl && !imgRegex.test(imageUrl)) {
             setErrors([
                 "Invalid Image Url! URL must start with https:// and contain a .png, .jpg, .jpeg, .gif, .png or .svg!",
@@ -50,7 +53,11 @@ const CreateBusiness = () => {
             return;
         };
         if (phoneNumber && !phoneRegex.test(phoneNumber)) {
-            setErrors([" Plesae enter in a valid phone number"])
+            setErrors(["Please enter in a valid phone number"])
+            return;
+        }
+        if (zipcode && !zipcodeRegex.test(zipcode)) {
+            setErrors(["Please enter in a valid zipcode"])
             return;
         }
 

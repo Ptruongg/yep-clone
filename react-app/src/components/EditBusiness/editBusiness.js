@@ -65,12 +65,35 @@ const EditBusiness = ({ onClick }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        const imgRegex = new RegExp(
+            /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
+        );
+        const phoneRegex = new RegExp(
+            /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
+        )
+        const zipcodeRegex = new RegExp(
+            /^\d{5}(?:[-\s]\d{4})?$/
+        )
+        if (imageUrl && !imgRegex.test(imageUrl)) {
+            setErrors([
+                "Invalid Image Url! URL must start with https:// and contain a .png, .jpg, .jpeg, .gif, .png or .svg!",
+            ]);
+            return;
+        };
+        if (phoneNumber && !phoneRegex.test(phoneNumber)) {
+            setErrors(["Please enter in a valid phone number"])
+            return;
+        }
+        if (zipcode && !zipcodeRegex.test(zipcode)) {
+            setErrors(["Please enter in a valid zipcode"])
+            return;
+        }
         if (errors.length > 0) {
             return;
         }
 
         if (description.length < 5) {
-            setErrors(["Not a valid description"])
+            setErrors(["Description length must be longer than 5 characters"])
             return;
         }
 
@@ -101,7 +124,7 @@ const EditBusiness = ({ onClick }) => {
                     {errors ?? (
                         <ul>
                             {errors.map((error, idx) => (
-                                <li key={idx}>{error.split(":")[1]}</li>
+                                <div key={idx}>{error.split(":")[1]}</div>
                             ))}
                         </ul>
                     )}
