@@ -16,10 +16,10 @@ const CreateReviews = () => {
     const [errors, setErrors] = useState([]);
     const [submitSuccess, setSubmitSuccess] = useState('');
 
-    const validations = () => {
-        const errors = [];
+    // const validations = () => {
+    //     const errors = [];
 
-    }
+    // }
     const handleSubmit = async (e) => {
         e.preventDefault();
         let data = {
