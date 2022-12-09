@@ -40,10 +40,10 @@ const CreateBusiness = () => {
         const imgRegex = new RegExp(
             /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
         );
-        const phoneRegex = new RegExp (
+        const phoneRegex = new RegExp(
             /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
         )
-        const zipcodeRegex = new RegExp (
+        const zipcodeRegex = new RegExp(
             /^\d{5}(?:[-\s]\d{4})?$/
         )
         if (imageUrl && !imgRegex.test(imageUrl)) {
@@ -52,6 +52,10 @@ const CreateBusiness = () => {
             ]);
             return;
         };
+        if (description.length < 5) {
+            setErrors(["Description length must be longer than 5 characters"])
+            return;
+        }
         if (phoneNumber && !phoneRegex.test(phoneNumber)) {
             setErrors(["Please enter in a valid phone number"])
             return;
@@ -89,7 +93,7 @@ const CreateBusiness = () => {
             setErrors(['Please enter in a country'])
             return;
         }
-        if (!phoneNumber ) {
+        if (!phoneNumber) {
             setErrors(['Please enter in a valid phone number'])
             return;
         }
@@ -132,13 +136,13 @@ const CreateBusiness = () => {
                 </div>
                 <form className="business" onSubmit={handleSubmit}>
                     <div className="errors">
-                    {errors ?? (
-                        <ul>
-                            {errors.map((error, idx) => (
-                                <div key={idx}>{error} </div>
-                            ))}
-                        </ul>
-                    )}
+                        {errors ?? (
+                            <ul>
+                                {errors.map((error, idx) => (
+                                    <div key={idx}>{error} </div>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                     <div className="form">
                         <div>

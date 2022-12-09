@@ -22,7 +22,7 @@ const BusinessDetails = ({ onClick }) => {
         (review) => review.business_id === businessId
     )
     const allUsers = useSelector((state) => state.usersReducer)
-        console.log('bizzzzzzz', businessReviews)
+    console.log('bizzzzzzz', businessReviews)
 
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
@@ -105,7 +105,11 @@ const BusinessDetails = ({ onClick }) => {
                 )}
             </div>
             <div className="businessImg">
-                <img src={businesses?.imageUrl} className='images'></img>
+                <img src={businesses?.imageUrl} className='images' onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src =
+                        "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg";
+                }}></img>
             </div>
             <div className="businessDetails">
                 <div className="about-content">
@@ -143,18 +147,18 @@ const BusinessDetails = ({ onClick }) => {
                                 <div className="reviewContent">
                                     {rev.review}
                                     {sessionUser && sessionUser.id === rev.user_id && (
-                                    <div className="edit-n-delete-buttons">
-                                        <div className="edit-review" style={{justifycontent: "center", alignitems: "center"}}>
-                                            <EditReviewModal reviewId={rev.id} businessId={businessId} />
+                                        <div className="edit-n-delete-buttons">
+                                            <div className="edit-review" style={{ justifycontent: "center", alignitems: "center" }}>
+                                                <EditReviewModal reviewId={rev.id} businessId={businessId} />
+                                            </div>
+                                            <div className='delete-review' style={{ justifycontent: "center", alignitems: "center" }} >
+                                                <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
+                                            </div>
                                         </div>
-                                        <div className='delete-review' style={{justifycontent: "center", alignitems: "center"}} >
-                                            <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
-                                        </div>
-                                    </div>
-                                )}
+                                    )}
                                 </div>
                                 <div className="stars">
-                                    <div className="starIcon" style={{marginright: '10px'}}>{<i className="fas fa-star"></i>}</div>
+                                    <div className="starIcon" style={{ marginright: '10px' }}>{<i className="fas fa-star"></i>}</div>
                                     <div className="rating">
                                         {rev.rating}
                                     </div>
@@ -179,7 +183,7 @@ const BusinessDetails = ({ onClick }) => {
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
 
