@@ -105,11 +105,13 @@ const BusinessDetails = ({ onClick }) => {
                 )}
             </div>
             <div className="businessImg">
+                {/* <div className="name">{businesses?.name}</div> */}
                 <img src={businesses?.imageUrl} className='images' onError={({ currentTarget }) => {
                     currentTarget.onerror = null; // prevents looping
                     currentTarget.src =
                         "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg";
-                }}></img>
+                }}>
+                </img>
             </div>
             <div className="businessDetails">
                 <div className="about-content">

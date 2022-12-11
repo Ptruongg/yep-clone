@@ -2,7 +2,7 @@
     display: grid;
     align-items: center;
     justify-content: center;
-    margin: 2px 2px 2px 2px;
+    /* margin: 2px 2px 2px 2px; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 0.25px solid lightgrey;
 }
@@ -27,6 +27,7 @@
     /* border-radius: 10px; */
     margin-left: 50px;
     margin-right: 50px;
+    margin-top: 50px;
     transition: box-shadow 0.9s ease;
     justify-content: center;
     align-items: center;
