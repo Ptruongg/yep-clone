@@ -9,7 +9,6 @@ business_routes = Blueprint("businesses", __name__)
 
 # get all businesses route
 
-
 @business_routes.route("/")
 def businesses():
     all_businesses = Business.query.all()
