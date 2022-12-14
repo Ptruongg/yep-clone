@@ -9,7 +9,7 @@ bookmark_routes = Blueprint("bookmarks", __name__)
 
 #get all bookmarks
 
-@bookmark_routes.route("/")
+@bookmark_routes.route("/bookmarks")
 def bookmarks():
     all_bookmarks = Bookmark.query.all()
     bookmarks = [bookmark.to_dict() for bookmark in all_bookmarks]
