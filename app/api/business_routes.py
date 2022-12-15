@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request, url_for, render_template, redirect, flash
 from flask_login import login_required, current_user
 from app.models import db, User, Business, Review
+from app.models.business import bookmarks
 from app.forms import BusinessForm
 from werkzeug.utils import secure_filename
 import os
@@ -135,3 +136,18 @@ def delete_tweet(business_id):
     db.session.commit()
 
     return "Successfully Deleted"
+
+#saving a bookmark
+@business_routes.route("/<int:id>/bookmarks/<int:id2>", methods=['POST'])
+def saved_business(id, id2):
+    curr_user = User.query.get(id)
+    business = Business.query.get(id2)
+
+    business.business_bookmarks.append(curr_user)
+    db.session.commit()
+    user_info = db.session.query(bookmarks).filter_by(user_id = id).all()
+    newObj = {"business_ids": []}
+    for x, z in user_info:
+        if x == id:
+            newObj[['business_ids'].append(z)]
+    return newObj

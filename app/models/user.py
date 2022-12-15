@@ -20,7 +20,11 @@ class User(db.Model, UserMixin):
     business = db.relationship("Business", back_populates="user")
     review = db.relationship("Review", back_populates="user")
     # reviewImages = db.relationship("ReviewImage", back_populates="user")
-
+    bookmarked = db.relationship(
+        'Business',
+        secondary="bookmarks",
+        back_populates="bookmarked"
+    )
     @property
     def password(self):
         return self.hashed_password
