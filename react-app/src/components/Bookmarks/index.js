@@ -8,11 +8,11 @@ import {useDispatch, useSelector} from 'react-redux'
 
 // import * as profileActions from '../../store/songs'
 
-function AppeciationsList({appreciations}) {
+function BookmarksList({bookmarks}) {
     const dispatch = useDispatch()
     const location = useLocation()
     const history = useHistory()
-    const [apprecList, setApprecList] = useState({})
+    const [booksList, setBooksList] = useState({})
     const sessionUser = useSelector((state) => state.session);
 
     const toObjFunc = (arr) => {
@@ -28,18 +28,18 @@ function AppeciationsList({appreciations}) {
             fetch(`/api/business/bookmarks`, {
                 method: "POST",
                 headers: {"Content-Type":"application/json"},
-                body: JSON.stringify(toObjFunc(appreciations.project_ids))
-            }).then(res => res.json()).then(data => setApprecList(data))
+                body: JSON.stringify(toObjFunc(bookmarks.business_id))
+            }).then(res => res.json()).then(data => setBooksList(data))
         }
-    }, [appreciations])
+    }, [bookmarks])
 
     return (
-        <div className='userApprecGrid'> {
-            Object.values(apprecList).map(project => (
-                <div className='apprPreview' key={project.id}>
-                    <Link className='apprPreviewImgCont' to={{ pathname: `/gallery/${project.id}`, state: { background: location } }}><img className='apprPreviewImg' src={project.images[0]} /></Link>
-                    <Link className='apprUserText' to={`/${project.User.username}`}>
-                    {project.User.first_name} {project.User.last_name}
+        <div className='userBooksGrid'> {
+            Object.values(booksList).map(project => (
+                <div className='apprPreview' key={business.id}>
+                    <Link className='apprPreviewImgCont' to={{ pathname: `/business/${business.id}`, state: { background: location } }}><img className='businessPrevImg' src={business.imageUrl} /></Link>
+                    <Link className='apprUserText' to={`/${business.user_id.name}`}>
+                    {/* {project.User.first_name} {project.User.last_name}
                     </Link>
                     <Link className='apprProjectText' to={`/gallery/${project.id}`}>
                     {project.name}
@@ -47,11 +47,11 @@ function AppeciationsList({appreciations}) {
                     <div className='apprAppr'>
                     <i className="apprIcon fa-solid fa-thumbs-up" />
                     <div className='apprAppr_text'>{project.appreciations}</div>
-                    </div>
+                    </div> */}
                 </div>
             ))
         }
         </div>
     )
 }
-export default AppeciationsList;
+export default BookmarksList;
