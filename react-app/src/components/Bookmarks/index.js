@@ -38,8 +38,8 @@ function BookmarksList({bookmarks}) {
             Object.values(booksList).map(project => (
                 <div className='apprPreview' key={business.id}>
                     <Link className='apprPreviewImgCont' to={{ pathname: `/business/${business.id}`, state: { background: location } }}><img className='businessPrevImg' src={business.imageUrl} /></Link>
-                    <Link className='apprUserText' to={`/${business.user_id.name}`}>
-                    {/* {project.User.first_name} {project.User.last_name}
+                    {/* <Link className='apprUserText' to={`/${business.user_id.name}`}>
+                    {project.User.first_name} {project.User.last_name}
                     </Link>
                     <Link className='apprProjectText' to={`/gallery/${project.id}`}>
                     {project.name}
