@@ -30,11 +30,11 @@ class Business(db.Model):
     #relationships
     user = db.relationship("User", back_populates='business')
     review = db.relationship("Review", back_populates='business', cascade="all, delete")
-    business_bookmarks = db.relationship(
-        "User",
-        secondary=bookmarks,
-        back_populates='bookmarked'
-    )
+    # business_bookmarks = db.relationship(
+    #     "User",
+    #     secondary=bookmarks,
+    #     back_populates='bookmarked'
+    # )
 
     def to_dict(self):
         return {
