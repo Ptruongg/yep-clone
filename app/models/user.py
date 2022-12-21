@@ -45,6 +45,7 @@ class User(db.Model, UserMixin):
     #relationships
     businesses = db.relationship("Business", back_populates="user")
     reviews = db.relationship("Review", back_populates="user")
+    business_bookmarks = db.relationship("Bookmark", back_populates='user')
 
 
     def to_dict(self, businesses=False):
