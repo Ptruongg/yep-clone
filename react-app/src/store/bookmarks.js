@@ -73,14 +73,14 @@ export const removeAppreciations = (businessId, userId) => async (dispatch) => {
     return response
 }
 
-export const  clearUserAppr = () => async (dispatch) => {
+export const clearUserAppr = () => async (dispatch) => {
     dispatch(clearBookmarksAction())
     return {message: "User cleared"};
 };
 
 const initialState = { "current_bookmarks": [] }
 
-const appreciateReducer = (state = initialState, action) => {
+const bookmarksReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case GET_BOOKMARKS:
@@ -96,4 +96,4 @@ const appreciateReducer = (state = initialState, action) => {
     }
 }
 
-export default appreciateReducer
+export default bookmarksReducer

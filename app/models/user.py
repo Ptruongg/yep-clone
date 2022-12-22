@@ -20,11 +20,9 @@ class User(db.Model, UserMixin):
     business = db.relationship("Business", back_populates="user")
     review = db.relationship("Review", back_populates="user")
     # reviewImages = db.relationship("ReviewImage", back_populates="user")
-    # bookmarked = db.relationship(
-    #     'Business',
-    #     secondary="bookmarks",
-    #     back_populates="bookmarked"
-    # )
+    bookmark = db.relationship('Bookmark', back_populates="user")
+    # _business_bookmarks = db.relationship("Bookmark", back_populates='user')
+
     @property
     def password(self):
         return self.hashed_password
@@ -43,9 +41,9 @@ class User(db.Model, UserMixin):
         }
 
     #relationships
-    businesses = db.relationship("Business", back_populates="user")
-    reviews = db.relationship("Review", back_populates="user")
-    business_bookmarks = db.relationship("Bookmark", back_populates='user')
+    # businesses = db.relationship("Business", back_populates="user")
+    # reviews = db.relationship("Review", back_populates="user")
+
 
 
     def to_dict(self, businesses=False):

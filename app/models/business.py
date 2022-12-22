@@ -26,14 +26,14 @@ class Business(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     phoneNumber = db.Column(db.String, nullable=False)
     imageUrl = db.Column(db.String, nullable=False)
+    # bookmarks = db.Column(db.Integer, nullable=False)
 
     #relationships
     user = db.relationship("User", back_populates='business')
     review = db.relationship("Review", back_populates='business', cascade="all, delete")
-    business_bookmarks = db.relationship("Bookmark", back_populates='business')
+    bookmark = db.relationship("Bookmark", back_populates='business', cascade="all, delete")
 
     def to_dict(self):
-        print(self.business_bookmarks)
         return {
             "id": self.id,
             "name": self.name,
@@ -46,5 +46,6 @@ class Business(db.Model):
             "user_id": self.user_id,
             "phoneNumber": self.phoneNumber,
             "imageUrl": self.imageUrl,
+            "bookmarks": self.bookmark,
             "user": self.user.to_dict()
         }
