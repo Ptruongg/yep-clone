@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
     const history = useHistory()
-    const [bookmarksInfo, setBookmarksInfo] = useState({ "business_ids": []})
+    // const [bookmarksInfo, setBookmarksInfo] = useState({ "business_ids": []})
 
 
     const newTab = (url) => {
