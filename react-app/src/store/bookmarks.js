@@ -60,7 +60,7 @@ export const addBookmarksThunk = (businessId, userId) => async (dispatch) => {
     return response
 }
 
-export const removeAppreciations = (businessId, userId) => async (dispatch) => {
+export const removeBookmarksThunk = (businessId, userId) => async (dispatch) => {
     const response = await fetch(`/api/business/${userId}/bookmarks/${businessId}`, {
         method: "DELETE"
     })
