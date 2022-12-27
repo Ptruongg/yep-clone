@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useLocation, useHistory, Link, NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import { getBookmarksThunk, removeBookmarksThunk } from '../../store/bookmarks';
+import "./bookmarks.css"
 
 // import * as profileActions from '../../store/songs'
 
@@ -12,10 +13,11 @@ const BookmarksList = ({bookmarks}) => {
     const user = useSelector((state => state.session.user))
     const [booksList, setBooksList] = useState({})
     const bookmark = useSelector((state) => Object.values(state.bookmark))
+    const [prof, setProf] = useState({user: null})
 
-    useEffect(() => {
-        dispatch(getBookmarksThunk(businessId))
-    }, [dispatch, businessId])
+    // useEffect(() => {
+    //     dispatch(getBookmarksThunk(businessId))
+    // }, [dispatch, businessId])
     // const toObjFunc = (arr) => {
     //     let newObj = {}
     //     arr.forEach((e) => {
@@ -24,15 +26,15 @@ const BookmarksList = ({bookmarks}) => {
     //     return newObj
     // }
 
-    // useEffect(() => {
-    //     if(bookmarks.business_id.length > 0){
-    //         fetch(`/api/business/bookmarks`, {
-    //             method: "POST",
-    //             headers: {"Content-Type":"application/json"},
-    //             body: JSON.stringify(toObjFunc(bookmarks.business_id))
-    //         }).then(res => res.json()).then(data => setBooksList(data))
-    //     }
-    // }, [bookmarks])
+    // if (prof) {
+    //     busList = prof.businessId.map((business) => {
+    //         return (
+    //             <div>
+
+    //             </div>
+    //         )
+    //     })
+    // }
 
     // return (
     //     // <div className='bookmarks'> {

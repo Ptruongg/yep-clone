@@ -24,3 +24,15 @@ class Bookmark(db.Model):
             "user_id": self.user_id,
             "business_id": self.business_id,
         }
+
+# bookmarks = db.Table(
+#     "bookmarks",
+#     db.Model.metadata,
+#     db.Column(db.Integer, primary_key=True),
+#     # name = db.Column(db.String, nullable=False)
+#     db.Column(db.Integer, db.ForeignKey('businesses.id')),
+#     db.Column(db.Integer, db.ForeignKey('users.id')),
+# )
+
+# if environment == "production":
+#     bookmarks.schema = SCHEMA
