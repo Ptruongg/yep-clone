@@ -53,7 +53,6 @@ export const addBookmarksThunk = (businessId, userId) => async (dispatch) => {
     })
     if (response.ok) {
         const data = await response.json()
-        // console.log("DATA IN ADDAPPRECITE THUNK", data)
         dispatch(addBookmarksAction(data))
         return data
     }

@@ -18,13 +18,22 @@ const BookmarksList = ({bookmarks}) => {
     // useEffect(() => {
     //     dispatch(getBookmarksThunk(businessId))
     // }, [dispatch, businessId])
-    // const toObjFunc = (arr) => {
-    //     let newObj = {}
-    //     arr.forEach((e) => {
-    //         newObj[String(e)] = String(e)
-    //     })
-    //     return newObj
-    // }
+    const toObjFunc = (arr) => {
+        let newObj = {}
+        arr.forEach((e) => {
+            newObj[String(e)] = String(e)
+        })
+        return newObj
+    }
+    useEffect(() => {
+        if (bookmark.business_id.length > 0) {
+            fetch(`/api/businesses/${id}/bookmarks/${id2}`, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(toObjFunc(bookmarks.business_id))
+            }).then(res => res.json()).then(data => setBooksList(data))
+        }
+    }, [bookmark])
 
     // if (prof) {
     //     busList = prof.businessId.map((business) => {
