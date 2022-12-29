@@ -50,6 +50,9 @@ function ProfileButton({user}) {
                             <div>{user.email}</div>
                         </li> */}
                         <li>
+
+                        </li>
+                        <li>
                             <div style={{cursor: "pointer"}} onClick={logout}>Log Out</div>
                         </li>
                     </div>
