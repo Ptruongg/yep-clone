@@ -5,4 +5,4 @@ from app.models import User, Business, Review, Bookmark
 
 class BookmarkForm(FlaskForm):
    user_id = IntegerField("User Id")
-   business_id = IntegerField("BusinessI Id")
+   business_id = IntegerField("Business Id")

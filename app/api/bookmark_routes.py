@@ -7,7 +7,8 @@ import os
 
 bookmark_routes = Blueprint("bookmarks", __name__)
 
-#get all bookmarks
+# get all bookmarks
+
 
 @bookmark_routes.route("/")
 def bookmarks():
@@ -16,7 +17,7 @@ def bookmarks():
     response = {"bookmarks": bookmarks}
     return response
 
-#get bookmark by id
+# get bookmark by id
 # @bookmark_routes.route("/<int:id>")
 # def bookmark_by_id():
 #     one_bookmark = Bookmark.query.filter(Bookmark.id == id)
@@ -24,7 +25,9 @@ def bookmarks():
 #     response = {"bookmark": bookmark}
 #     return response
 
-#get bookmark owned by a user
+# get bookmark owned by a user
+
+
 @bookmark_routes.route("/user/<int:userId>/")
 def user_bookmarks(userId):
     user_bookmark = Bookmark.query.filter(Bookmark.user_id == userId).all()
@@ -32,23 +35,35 @@ def user_bookmarks(userId):
     response = {"bookmarks": bookmark}
     return response
 
-#create a bookmark
+# create a bookmark
+
+
 @bookmark_routes.route("/", methods=['POST'])
 # @login_required
-def create_bookmark(userId, businessId):
-  new_bookmark = BookmarkForm()
+def create_bookmark():
+    new_bookmark = BookmarkForm()
+    new_bookmark["csrf_token"].data = request.cookies["csrf_token"]
+    if new_bookmark.validate_on_submit():
+        newBookmark = Bookmark(
+            user_id=new_bookmark.data['user_id'],
+            business_id=new_bookmark.data['business_id']
+        )
+        db.session.add(newBookmark)
+        db.session.commit()
+        return newBookmark.to_dict()
+    else:
+        return "Unauthorized", 403
 
-#delete a bookmark
-@bookmark_routes.route("/<int:id>", methods=['DELETE'])
-def delete_bookmark(userId, businessId):
-    curr_user = User.query.get(userId)
-    bookmark = Business.query.get(businessId)
 
-    bookmark.project_bookmarks.remove(curr_user)
+# delete a bookmark
+@bookmark_routes.route("/<bookmark_id>", methods=['DELETE'])
+def delete_bookmark(bookmark_id):
+
+    bookmark = Bookmark.query.get(bookmark_id)
+    if not bookmark:
+        return "The Bookmark you are looking for can not be found!", 404
+
+    db.session.delete(bookmark)
     db.session.commit()
-    user_appinfo = db.session.query(bookmark).filter_by(user_id = id).all()
-    newObj = {"business_ids": []}
-    for x,z in user_appinfo:
-        if x == id:
-            newObj["project_ids"].append(z)
-    return newObj
+
+    return "Successfully Deleted"
