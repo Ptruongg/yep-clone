@@ -45,24 +45,25 @@ const BookmarksList = ({bookmarks}) => {
     //     })
     // }
 
-    // return (
-    //     // <div className='bookmarks'> {
-    //     //     Object.values(booksList).map(bus => (
-    //     //         <div className='busPreview' key={bus.id}>
-    //     //             <Link className='busName' to={`/${bus.name}`}></Link>
-    //     //         </div>
-    //     //     ))
-    //     // }
+    return (
+    //     <div className='bookmarks'> {
+    //         Object.values(booksList).map(bus => (
+    //             <div className='busPreview' key={bus.id}>
+    //                 <Link className='busName' to={`/${bus.name}`}></Link>
+    //             </div>
+    //         ))
+    //     }
 
-    //     // </div>
-    //     // <div>
-    //     //     {bookmark.length ?
-    //     //      bookmark.map(bookmark, idx) => (
-    //     //         <div key={idx}/>
-    //     //             <NavLink to={`/business/${businessId}`} />
+    //     </div>
+    //     <div>
+    //         {bookmark.length ?
+    //          bookmark.map(bookmark, idx) => (
+    //             <div key={idx}/>
+    //                 <NavLink to={`/business/${businessId}`} />
 
-    //     //      )
-    //     // </div>
+    //          )
+    //     </div>
     // )
+
 }
 export default BookmarksList;
