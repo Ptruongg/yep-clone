@@ -46,6 +46,5 @@ class Business(db.Model):
             "user_id": self.user_id,
             "phoneNumber": self.phoneNumber,
             "imageUrl": self.imageUrl,
-            "bookmarks": self.bookmark,
             "user": self.user.to_dict()
         }

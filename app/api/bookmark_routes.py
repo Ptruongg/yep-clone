@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, url_for, render_template, redirect, flash
 from flask_login import login_required, current_user
 from app.models import User, Business, db, Bookmark
-from app.forms import BusinessForm
+from app.forms import BookmarkForm
 from werkzeug.utils import secure_filename
 import os
 
@@ -25,7 +25,7 @@ def bookmarks():
 #     return response
 
 #get bookmark owned by a user
-@bookmark_routes.route("user/<int:userId>/")
+@bookmark_routes.route("/user/<int:userId>/")
 def user_bookmarks(userId):
     user_bookmark = Bookmark.query.filter(Bookmark.user_id == userId).all()
     bookmark = [bookmark.to_dict() for bookmark in user_bookmark]
@@ -33,26 +33,16 @@ def user_bookmarks(userId):
     return response
 
 #create a bookmark
-@bookmark_routes.route("/<int:id>/bookmarks/<int:id2>", methods=['POST'])
-@login_required
-def create_bookmark(id, id2):
-    curr_user = User.query.get(id)
-    bookmark = Business.query.get(id2)
+@bookmark_routes.route("/", methods=['POST'])
+# @login_required
+def create_bookmark(userId, businessId):
+  new_bookmark = BookmarkForm()
 
-    bookmark.business_bookmarks.append(curr_user)
-    db.session.commit()
-    user_appinfo = db.session.query(bookmarks).filter_by(user_id = id).all()
-    print("APPINFO", user_appinfo)
-    newObj = {"business_ids": []}
-    for x,z in user_appinfo:
-        if x == id:
-            newObj["business_ids"].append(z)
-    return newObj
-
-@bookmark_routes.route("/<int:id>/appreciates/<int:id2>", methods=['DELETE'])
-def delete_bookmark(id, id2):
-    curr_user = User.query.get(id)
-    bookmark = Business.query.get(id2)
+#delete a bookmark
+@bookmark_routes.route("/<int:id>", methods=['DELETE'])
+def delete_bookmark(userId, businessId):
+    curr_user = User.query.get(userId)
+    bookmark = Business.query.get(businessId)
 
     bookmark.project_bookmarks.remove(curr_user)
     db.session.commit()
