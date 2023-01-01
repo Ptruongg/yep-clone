@@ -15,16 +15,7 @@ const BookmarksList = ({bookmarks}) => {
     const bookmark = useSelector((state) => Object.values(state.bookmark))
     const [prof, setProf] = useState({user: null})
 
-    // useEffect(() => {
-    //     dispatch(getBookmarksThunk(businessId))
-    // }, [dispatch, businessId])
-    // const toObjFunc = (arr) => {
-    //     let newObj = {}
-    //     arr.forEach((e) => {
-    //         newObj[String(e)] = String(e)
-    //     })
-    //     return newObj
-    // }
+
     // useEffect(() => {
     //     if (bookmark.business_id.length > 0) {
     //         fetch(`/api/businesses/${id}/bookmarks/${id2}`, {
@@ -44,6 +35,7 @@ const BookmarksList = ({bookmarks}) => {
     //         )
     //     })
     // }
+
 
     // return (
     //     <div className='bookmarks'> {
