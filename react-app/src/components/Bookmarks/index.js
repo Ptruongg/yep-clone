@@ -1,57 +1,91 @@
-// import React, {useState, useEffect} from 'react';
-// import {
-//     useLocation,
-//     useHistory,
-//     Link
-// } from 'react-router-dom';
-// import {useDispatch, useSelector} from 'react-redux'
+import React, {useState, useEffect} from 'react';
+import {useLocation, useHistory, Link, NavLink} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux'
+import { getBookmarksThunk, getUserBookmarksThunk, removeBookmarksThunk } from '../../store/bookmarks';
 
-// // import * as profileActions from '../../store/songs'
+import "./bookmarks.css"
 
-// function BookmarksList({bookmarks}) {
-//     const dispatch = useDispatch()
-//     const location = useLocation()
-//     const history = useHistory()
-//     const [booksList, setBooksList] = useState({})
-//     const sessionUser = useSelector((state) => state.session);
+// import * as profileActions from '../../store/songs'
 
-//     const toObjFunc = (arr) => {
-//         let newObj = {}
-//         arr.forEach((e) => {
-//             newObj[String(e)] = String(e)
-//         })
-//         return newObj
-//     }
+const BookmarksList = () => {
+    const history = useHistory()
+    const dispatch = useDispatch()
+    // const location = useLocation()
+    // const user = useSelector((state => state.session.user))
+    // const [booksList, setBooksList] = useState({})
+    const [loaded, setLoaded] = useState(false);
+    const bookmarkList = useSelector((state) => Object.values(state.bookmark))
+    const handleClick = (bookmark) => {
+        history.push(`/bookmarks/${bookmark.id}`)
+    }
 
-//     useEffect(() => {
-//         if(bookmarks.business_id.length > 0){
-//             fetch(`/api/business/bookmarks`, {
-//                 method: "POST",
-//                 headers: {"Content-Type":"application/json"},
-//                 body: JSON.stringify(toObjFunc(bookmarks.business_id))
-//             }).then(res => res.json()).then(data => setBooksList(data))
-//         }
-//     }, [bookmarks])
+    useEffect(() => {
+        dispatch(getUserBookmarksThunk()).then(() => setLoaded(true))
+    }, [dispatch])
 
-//     return (
-//         <div className='userBooksGrid'> {
-//             Object.values(booksList).map(project => (
-//                 <div className='apprPreview' key={business.id}>
-//                     <Link className='apprPreviewImgCont' to={{ pathname: `/business/${business.id}`, state: { background: location } }}><img className='businessPrevImg' src={business.imageUrl} /></Link>
-//                     {/* <Link className='apprUserText' to={`/${business.user_id.name}`}>
-//                     {project.User.first_name} {project.User.last_name}
-//                     </Link>
-//                     <Link className='apprProjectText' to={`/gallery/${project.id}`}>
-//                     {project.name}
-//                     </Link>
-//                     <div className='apprAppr'>
-//                     <i className="apprIcon fa-solid fa-thumbs-up" />
-//                     <div className='apprAppr_text'>{project.appreciations}</div>
-//                     </div> */}
-//                 </div>
-//             ))
-//         }
-//         </div>
-//     )
-// }
-// export default BookmarksList;
+    return (
+        <div>
+            <h2>My Bookmarks</h2>
+            {loaded &&
+                bookmarkList.map((book) => (
+                    <div
+                        className='myBookmarks'
+                        key={book.id}
+                        onClick={() => handleClick(book)}
+                    >
+                        <div>
+                            <div className='bookDetails'>
+                                <div>{book.name} </div>
+                                {/* <img>
+                                    src={business.img}
+                                </img> */}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    )
+    // useEffect(() => {
+    //     if (bookmark.business_id.length > 0) {
+    //         fetch(`/api/businesses/${id}/bookmarks/${id2}`, {
+    //             method: "POST",
+    //             headers: {"Content-Type": "application/json"},
+    //             body: JSON.stringify(toObjFunc(bookmarks.business_id))
+    //         }).then(res => res.json()).then(data => setBooksList(data))
+    //     }
+    // }, [bookmark])
+
+    // if (prof) {
+    //     busList = prof.businessId.map((business) => {
+    //         return (
+    //             <div>
+
+    //             </div>
+    //         )
+    //     })
+    // }
+
+
+    // return (
+    //     <div className='bookmarks'> {
+    //         Object.values(booksList).map(bus => (
+    //             <div className='busPreview' key={bus.id}>
+    //                 <Link className='busName' to={`/${bus.name}`}></Link>
+    //             </div>
+    //         ))
+    //     }
+
+    //     </div>
+    //     <div>
+    //         {bookmark.length ?
+    //          bookmark.map(bookmark, idx) => (
+    //             <div key={idx}/>
+    //                 <NavLink to={`/business/${businessId}`} />
+
+    //          )
+    //     </div>
+    // )
+
+}
+export default BookmarksList;

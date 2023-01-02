@@ -3,6 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../auth/index';
+import BookmarksList from '../Bookmarks';
 import * as sessionActions from "../../store/session"
 import CreateBusiness from '../CreateBusiness/createBusiness';
 import './Navigation.css';
@@ -11,6 +12,7 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
     const dispatch = useDispatch()
     const history = useHistory()
+    // const [bookmarksInfo, setBookmarksInfo] = useState({ "business_ids": []})
 
 
     const newTab = (url) => {

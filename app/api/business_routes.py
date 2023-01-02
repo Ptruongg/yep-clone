@@ -77,9 +77,7 @@ def create_business():
         db.session.commit()
         return newBusiness.to_dict()
     else:
-        print(request.cookies["csrf_token"], "@@@@@@@@@@@@@@@@")
-        print(new_business.data['user_id'], "===========================")
-        print(new_business.data['phoneNumber'], 'dasdadasddasdasdasd'),
+
         return "Unauthorized", 403
 
 
@@ -127,7 +125,7 @@ def edit_business(business_id):
 
 @business_routes.route("/<business_id>", methods=['DELETE'])
 @login_required
-def delete_tweet(business_id):
+def delete_business(business_id):
     business = Business.query.get(business_id)
     if not business:
         return "The Business you are looking for can not be found!", 404

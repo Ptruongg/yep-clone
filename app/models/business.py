@@ -1,13 +1,13 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-bookmarks = db.Table(
-    "bookmarks",
-    db.Model.metadata,
-    db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id"))),
-    db.Column("business_id", db.Integer, db.ForeignKey(add_prefix_for_prod("businesses.id"))),
-)
-if environment == 'production':
-    bookmarks.schema = SCHEMA
+# bookmarks = db.Table(
+#     "bookmarks",
+#     db.Model.metadata,
+#     db.Column("user_id", db.Integer, db.ForeignKey(add_prefix_for_prod("users.id"))),
+#     db.Column("business_id", db.Integer, db.ForeignKey(add_prefix_for_prod("businesses.id"))),
+# )
+# if environment == 'production':
+#     bookmarks.schema = SCHEMA
 
 class Business(db.Model):
     __tablename__ = "businesses"
@@ -26,15 +26,12 @@ class Business(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     phoneNumber = db.Column(db.String, nullable=False)
     imageUrl = db.Column(db.String, nullable=False)
+    # bookmarks = db.Column(db.Integer, nullable=False)
 
     #relationships
     user = db.relationship("User", back_populates='business')
     review = db.relationship("Review", back_populates='business', cascade="all, delete")
-    # business_bookmarks = db.relationship(
-    #     "User",
-    #     secondary=bookmarks,
-    #     back_populates='bookmarked'
-    # )
+    bookmark = db.relationship("Bookmark", back_populates='business', cascade="all, delete")
 
     def to_dict(self):
         return {

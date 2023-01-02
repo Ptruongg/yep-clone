@@ -131,9 +131,7 @@ const CreateBusiness = () => {
     return (
         <div className="background" >
             <div className="formContainer">
-                <div>
-                    <h2>Create Your Business</h2>
-                </div>
+
                 <form className="business" onSubmit={handleSubmit}>
                     <div className="errors">
                         {errors ?? (
@@ -144,7 +142,10 @@ const CreateBusiness = () => {
                             </ul>
                         )}
                     </div>
-                    <div className="form">
+                    <div className="form" style={{ justifyContent: "center", alignItems: "center"}}>
+                        <div>
+                            <h2>Create Your Business</h2>
+                        </div>
                         <div>
                             <label>
                                 Name:
@@ -154,7 +155,7 @@ const CreateBusiness = () => {
                                 placeholder="Business Name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -166,7 +167,7 @@ const CreateBusiness = () => {
                                 placeholder="Description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -178,6 +179,7 @@ const CreateBusiness = () => {
                                 placeholder="Address"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -189,6 +191,7 @@ const CreateBusiness = () => {
                                 placeholder="City"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -200,6 +203,7 @@ const CreateBusiness = () => {
                                 placeholder="State"
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -211,6 +215,7 @@ const CreateBusiness = () => {
                                 placeholder="Zipcode"
                                 value={zipcode}
                                 onChange={(e) => setZipcode(e.target.value)}
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -222,6 +227,7 @@ const CreateBusiness = () => {
                                 placeholder="Country"
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -233,6 +239,7 @@ const CreateBusiness = () => {
                                 placeholder="Phone Number"
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
+                                style={{justifyContent: "center", width: "85%"}}
                             />
                         </div>
                         <div>
@@ -244,6 +251,7 @@ const CreateBusiness = () => {
                                 placeholder="Image"
                                 value={imageUrl}
                                 onChange={(e) => setImageUrl(e.target.value)}
+                                style={{justifyContent: "center", width: "85%", marginBottom: "20px"}}
                             />
                         </div>
                     </div>

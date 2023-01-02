@@ -18,6 +18,7 @@ import DemoUser from "./components/DemoUser";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
 import Navigation from "./components/Navigation";
+import BookmarksList from "./components/Bookmarks";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -68,6 +69,9 @@ function App() {
             </Route>
             <Route path="/business/:businessId">
               <BusinessDetails />
+            </Route>
+            <Route exact path="/users/businesses">
+              <BookmarksList />
             </Route>
           </Switch>
       )}
