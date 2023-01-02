@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { Link, useHistory } from "react-router-dom"
+import { Link, NavLink, useHistory } from "react-router-dom"
 import "./Navigation.css"
 
 function ProfileButton({user}) {
@@ -33,6 +33,10 @@ function ProfileButton({user}) {
         dispatch(sessionActions.logout());
         history.push("/")
     };
+    const getUserBookmarks = (e) => {
+        e.preventDefault();
+
+    }
 
     return (
         <>
@@ -49,9 +53,9 @@ function ProfileButton({user}) {
                         <li>
                             <div>{user.email}</div>
                         </li> */}
-                        <li>
-
-                        </li>
+                        <NavLink to ='/myBookmarks'>
+                            My Bookmarks
+                        </NavLink>
                         <li>
                             <div style={{cursor: "pointer"}} onClick={logout}>Log Out</div>
                         </li>
