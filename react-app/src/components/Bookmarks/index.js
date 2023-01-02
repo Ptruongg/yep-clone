@@ -1,21 +1,51 @@
 import React, {useState, useEffect} from 'react';
 import {useLocation, useHistory, Link, NavLink} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
-import { getBookmarksThunk, removeBookmarksThunk } from '../../store/bookmarks';
+import { getBookmarksThunk, getUserBookmarksThunk, removeBookmarksThunk } from '../../store/bookmarks';
+
 import "./bookmarks.css"
 
 // import * as profileActions from '../../store/songs'
 
-const BookmarksList = ({bookmarks}) => {
-    const dispatch = useDispatch()
-    const location = useLocation()
+const BookmarksList = () => {
     const history = useHistory()
-    const user = useSelector((state => state.session.user))
-    const [booksList, setBooksList] = useState({})
-    const bookmark = useSelector((state) => Object.values(state.bookmark))
-    const [prof, setProf] = useState({user: null})
+    const dispatch = useDispatch()
+    // const location = useLocation()
+    // const user = useSelector((state => state.session.user))
+    // const [booksList, setBooksList] = useState({})
+    const [loaded, setLoaded] = useState(false);
+    const bookmarkList = useSelector((state) => Object.values(state.bookmark))
+    const handleClick = (bookmark) => {
+        history.push(`/bookmarks/${bookmark.id}`)
+    }
 
+    useEffect(() => {
+        dispatch(getUserBookmarksThunk()).then(() => setLoaded(true))
+    }, [dispatch])
 
+    return (
+        <div>
+            <h2>My Bookmarks</h2>
+            {loaded &&
+                bookmarkList.map((book) => (
+                    <div
+                        className='myBookmarks'
+                        key={book.id}
+                        onClick={() => handleClick(book)}
+                    >
+                        <div>
+                            <div className='bookDetails'>
+                                <div>{book.name} </div>
+                                {/* <img>
+                                    src={business.img}
+                                </img> */}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    )
     // useEffect(() => {
     //     if (bookmark.business_id.length > 0) {
     //         fetch(`/api/businesses/${id}/bookmarks/${id2}`, {

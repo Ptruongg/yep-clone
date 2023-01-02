@@ -1,4 +1,5 @@
 const GET_BOOKMARKS = 'bookmarks/getBookmarks'
+const GET_USER_BOOKMARKS = 'bookmarks/getUserBookmarks'
 const ADD_BOOKMARKS = 'bookmarks/addBookmarks'
 const REM_BOOKMARKS = 'bookmarks/remBookmarks'
 const CLEAR_BOOKMARKS = 'bookmarks/clearBookmarks'
@@ -9,7 +10,12 @@ const getBookmarksAction = (data) => {
         data
     }
 }
-
+const getUserBookmarks = (userBookmarks) => {
+    return {
+        type: GET_USER_BOOKMARKS,
+        userBookmarks
+    }
+}
 const addBookmarksAction = (data) => {
     return {
         type: ADD_BOOKMARKS,
@@ -42,7 +48,15 @@ export const getBookmarksThunk = (businessId) => async (dispatch) => {
     }
     return response
 }
-
+export const getUserBookmarksThunk = () => async (dispatch) => {
+    const response = await fetch(`/api/bookmarks/user`)
+    if (response.ok) {
+        const userBooks = await response.json();
+        dispatch(getUserBookmarks(userBooks));
+        return userBooks;
+    }
+    return response;
+}
 export const addBookmarksThunk = (businessId, userId) => async (dispatch) => {
     const response = await fetch(`/api/business/${userId}/bookmarks/${businessId}`, {
         method: "POST",
@@ -84,6 +98,12 @@ const bookmarksReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_BOOKMARKS:
             return { ...state, ...action.data }
+        case GET_USER_BOOKMARKS: {
+            const newState = {};
+            action.userBookmarks.forEach(bookmark => newState[bookmark.id] = bookmark)
+            let allBookmarks = {...newState}
+            return allBookmarks;
+        }
         case ADD_BOOKMARKS:
             return { ...state, current_bookmarks: [...state.current_bookmarks, action.data] }
         case REM_BOOKMARKS:
