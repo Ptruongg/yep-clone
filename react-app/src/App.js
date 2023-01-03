@@ -52,6 +52,9 @@ function App() {
             <Route exact path="/">
               <BusinessesList />
             </Route>
+            <Route exact path="/bookmarks/myBookmarks">
+              <BookmarksList />
+            </Route>
             <Route path="/business/create" >
               <CreateBusiness />
             </Route>
@@ -69,9 +72,6 @@ function App() {
             </Route>
             <Route path="/business/:businessId">
               <BusinessDetails />
-            </Route>
-            <Route exact path="/users/businesses">
-              <BookmarksList />
             </Route>
           </Switch>
       )}

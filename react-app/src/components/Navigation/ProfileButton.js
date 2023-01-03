@@ -33,10 +33,7 @@ function ProfileButton({user}) {
         dispatch(sessionActions.logout());
         history.push("/")
     };
-    const getUserBookmarks = (e) => {
-        e.preventDefault();
 
-    }
 
     return (
         <>
@@ -53,9 +50,9 @@ function ProfileButton({user}) {
                         <li>
                             <div>{user.email}</div>
                         </li> */}
-                        <NavLink to ='/myBookmarks'>
+                        <Link to ='/myBookmarks'>
                             My Bookmarks
-                        </NavLink>
+                        </Link>
                         <li>
                             <div style={{cursor: "pointer"}} onClick={logout}>Log Out</div>
                         </li>

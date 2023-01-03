@@ -14,13 +14,13 @@ const BookmarksList = () => {
     // const user = useSelector((state => state.session.user))
     // const [booksList, setBooksList] = useState({})
     const [loaded, setLoaded] = useState(false);
-    const bookmarkList = useSelector((state) => Object.values(state.bookmark))
+    const bookmarkList = useSelector((state) => Object.values(state.bookmarks))
     const handleClick = (bookmark) => {
         history.push(`/bookmarks/${bookmark.id}`)
     }
 
     useEffect(() => {
-        dispatch(getUserBookmarksThunk()).then(() => setLoaded(true))
+        dispatch(getBookmarksThunk()).then(() => setLoaded(true))
     }, [dispatch])
 
     return (
