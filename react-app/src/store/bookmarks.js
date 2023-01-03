@@ -4,16 +4,16 @@ const ADD_BOOKMARKS = 'bookmarks/addBookmarks'
 const REM_BOOKMARKS = 'bookmarks/remBookmarks'
 // const CLEAR_BOOKMARKS = 'bookmarks/clearBookmarks'
 
-const getBookmarksAction = (data) => {
+const getAllBookmarks = (bookmarks) => {
     return {
         type: GET_BOOKMARKS,
-        data
+        bookmarks
     }
 }
-const getUserBookmarks = (userBookmarks) => {
+const getUserBookmarks = (userId) => {
     return {
         type: GET_USER_BOOKMARKS,
-        userBookmarks
+        userId
     }
 }
 const addBookmarksAction = (data) => {
@@ -38,14 +38,13 @@ const remBookmarksAction = (data) => {
 
 //thunks
 export const getBookmarksThunk = () => async (dispatch) => {
-    const response = await fetch(`/api/bookmarks`)
-    // console.log(response)
+    const response = await fetch(`/api/bookmarks/`)
     if (response.ok) {
         const bookmarks = await response.json()
         // console.log("RES OK2")
-        dispatch(getBookmarksAction(bookmarks))
+        dispatch(getAllBookmarks(bookmarks))
         const allBooks = {};
-        bookmarks.forEach((bookmark) => (allBooks[bookmark] = bookmark))
+        bookmarks.bookmarks.forEach((bookmark) => (allBooks[bookmark.id] = bookmark))
         return { ...allBooks }
     }
     return response
@@ -53,9 +52,11 @@ export const getBookmarksThunk = () => async (dispatch) => {
 export const getUserBookmarksThunk = (userId) => async (dispatch) => {
     const response = await fetch(`/api/bookmarks/user/${userId}`)
     if (response.ok) {
-        const userBooks = await response.json();
-        dispatch(getUserBookmarks(userBooks));
-        return userBooks;
+        const bookmarks = await response.json();
+        dispatch(getUserBookmarks(bookmarks));
+        const all = {};
+        bookmarks.bookmarks.forEach((bookmark) => (all[bookmarks.id] = bookmark));
+        return {...all};
     }
     return response;
 }
@@ -99,14 +100,15 @@ const initialState = {}
 const bookmarksReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
-        case GET_BOOKMARKS:
-            const allBooks = {};
-            action.bookmark.forEach((book) => (allBooks[book.id] = book))
-            return allBooks;
+        case GET_BOOKMARKS:{
+            const newState = {};
+            action.bookmarks.bookmarks.forEach((book) => (newState[book.id] = book))
+            return newState;
+        }
         case GET_USER_BOOKMARKS: {
             const newState = {};
-            action.userBookmarks.forEach(bookmark => newState[bookmark.id] = bookmark)
-            let allBookmarks = {...newState}
+            action.userId.bookmarks.forEach((book) => newState[book.id] = book);
+            let allBookmarks = { ...newState };
             return allBookmarks;
         }
         case ADD_BOOKMARKS:

@@ -21,8 +21,8 @@ class Bookmark(db.Model):
             # "name": self.name,
             "user": self.user.to_dict(),
             "business": self.business.to_dict(),
-            "user_id": self.user_id,
-            "business_id": self.business_id,
+            # "user_id": self.user_id,
+            # "business_id": self.business_id,
         }
 
 # bookmarks = db.Table(

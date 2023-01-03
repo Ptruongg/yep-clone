@@ -8,7 +8,7 @@ function ProfileButton({user}) {
     const dispatch = useDispatch();
     const history = useHistory();
     // console.log("user,", user)
-
+    const sessionUser = useSelector((state) => state.session.user)
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -50,9 +50,9 @@ function ProfileButton({user}) {
                         <li>
                             <div>{user.email}</div>
                         </li> */}
-                        <Link to ='/myBookmarks'>
+                        <NavLink to ={`bookmarks/user/${sessionUser.id}`}>
                             My Bookmarks
-                        </Link>
+                        </NavLink>
                         <li>
                             <div style={{cursor: "pointer"}} onClick={logout}>Log Out</div>
                         </li>
