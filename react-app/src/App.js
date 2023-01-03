@@ -14,11 +14,11 @@ import BusinessDetails from "./components/BusinessDetails";
 import CreateReviews from "./components/BusinessDetails/createReview";
 import DeleteReview from "./components/DeleteReview/DeleteReview";
 import EditReview from "./components/EditReview/editReview";
+import BookmarksList from "./components/Bookmarks/index";
 import DemoUser from "./components/DemoUser";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
 import Navigation from "./components/Navigation";
-import BookmarksList from "./components/Bookmarks";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +52,9 @@ function App() {
             <Route exact path="/">
               <BusinessesList />
             </Route>
+            <Route path="/bookmarks/user/:userId">
+              <BookmarksList />
+            </Route>
             <Route path="/business/create" >
               <CreateBusiness />
             </Route>
@@ -69,9 +72,6 @@ function App() {
             </Route>
             <Route path="/business/:businessId">
               <BusinessDetails />
-            </Route>
-            <Route exact path="/users/businesses">
-              <BookmarksList />
             </Route>
           </Switch>
       )}

@@ -27,16 +27,20 @@ def bookmarks():
 
 # get bookmark owned by a user
 
-
-@bookmark_routes.route("/user/<int:userId>/")
+# @bookmark_routes.route("/user/<int:userId>")
+# def user_bookmarks(userId):
+#     userBookmark = Bookmark.query.filter(Bookmark.user_id == userId).all()
+#     bookmarks = [bookmark.to_dict() for bookmark in userBookmark]
+#     response = {"bookmarks": bookmarks}
+#     return response
+@bookmark_routes.route("/user/<int:userId>")
 def user_bookmarks(userId):
-    user_bookmark = Bookmark.query.filter(Bookmark.user_id == userId).all()
-    bookmark = [bookmark.to_dict() for bookmark in user_bookmark]
-    response = {"bookmarks": bookmark}
+    userBookmark = Bookmark.query.filter(Bookmark.user_id == userId).all()
+    bookmarks = [bookmark.to_dict() for bookmark in userBookmark]
+    response = {"bookmarks": bookmarks}
     return response
 
 # create a bookmark
-
 
 @bookmark_routes.route("/", methods=['POST'])
 # @login_required

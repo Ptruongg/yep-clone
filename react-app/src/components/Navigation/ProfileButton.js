@@ -8,7 +8,7 @@ function ProfileButton({user}) {
     const dispatch = useDispatch();
     const history = useHistory();
     // console.log("user,", user)
-
+    const sessionUser = useSelector((state) => state.session.user)
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -33,10 +33,7 @@ function ProfileButton({user}) {
         dispatch(sessionActions.logout());
         history.push("/")
     };
-    const getUserBookmarks = (e) => {
-        e.preventDefault();
 
-    }
 
     return (
         <>
@@ -53,7 +50,7 @@ function ProfileButton({user}) {
                         <li>
                             <div>{user.email}</div>
                         </li> */}
-                        <NavLink to ='/myBookmarks'>
+                        <NavLink to ={`bookmarks/user/${sessionUser.id}`}>
                             My Bookmarks
                         </NavLink>
                         <li>
