@@ -60,10 +60,10 @@ def create_bookmark():
 
 
 # delete a bookmark
-@bookmark_routes.route("/<bookmark_id>", methods=['DELETE'])
-def delete_bookmark(bookmark_id):
+@bookmark_routes.route("/user/<int:bookmarkId>", methods=['DELETE'])
+def delete_bookmark(bookmarkId):
 
-    bookmark = Bookmark.query.get(bookmark_id)
+    bookmark = Bookmark.query.get(bookmarkId)
     if not bookmark:
         return "The Bookmark you are looking for can not be found!", 404
 

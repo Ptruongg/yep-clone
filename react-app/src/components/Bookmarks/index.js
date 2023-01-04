@@ -17,14 +17,14 @@ const BookmarksList = () => {
     // const [loaded, setLoaded] = useState(false);
 
     const bookmarkList = useSelector((state) => Object.values(state?.bookmarksReducer))
-    console.log(bookmarkList, 'boooooks')
-    const handleClick = (bookmark) => {
-        history.push(`/bookmarks/${bookmark.id}`)
-    }
+    // console.log(bookmarkList, 'boooooks')
+    // const handleClick = (bookmark) => {
+    //     history.push(`/bookmarks/${bookmark.id}`)
+    // }
 
     useEffect(() => {
         dispatch(getUserBookmarksThunk(userId))
-    }, [dispatch, JSON.stringify()])
+    }, [dispatch])
 
     return (
         <div className="homepage">
