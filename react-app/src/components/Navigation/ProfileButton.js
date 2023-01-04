@@ -50,7 +50,7 @@ function ProfileButton({user}) {
                         <li>
                             <div>{user.email}</div>
                         </li> */}
-                        <NavLink to ={`bookmarks/user/${sessionUser.id}`}>
+                        <NavLink to ={`/bookmarks/user/${sessionUser.id}`}>
                             My Bookmarks
                         </NavLink>
                         <li>

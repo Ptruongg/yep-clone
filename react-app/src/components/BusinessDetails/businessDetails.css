@@ -178,3 +178,18 @@
     display: flex;
 
 }
+.amenitiesNmore {
+    display: grid;
+    width: 50%;
+    flex-direction: column;
+    float: left;
+}
+.amenitiesSecond {
+    display: grid;
+    flex-direction: column;
+    width: 50%;
+}
+.amenitiesFirst {
+    display: flex;
+    width: 50%;
+}

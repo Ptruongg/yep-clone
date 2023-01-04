@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBusiness, getAllBusinesses, getBusinessDetails } from "../../store/businesses";
-import { reviewsReducer, getBusinessReviewsThunk, getReviewsThunk } from "../../store/reviews";
-import { addBookmarksThunk, getBookmarksThunk ,bookmarksReducer } from "../../store/bookmarks";
+import { reviewsReducer, getBusinessReviewsThunk, getReviewsThunk, deleteReviewThunk } from "../../store/reviews";
+import { addBookmarksThunk, getBookmarksThunk, bookmarksReducer, getUserBookmarksThunk, removeBookmarksThunk } from "../../store/bookmarks";
 import DeleteReviewModal from "../DeleteReview";
 import "./businessDetails.css"
 import DeleteReview from "../DeleteReview/DeleteReview";
@@ -25,13 +25,13 @@ const BusinessDetails = () => {
     const allUsers = useSelector((state) => state.usersReducer)
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [bookmarked, setBookmarked] = useState(false)
+    const [isLiked, setIsLiked] = useState(false)
     // console.log('bizzzzzzz', businessReviews)
 
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
     const sessionUser = useSelector((state) => state.session.user);
-
+    console.log('session user', sessionUser)
     const businessString = JSON.stringify(businesses);
     const bookmarks = useSelector((state) => state.bookmarksReducer)
 
@@ -39,40 +39,43 @@ const BusinessDetails = () => {
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
         dispatch(getBookmarksThunk())
-        setIsLoaded(true)
+        // setIsLoaded(true)
         // dispatch(getAllUsers())
     }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify()])
 
 
     useEffect(() => {
         Object.values(bookmarks).forEach((bookmark) => {
-            if(bookmark.user_id === sessionUser.id) {
-                setBookmarked(true);
+            if (bookmark.user_id === sessionUser.id) {
+                setIsLiked(true);
                 return
             }
         })
     }, [bookmarks])
 
-    const addBookmark = async () => {
+    const addBookmark = async (businesses, isLiked) => {
         const payload = {
-            business_id: businessId,
+            business_id: businesses.id,
             user_id: sessionUser.id
         }
-        await dispatch (addBookmarksThunk(payload));
-        dispatch(getBookmarksThunk())
-        bookmarked = true
+        await dispatch(addBookmarksThunk(payload));
+        // dispatch(getBookmarksThunk())
+        dispatch(getUserBookmarksThunk(sessionUser.id))
+        isLiked = true
+        history.push(`/bookmarks/user/${sessionUser.id}`)
     }
+
     // useEffect(() => {
     //     dispatch(getReviewsThunk())
     // }, [dispatch, businesses, JSON.stringify(businessReviews)])
     // useEffect(() => {
     //     dispatch(getAllUsers);
     // }, [dispatch, usersString])
-    const handleBookmarked = (e) => {
-        e.preventDefault();
-        setBookmarked(true)
-        history.push(`/bookmarks/user/${sessionUser}`)
-    }
+    // const handleBookmarked = (e) => {
+    //     e.preventDefault();
+    //     setBookmarked(true)
+    //     history.push(`/bookmarks/user/${user}`)
+    // }
     const handleEditClick = (e) => {
         e.preventDefault();
         history.push(`/business/${businessId}/edit`)
@@ -151,10 +154,10 @@ const BusinessDetails = () => {
                         {businesses?.phoneNumber}
                     </div>
                     <section
-                        class=" margin-t4__09f24__G0VVf padding-t4__09f24__Y6aGL border--top__09f24__exYYb border-color--default__09f24__NPAKY"
+                        className="amenitiesNmore"
                         aria-label="Amenities and More"
                     >
-                        <div class=" arrange__09f24__LDfbs gutter-auto__09f24__W9jlL vertical-align-middle__09f24__zU9sE margin-b3__09f24__l9v5d border-color--default__09f24__NPAKY">
+                        <div class="amenitiesFirst">
                             <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
                                 <h2 class="interactive-map-h2">Amenities and More</h2>
                             </div>
@@ -359,147 +362,152 @@ const BusinessDetails = () => {
                                             </div>
                                         </div>
 
-                                        <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                            <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
-                                                <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        role="img"
-                                                        class="icon--24-professional-v2 css-106vfgv"
-                                                    >
-                                                        <svg width="24" height="24" class="icon_svg">
-                                                            <path d="M22 6h-5V3a1 1 0 00-1-1H8a1 1 0 00-1 1v3H2a1 1 0 00-1 1v11a4 4 0 004 4h14a4 4 0 004-4V7a1 1 0 00-1-1zM9 4h6v2H9V4zM8 8h13v3H3V8h5zm2 5h4v2h-4v-2zm9 7H5a2 2 0 01-2-2v-5h5v3a1 1 0 001 1h6a1 1 0 001-1v-3h5v5a2 2 0 01-2 2z"></path>
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        class=" css-1p9ibgf"
-                                                        data-font-weight="semibold"
-                                                    >
-                                                        Good for Working
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                            <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
-                                                <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        role="img"
-                                                        class="icon--24-parking-v2 css-106vfgv"
-                                                    >
-                                                        <svg width="24" height="24" class="icon_svg">
-                                                            <path d="M12 1a11 11 0 0111 11c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1zm0 20a9 9 0 100-18 9 9 0 000 18zm.5-14a3.5 3.5 0 010 7H11v2.5a1 1 0 01-2 0V8a1 1 0 011-1h2.5zm0 5a1.5 1.5 0 000-3H11v3h1.5z"></path>
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        class=" css-1p9ibgf"
-                                                        data-font-weight="semibold"
-                                                    >
-                                                        Street Parking
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                            <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
-                                                <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        role="img"
-                                                        class="icon--24-wifi-v2 css-106vfgv"
-                                                    >
-                                                        <svg width="24" height="24" class="icon_svg">
-                                                            <path d="M13.41 18.39a2 2 0 11-2.827-2.83 2 2 0 012.827 2.83zM17 15.31a1 1 0 01-.71-.29 6 6 0 00-8.48 0 1.022 1.022 0 11-1.47-1.42 8 8 0 0111.32 0 1 1 0 01-.66 1.71zm2.54-2.59a1 1 0 01-.71-.29 9.66 9.66 0 00-13.66 0A1.008 1.008 0 113.75 11c4.564-4.538 11.936-4.538 16.5 0a1 1 0 010 1.42 1 1 0 01-.71.3zm2.17-2.67a1 1 0 01-.71-.29 12.72 12.72 0 00-18 0 1.004 1.004 0 11-1.42-1.42c5.758-5.747 15.082-5.747 20.84 0a1 1 0 01-.71 1.71z"></path>
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        class=" css-1p9ibgf"
-                                                        data-font-weight="semibold"
-                                                    >
-                                                        Free Wi-Fi
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                            <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
-                                                <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        role="img"
-                                                        class="icon--24-wheelchair-v2 css-106vfgv"
-                                                    >
-                                                        <svg width="24" height="24" class="icon_svg">
-                                                            <path d="M22.83 16.64L21 13.9a2 2 0 00-1.67-.9H18v-2.89A3.11 3.11 0 0014.89 7H8V5.66A4.17 4.17 0 003.84 1.5a1 1 0 100 2A2.16 2.16 0 016 5.66v5.55A6 6 0 1012.61 15H16v4a2.38 2.38 0 00-.4.31 2 2 0 102.83 0A2.18 2.18 0 0018 19v-4h1.36l1.81 2.74a1 1 0 101.66-1.1zM7 21.12a4 4 0 110-8 4 4 0 010 8zM11.53 13a.66.66 0 00-.15 0A6 6 0 008 11.21V9h6.89c.613 0 1.11.497 1.11 1.11V13h-4.47z"></path>
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        class=" css-1p9ibgf"
-                                                        data-font-weight="semibold"
-                                                    >
-                                                        Wheelchair Accessible
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                            <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
-                                                <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        role="img"
-                                                        class="icon--24-close-v2 css-xxqqxs"
-                                                    >
-                                                        <svg width="24" height="24" class="icon_svg">
-                                                            <path d="M13.41 12l5.3-5.29a1.004 1.004 0 10-1.42-1.42L12 10.59l-5.29-5.3a1.004 1.004 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42L13.41 12z"></path>
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
-                                                    <span class=" css-qyp8bo" data-font-weight="semibold">
-                                                        Dogs Not Allowed
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                            <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
-                                                <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        alt=""
-                                                        aria-hidden="true"
-                                                        role="img"
-                                                        class="icon--24-bicycle-v2 css-106vfgv"
-                                                    >
-                                                        <svg width="24" height="24" class="icon_svg">
-                                                            <path d="M18.22 11.5h-.31l-2.07-7.6a2 2 0 00-1.92-1.4H12a1 1 0 100 2h1.91l1.14 4.17c-2.06.4-3.12 2-4.07 3.44-.34.54-.711 1.06-1.11 1.56a2.34 2.34 0 00-.25-.3L8.25 9a1 1 0 100-2h-3.5a1 1 0 100 2h1.4L7 11.67a4.92 4.92 0 00-1.22-.17 5 5 0 105 5 4.37 4.37 0 00-.09-.81 13.59 13.59 0 002-2.5c1-1.5 1.65-2.42 2.92-2.6l.4 1.47a5 5 0 102.24-.56h-.03zm-12.44 8A3 3 0 118.33 15a5.21 5.21 0 01-2.51.56 1 1 0 000 2A7.52 7.52 0 008.73 17a3 3 0 01-2.95 2.5zm12.44 0a3 3 0 01-1.7-5.5l.75 2.76a1 1 0 001 .73c.09.01.18.01.27 0a1 1 0 00.7-1.23l-.75-2.75a3.002 3.002 0 01-.23 6l-.04-.01z"></path>
-                                                        </svg>
-                                                    </span>
-                                                </div>
-                                                <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
-                                                    <span
-                                                        class=" css-1p9ibgf"
-                                                        data-font-weight="semibold"
-                                                    >
-                                                        Bike Parking
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div className="amenitiesSecond">
+
+                            <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
+                                    <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                        <span
+                                            alt=""
+                                            aria-hidden="true"
+                                            role="img"
+                                            class="icon--24-professional-v2 css-106vfgv"
+                                        >
+                                            <svg width="24" height="24" class="icon_svg">
+                                                <path d="M22 6h-5V3a1 1 0 00-1-1H8a1 1 0 00-1 1v3H2a1 1 0 00-1 1v11a4 4 0 004 4h14a4 4 0 004-4V7a1 1 0 00-1-1zM9 4h6v2H9V4zM8 8h13v3H3V8h5zm2 5h4v2h-4v-2zm9 7H5a2 2 0 01-2-2v-5h5v3a1 1 0 001 1h6a1 1 0 001-1v-3h5v5a2 2 0 01-2 2z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
+                                        <span
+                                            class=" css-1p9ibgf"
+                                            data-font-weight="semibold"
+                                        >
+                                            Good for Working
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
+                                    <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                        <span
+                                            alt=""
+                                            aria-hidden="true"
+                                            role="img"
+                                            class="icon--24-parking-v2 css-106vfgv"
+                                        >
+                                            <svg width="24" height="24" class="icon_svg">
+                                                <path d="M12 1a11 11 0 0111 11c0 6.075-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1zm0 20a9 9 0 100-18 9 9 0 000 18zm.5-14a3.5 3.5 0 010 7H11v2.5a1 1 0 01-2 0V8a1 1 0 011-1h2.5zm0 5a1.5 1.5 0 000-3H11v3h1.5z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
+                                        <span
+                                            class=" css-1p9ibgf"
+                                            data-font-weight="semibold"
+                                        >
+                                            Street Parking
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
+                                    <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                        <span
+                                            alt=""
+                                            aria-hidden="true"
+                                            role="img"
+                                            class="icon--24-wifi-v2 css-106vfgv"
+                                        >
+                                            <svg width="24" height="24" class="icon_svg">
+                                                <path d="M13.41 18.39a2 2 0 11-2.827-2.83 2 2 0 012.827 2.83zM17 15.31a1 1 0 01-.71-.29 6 6 0 00-8.48 0 1.022 1.022 0 11-1.47-1.42 8 8 0 0111.32 0 1 1 0 01-.66 1.71zm2.54-2.59a1 1 0 01-.71-.29 9.66 9.66 0 00-13.66 0A1.008 1.008 0 113.75 11c4.564-4.538 11.936-4.538 16.5 0a1 1 0 010 1.42 1 1 0 01-.71.3zm2.17-2.67a1 1 0 01-.71-.29 12.72 12.72 0 00-18 0 1.004 1.004 0 11-1.42-1.42c5.758-5.747 15.082-5.747 20.84 0a1 1 0 01-.71 1.71z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
+                                        <span
+                                            class=" css-1p9ibgf"
+                                            data-font-weight="semibold"
+                                        >
+                                            Free Wi-Fi
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
+                                    <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                        <span
+                                            alt=""
+                                            aria-hidden="true"
+                                            role="img"
+                                            class="icon--24-wheelchair-v2 css-106vfgv"
+                                        >
+                                            <svg width="24" height="24" class="icon_svg">
+                                                <path d="M22.83 16.64L21 13.9a2 2 0 00-1.67-.9H18v-2.89A3.11 3.11 0 0014.89 7H8V5.66A4.17 4.17 0 003.84 1.5a1 1 0 100 2A2.16 2.16 0 016 5.66v5.55A6 6 0 1012.61 15H16v4a2.38 2.38 0 00-.4.31 2 2 0 102.83 0A2.18 2.18 0 0018 19v-4h1.36l1.81 2.74a1 1 0 101.66-1.1zM7 21.12a4 4 0 110-8 4 4 0 010 8zM11.53 13a.66.66 0 00-.15 0A6 6 0 008 11.21V9h6.89c.613 0 1.11.497 1.11 1.11V13h-4.47z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
+                                        <span
+                                            class=" css-1p9ibgf"
+                                            data-font-weight="semibold"
+                                        >
+                                            Wheelchair Accessible
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
+                                    <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                        <span
+                                            alt=""
+                                            aria-hidden="true"
+                                            role="img"
+                                            class="icon--24-close-v2 css-xxqqxs"
+                                        >
+                                            <svg width="24" height="24" class="icon_svg">
+                                                <path d="M13.41 12l5.3-5.29a1.004 1.004 0 10-1.42-1.42L12 10.59l-5.29-5.3a1.004 1.004 0 00-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 000 1.42 1 1 0 001.42 0l5.29-5.3 5.29 5.3a1 1 0 001.42 0 1 1 0 000-1.42L13.41 12z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
+                                        <span class=" css-qyp8bo" data-font-weight="semibold">
+                                            Dogs Not Allowed
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                <div class=" arrange__09f24__LDfbs gutter-2__09f24__CCmUo vertical-align-baseline__09f24__fA6Jk border-color--default__09f24__NPAKY">
+                                    <div class=" arrange-unit__09f24__rqHTg border-color--default__09f24__NPAKY">
+                                        <span
+                                            alt=""
+                                            aria-hidden="true"
+                                            role="img"
+                                            class="icon--24-bicycle-v2 css-106vfgv"
+                                        >
+                                            <svg width="24" height="24" class="icon_svg">
+                                                <path d="M18.22 11.5h-.31l-2.07-7.6a2 2 0 00-1.92-1.4H12a1 1 0 100 2h1.91l1.14 4.17c-2.06.4-3.12 2-4.07 3.44-.34.54-.711 1.06-1.11 1.56a2.34 2.34 0 00-.25-.3L8.25 9a1 1 0 100-2h-3.5a1 1 0 100 2h1.4L7 11.67a4.92 4.92 0 00-1.22-.17 5 5 0 105 5 4.37 4.37 0 00-.09-.81 13.59 13.59 0 002-2.5c1-1.5 1.65-2.42 2.92-2.6l.4 1.47a5 5 0 102.24-.56h-.03zm-12.44 8A3 3 0 118.33 15a5.21 5.21 0 01-2.51.56 1 1 0 000 2A7.52 7.52 0 008.73 17a3 3 0 01-2.95 2.5zm12.44 0a3 3 0 01-1.7-5.5l.75 2.76a1 1 0 001 .73c.09.01.18.01.27 0a1 1 0 00.7-1.23l-.75-2.75a3.002 3.002 0 01-.23 6l-.04-.01z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class=" arrange-unit__09f24__rqHTg arrange-unit-fill__09f24__CUubG border-color--default__09f24__NPAKY">
+                                        <span
+                                            class=" css-1p9ibgf"
+                                            data-font-weight="semibold"
+                                        >
+                                            Bike Parking
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -511,16 +519,19 @@ const BusinessDetails = () => {
 
                             {sessionUser && (
                                 <>
-                                <div>
-                                    <button className="bookmarkButton" onClick={() => addBookmark}>
-                                        Bookmark
-                                    </button>
-                                </div>
-                                <div>
-                                    <button className="reviewButton" onClick={handleCreateReview}>
-                                        Create Review
-                                    </button>
-                                </div>
+                                <div className="bookmark-div">
+                                    <div>
+                                        <button className="bookmarkButton" onClick={() => addBookmark(businesses, isLiked)}>
+                                            Bookmark
+                                        </button>
+                                        {/* <button className="deletebookmark" onClick={removeBookmark}></button> */}
+                                    </div>
+                                    <div>
+                                        <button className="reviewButton" onClick={handleCreateReview}>
+                                            Create Review
+                                        </button>
+                                    </div>
+                                    </div>
                                 </>
                             )}
                         </div>
