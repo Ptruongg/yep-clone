@@ -16,10 +16,10 @@ const getUserBookmarks = (userId) => {
         userId
     }
 }
-const addBookmarksAction = (data) => {
+const addBookmarksAction = (bookmark) => {
     return {
         type: ADD_BOOKMARKS,
-        data
+        bookmark
     }
 }
 
@@ -60,18 +60,18 @@ export const getUserBookmarksThunk = (userId) => async (dispatch) => {
     }
     return response;
 }
-export const addBookmarksThunk = (bookmark) => async (dispatch) => {
-    const response = await fetch(`/api/bookmarks`, {
+export const addBookmarksThunk = (payload) => async (dispatch) => {
+    const response = await fetch(`/api/bookmarks/`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(bookmark)
+        body: JSON.stringify(payload)
     })
     if (response.ok) {
-        const data = await response.json()
-        dispatch(addBookmarksAction(data))
-        return data
+        const bookmark = await response.json()
+        dispatch(addBookmarksAction(bookmark))
+        return bookmark
     }
     return response
 }
@@ -112,7 +112,7 @@ const bookmarksReducer = (state = initialState, action) => {
             return allBookmarks;
         }
         case ADD_BOOKMARKS:
-           const newState= {};
+           const newState= { ...state };
            action.bookmarks.forEach((book) => (newState[book.id] = book));
            let bookmarks = {...newState};
            return bookmarks

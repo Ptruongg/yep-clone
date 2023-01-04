@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBusiness, getAllBusinesses, getBusinessDetails } from "../../store/businesses";
 import { reviewsReducer, getBusinessReviewsThunk, getReviewsThunk } from "../../store/reviews";
-import { addBookmarksThunk, bookmarksReducer } from "../../store/bookmarks";
+import { addBookmarksThunk, getBookmarksThunk ,bookmarksReducer } from "../../store/bookmarks";
 import DeleteReviewModal from "../DeleteReview";
 import "./businessDetails.css"
 import DeleteReview from "../DeleteReview/DeleteReview";
@@ -24,6 +24,7 @@ const BusinessDetails = () => {
     )
     const allUsers = useSelector((state) => state.usersReducer)
 
+    const [isLoaded, setIsLoaded] = useState(false)
     const [bookmarked, setBookmarked] = useState(false)
     // console.log('bizzzzzzz', businessReviews)
 
@@ -32,22 +33,35 @@ const BusinessDetails = () => {
     const sessionUser = useSelector((state) => state.session.user);
 
     const businessString = JSON.stringify(businesses);
-    const addBookmark = async (businesses, bookmarked) => {
-        const payload = {
-            business_id: businesses.id,
+    const bookmarks = useSelector((state) => state.bookmarksReducer)
 
-        }
-    }
     useEffect(() => {
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
-
+        dispatch(getBookmarksThunk())
+        setIsLoaded(true)
         // dispatch(getAllUsers())
     }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify()])
 
+
     useEffect(() => {
-        dispatch(addBookmarksThunk())
-    }, [dispatch])
+        Object.values(bookmarks).forEach((bookmark) => {
+            if(bookmark.user_id === sessionUser.id) {
+                setBookmarked(true);
+                return
+            }
+        })
+    }, [bookmarks])
+
+    const addBookmark = async () => {
+        const payload = {
+            business_id: businessId,
+            user_id: sessionUser.id
+        }
+        await dispatch (addBookmarksThunk(payload));
+        dispatch(getBookmarksThunk())
+        bookmarked = true
+    }
     // useEffect(() => {
     //     dispatch(getReviewsThunk())
     // }, [dispatch, businesses, JSON.stringify(businessReviews)])
@@ -498,7 +512,7 @@ const BusinessDetails = () => {
                             {sessionUser && (
                                 <>
                                 <div>
-                                    <button className="bookmarkButton" onClick={addBookmark}>
+                                    <button className="bookmarkButton" onClick={() => addBookmark}>
                                         Bookmark
                                     </button>
                                 </div>
