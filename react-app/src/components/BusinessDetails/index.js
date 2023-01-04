@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteBusiness, getAllBusinesses, getBusinessDetails } from "../../store/businesses";
 import { reviewsReducer, getBusinessReviewsThunk, getReviewsThunk } from "../../store/reviews";
+import { addBookmarksThunk, bookmarksReducer } from "../../store/bookmarks";
 import DeleteReviewModal from "../DeleteReview";
 import "./businessDetails.css"
 import DeleteReview from "../DeleteReview/DeleteReview";
@@ -11,7 +12,7 @@ import EditBusiness from "../EditBusiness/editBusiness";
 import EditBusinessModal from "../EditBusiness";
 import EditReviewModal from "../EditReview";
 
-const BusinessDetails = ({ onClick }) => {
+const BusinessDetails = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     let { businessId } = useParams();
@@ -22,34 +23,42 @@ const BusinessDetails = ({ onClick }) => {
         (review) => review.business_id === businessId
     )
     const allUsers = useSelector((state) => state.usersReducer)
+
+    const [bookmarked, setBookmarked] = useState(false)
     // console.log('bizzzzzzz', businessReviews)
 
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
     const sessionUser = useSelector((state) => state.session.user);
-    // const reviews = useSelector((state) => Object.values(state?.reviews));
-    // const reviewsString = JSON.stringify(reviews);
 
-    // const user = useSelector((state) => state.session.user);
-
-    // const [isLoaded, setIsLoaded] = useState(false);
     const businessString = JSON.stringify(businesses);
-    // const usersString = JSON.stringify(user);
-    // const user = useSelector((state) => Object.values(state.users));
-    // const reviews = useSelector((state) => state.reviewsReducer[review]);
-    // const reviewsString = JSON.stringify(reviews)
+    const addBookmark = async (businesses, bookmarked) => {
+        const payload = {
+            business_id: businesses.id,
+
+        }
+    }
     useEffect(() => {
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
+
         // dispatch(getAllUsers())
-    }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews)])
+    }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify()])
+
+    useEffect(() => {
+        dispatch(addBookmarksThunk())
+    }, [dispatch])
     // useEffect(() => {
     //     dispatch(getReviewsThunk())
     // }, [dispatch, businesses, JSON.stringify(businessReviews)])
     // useEffect(() => {
     //     dispatch(getAllUsers);
     // }, [dispatch, usersString])
-
+    const handleBookmarked = (e) => {
+        e.preventDefault();
+        setBookmarked(true)
+        history.push(`/bookmarks/user/${sessionUser}`)
+    }
     const handleEditClick = (e) => {
         e.preventDefault();
         history.push(`/business/${businessId}/edit`)
@@ -487,11 +496,18 @@ const BusinessDetails = ({ onClick }) => {
                             <h2>Reviews ({businessReviews.length})</h2>
 
                             {sessionUser && (
+                                <>
+                                <div>
+                                    <button className="bookmarkButton" onClick={addBookmark}>
+                                        Bookmark
+                                    </button>
+                                </div>
                                 <div>
                                     <button className="reviewButton" onClick={handleCreateReview}>
                                         Create Review
                                     </button>
                                 </div>
+                                </>
                             )}
                         </div>
 
