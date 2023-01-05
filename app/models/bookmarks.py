@@ -8,8 +8,8 @@ class Bookmark(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     # name = db.Column(db.String, nullable=False)
-    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)
 
     #relationships
     business = db.relationship("Business", back_populates='bookmark')

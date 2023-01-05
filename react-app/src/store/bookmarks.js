@@ -16,17 +16,17 @@ const getUserBookmarks = (userId) => {
         userId
     }
 }
-const addBookmarksAction = (data) => {
+const addBookmarksAction = (bookmark) => {
     return {
         type: ADD_BOOKMARKS,
-        data
+        bookmark
     }
 }
 
-const remBookmarksAction = (data) => {
+const remBookmarksAction = (bookmarkId) => {
     return {
         type: REM_BOOKMARKS,
-        data
+        bookmarkId
     }
 }
 
@@ -56,37 +56,35 @@ export const getUserBookmarksThunk = (userId) => async (dispatch) => {
         dispatch(getUserBookmarks(bookmarks));
         const all = {};
         bookmarks.bookmarks.forEach((bookmark) => (all[bookmarks.id] = bookmark));
-        return {...all};
+        return { ...all };
     }
     return response;
 }
-export const addBookmarksThunk = (bookmark) => async (dispatch) => {
-    const response = await fetch(`/api/bookmarks`, {
+export const addBookmarksThunk = (payload) => async (dispatch) => {
+    const response = await fetch("/api/bookmarks/", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(bookmark)
+        body: JSON.stringify(payload)
     })
     if (response.ok) {
-        const data = await response.json()
-        dispatch(addBookmarksAction(data))
-        return data
+        const bookmark = await response.json()
+        dispatch(addBookmarksAction(bookmark))
+        return bookmark
     }
     return response
 }
 
-export const removeBookmarksThunk = (bookmarkId, userId) => async (dispatch) => {
-    const response = await fetch(`/api/bookmarks/user/${bookmarkId}`, {
+export const removeBookmarksThunk = (bookmarkId) => async (dispatch) => {
+    const response = await fetch(`/api/bookmarks/${bookmarkId}`, {
         method: "DELETE"
     })
+    console.log('reeeeeeeeees' , response)
     if (response.ok) {
-        const data = await response.json()
-        // console.log("DATA IN REMOVE APP THUNj", data)
-        dispatch(remBookmarksAction(data))
-        return data
+        dispatch(remBookmarksAction(bookmarkId));
     }
-    return response
+
 }
 
 // export const clearUserAppr = () => async (dispatch) => {
@@ -100,7 +98,7 @@ const initialState = {}
 const bookmarksReducer = (state = initialState, action) => {
     let newState = { ...state }
     switch (action.type) {
-        case GET_BOOKMARKS:{
+        case GET_BOOKMARKS: {
             const newState = {};
             action.bookmarks.bookmarks.forEach((book) => (newState[book.id] = book))
             return newState;
@@ -111,13 +109,16 @@ const bookmarksReducer = (state = initialState, action) => {
             let allBookmarks = { ...newState };
             return allBookmarks;
         }
-        case ADD_BOOKMARKS:
-           const newState= {};
-           action.bookmarks.forEach((book) => (newState[book.id] = book));
-           let bookmarks = {...newState};
-           return bookmarks
-        case REM_BOOKMARKS:
-            return { ...state, current_bookmarks: state.current_bookmarks.filter((e) => e !== action.data) }
+        case ADD_BOOKMARKS:{
+            const newState = { ...state };
+            newState[action.bookmark.id] = action.bookmark
+            return newState
+        }
+        case REM_BOOKMARKS: {
+           const newState = { ...state }
+           delete newState[action.bookmarkId]
+           return newState
+        }
         // case CLEAR_BOOKMARKS:
         //     return {...initialState}
         default:

@@ -10,7 +10,7 @@ bookmark_routes = Blueprint("bookmarks", __name__)
 # get all bookmarks
 
 
-@bookmark_routes.route("/")
+@bookmark_routes.route("/", methods=['GET'])
 def bookmarks():
     all_bookmarks = Bookmark.query.all()
     bookmarks = [bookmark.to_dict() for bookmark in all_bookmarks]
@@ -60,12 +60,11 @@ def create_bookmark():
 
 
 # delete a bookmark
-@bookmark_routes.route("/user/<int:bookmarkId>", methods=['DELETE'])
-def delete_bookmark(bookmarkId):
-
-    bookmark = Bookmark.query.get(bookmarkId)
-    if not bookmark:
-        return "The Bookmark you are looking for can not be found!", 404
+@bookmark_routes.route("/<bookmark_id>", methods=['DELETE'])
+def delete_bookmark(bookmark_id):
+    bookmark = Bookmark.query.get(bookmark_id)
+    # if not bookmark:
+    #     return "The Bookmark you are looking for can not be found!", 404
 
     db.session.delete(bookmark)
     db.session.commit()
