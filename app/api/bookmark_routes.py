@@ -61,10 +61,11 @@ def create_bookmark():
 
 # delete a bookmark
 @bookmark_routes.route("/<bookmark_id>", methods=['DELETE'])
+@login_required
 def delete_bookmark(bookmark_id):
     bookmark = Bookmark.query.get(bookmark_id)
-    # if not bookmark:
-    #     return "The Bookmark you are looking for can not be found!", 404
+    if not bookmark:
+        return "The Bookmark you are looking for can not be found!", 404
 
     db.session.delete(bookmark)
     db.session.commit()

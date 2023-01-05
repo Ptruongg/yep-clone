@@ -26,14 +26,15 @@ const BusinessDetails = () => {
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [isLiked, setIsLiked] = useState(false)
+    const [isBookmarked, setBookmarked] = useState(false)
     // console.log('bizzzzzzz', businessReviews)
 
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
 
     const sessionUser = useSelector((state) => state.session.user);
-    console.log('session user', sessionUser)
+    // console.log('session user', sessionUser)
     const businessString = JSON.stringify(businesses);
-    const bookmarks = useSelector((state) => state.bookmarksReducer)
+    const bookmarks = useSelector((state) => Object.values(state.bookmarksReducer))
 
     useEffect(() => {
         dispatch(getAllBusinesses());
@@ -41,17 +42,20 @@ const BusinessDetails = () => {
         dispatch(getBookmarksThunk())
         // setIsLoaded(true)
         // dispatch(getAllUsers())
-    }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify()])
+    }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify(bookmarks)])
 
 
     useEffect(() => {
         Object.values(bookmarks).forEach((bookmark) => {
             if (bookmark.user_id === sessionUser.id) {
                 setIsLiked(true);
+                setBookmarked(true)
                 return
             }
         })
     }, [bookmarks])
+
+
 
     const addBookmark = async (businesses, isLiked) => {
         const payload = {
@@ -89,6 +93,10 @@ const BusinessDetails = () => {
         e.preventDefault();
         history.push(`/business/${businessId}/createReview`);
     };
+    console.log('bbizzzzzzzzzzzzz', bookmarks)
+    // console.log('ssssssssssseee', sessionUser)
+    console.log('userId', sessionUser?.id)
+    console.log('bookmarkssssss', bookmarks.user_id)
     // const fetchUserbyId = (user_id) => {
     //     if (!allUsers[user_id]) {
     //         return ''
@@ -130,6 +138,7 @@ const BusinessDetails = () => {
                     </div>
                 )}
             </div>
+
             <div className="businessImg">
                 {/* <div className="name">{businesses?.name}</div> */}
                 <img src={businesses?.imageUrl} className='images' onError={({ currentTarget }) => {
@@ -513,76 +522,98 @@ const BusinessDetails = () => {
                             </div>
                         </div>
                     </section>
+
                     <div className="businessReviews">
                         <div className="reviews-header">
                             <h2>Reviews ({businessReviews.length})</h2>
+                            {/* <div>
+                                {bookmarks && !isBookmarked ? (
 
-                            {sessionUser && (
-                                <>
+                                        < div >
+                                            <button className="bookmarkButton" onClick={() => addBookmark(businesses, isLiked)}>
+                                                Bookmark
+                                            </button>
+                                        </div>
+
+                                ) : (<div> You have already bookmarked this business </div>)}
+                            </div> */}
+                            <div className="likes-div">
+                                {bookmarks && isBookmarked ? (
+                                    <button
+                                        onClick={() => addBookmark(businesses, isLiked)}
+
+                                    >Add Bookmark</button>
+                                ) : (
+                                    <i
+                                        style={{ color: "rgb(249, 24, 128)" }}
+                                        onClick={() => addBookmark(businesses, isLiked)}
+
+                                    >Removed</i>
+                                )}
+                            </div>
+
+                        </div>
+                        {sessionUser && (
+                            <>
                                 <div className="bookmark-div">
-                                    <div>
-                                        <button className="bookmarkButton" onClick={() => addBookmark(businesses, isLiked)}>
-                                            Bookmark
-                                        </button>
-                                        {/* <button className="deletebookmark" onClick={removeBookmark}></button> */}
-                                    </div>
+
                                     <div>
                                         <button className="reviewButton" onClick={handleCreateReview}>
                                             Create Review
                                         </button>
                                     </div>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-
-                        {businessReviews.map((rev) => (
-
-                            <div className="each-review-container" key={rev.id}>
-                                <div className="userName">
-                                    {rev?.user?.first_name}  {rev?.user?.last_name}
                                 </div>
+                            </>
+                        )}
+                    </div>
 
-                                <div className="reviewContent">
-                                    {rev.review}
-                                    {sessionUser && sessionUser.id === rev.user_id && (
-                                        <div className="edit-n-delete-buttons">
-                                            <div className="edit-review" style={{ justifycontent: "center", alignitems: "center" }}>
-                                                <EditReviewModal reviewId={rev.id} businessId={businessId} />
-                                            </div>
-                                            <div className='delete-review' style={{ justifycontent: "center", alignitems: "center" }} >
-                                                <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="stars">
-                                    <div className="starIcon" style={{ marginright: '10px' }}>{<i className="fas fa-star"></i>}</div>
-                                    <div className="rating">
-                                        {rev.rating}
-                                    </div>
-                                </div>
+                    {businessReviews.map((rev) => (
 
+                        <div className="each-review-container" key={rev.id}>
+                            <div className="userName">
+                                {rev?.user?.first_name}  {rev?.user?.last_name}
                             </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="busDetails-scroll">
-                    <div className="side-bar">
-                        <div className="address">
-                            {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}
-                            <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
-                        </div>
-                        <div className="phone-Number">
-                            {businesses?.phoneNumber}
-                            <img src={'https://static.vecteezy.com/system/resources/previews/003/720/498/original/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
-                        </div>
-                    </div>
-                </div>
 
+                            <div className="reviewContent">
+                                {rev.review}
+                                {sessionUser && sessionUser.id === rev.user_id && (
+                                    <div className="edit-n-delete-buttons">
+                                        <div className="edit-review" style={{ justifycontent: "center", alignitems: "center" }}>
+                                            <EditReviewModal reviewId={rev.id} businessId={businessId} />
+                                        </div>
+                                        <div className='delete-review' style={{ justifycontent: "center", alignitems: "center" }} >
+                                            <DeleteReviewModal reviewId={rev.id} businessId={businessId} />
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                            <div className="stars">
+                                <div className="starIcon" style={{ marginright: '10px' }}>{<i className="fas fa-star"></i>}</div>
+                                <div className="rating">
+                                    {rev.rating}
+                                </div>
+                            </div>
+
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className="busDetails-scroll">
+                <div className="side-bar">
+                    <div className="address">
+                        {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}
+                        <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
+                    </div>
+                    <div className="phone-Number">
+                        {businesses?.phoneNumber}
+                        <img src={'https://static.vecteezy.com/system/resources/previews/003/720/498/original/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
+                    </div>
+                </div>
             </div>
 
-        </div >
+        </div>
+
+
     )
 }
 

@@ -3,6 +3,7 @@ import { useLocation, useHistory, Link, NavLink, useParams } from 'react-router-
 import { useDispatch, useSelector } from 'react-redux'
 import { getBookmarksThunk, getUserBookmarksThunk, removeBookmarksThunk } from '../../store/bookmarks';
 import "./bookmarks.css"
+import RemoveBookmarkModal from '../RemoveBookmark';
 
 // import * as profileActions from '../../store/songs'
 
@@ -20,11 +21,11 @@ const BookmarksList = () => {
     // const handleClick = (bookmark) => {
     //     history.push(`/bookmarks/${bookmark.id}`)
     // }
-    const removeBookmark = () => {
-        // e.preventDefault();
-        dispatch(removeBookmarksThunk(bookmarkList.id));
-        // history.push(`/bookmarks/user/${sessionUser.id}`)
-    }
+    // const removeBookmark = (bookmarkList) => {
+    //     // e.preventDefault();
+    //     dispatch(removeBookmarksThunk(bookmarkList.id));
+    //     // history.push(`/bookmarks/user/${sessionUser.id}`)
+    // }
     useEffect(() => {
         dispatch(getUserBookmarksThunk(userId))
     }, [dispatch])
@@ -38,9 +39,14 @@ const BookmarksList = () => {
                     bookmarkList.map((bus) => (
                         <>
                             <div>
-                                <button className="deletebookmark" onClick={() => removeBookmark(bus.id)}></button>
+                                <div>{bus.business.name}</div>
+                                <div>id {bus.id}</div>
+                                <RemoveBookmarkModal bookmarkId={bus.id}/>
+
+                                {/* <div>
+                                    <button className="deletebookmark" onClick={() => removeBookmark(bus.id)}>Remove Bookmark</button>
+                                </div> */}
                             </div>
-                            <div>{bus.business.name}</div>
                             <NavLink to={`/business/${bus.business.id}`}>
                                 <div className="busCard" key={bus.business.id}>
 
