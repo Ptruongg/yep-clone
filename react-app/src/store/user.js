@@ -7,13 +7,13 @@ const getUsers = (users) => {
   };
 };
 
-// export const getAllUsers = () => async (dispatch) => {
-//   const response = await fetch(`/api/users`);
+export const getAllUsers = () => async (dispatch) => {
+  const response = await fetch(`/api/users`);
 
-//   const users = await response.json();
-//   dispatch(getUsers(users));
-//   return users;
-// };
+  const users = await response.json();
+  dispatch(getUsers(users));
+  return users;
+};
 
 const usersReducer = (state = {}, action) => {
   switch (action.type) {

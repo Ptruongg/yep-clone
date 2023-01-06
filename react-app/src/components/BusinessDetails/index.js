@@ -24,6 +24,7 @@ const BusinessDetails = () => {
     )
     const allUsers = useSelector((state) => state.usersReducer)
 
+
     const [isLoaded, setIsLoaded] = useState(false)
     const [isLiked, setIsLiked] = useState(false)
     const [isBookmarked, setBookmarked] = useState(false)
@@ -47,32 +48,25 @@ const BusinessDetails = () => {
 
     useEffect(() => {
         Object.values(bookmarks).forEach((bookmark) => {
-            if (bookmark.user_id === sessionUser.id) {
-                setIsLiked(true);
-                setBookmarked(true)
-                return
-            }
+            // if (bookmark.user_id === sessionUser.id) {
+            setIsLiked(true);
+            setBookmarked(true)
+            return
+            // }
         })
     }, [bookmarks])
-
-
-
-
 
     const addBookmark = async (businesses, isLiked) => {
         const payload = {
             business_id: businesses.id,
             user_id: sessionUser.id
         }
-        // if (businesses.id !== bookmarks.business.id) {
-            await dispatch(addBookmarksThunk(payload));
-            // dispatch(getBookmarksThunk())
-            dispatch(getUserBookmarksThunk(sessionUser.id))
-            isLiked = true
-            history.push(`/bookmarks/user/${sessionUser.id}`)
-        // } else {
-        //     return "You have already bookedmarked this business"
-        // }
+
+        await dispatch(addBookmarksThunk(payload));
+        // dispatch(getBookmarksThunk())
+        dispatch(getUserBookmarksThunk(sessionUser.id))
+        isLiked = true
+        history.push(`/bookmarks/user/${sessionUser.id}`)
     }
 
     // useEffect(() => {
@@ -543,7 +537,15 @@ const BusinessDetails = () => {
 
                                 ) : (<div> You have already bookmarked this business </div>)}
                             </div> */}
-                            <div className="likes-div">
+                            <div className="bookmarks-div">
+
+                                {/* {sessionUser && (
+
+                                    <button
+                                        onClick={() => addBookmark(businesses, isLiked)}
+
+                                    >Add Bookmark</button>
+                                )} */}
                                 {bookmarks && isBookmarked ? (
                                     <button
                                         onClick={() => addBookmark(businesses, isLiked)}

@@ -9,7 +9,7 @@ function RemoveBookmarkModal({ bookmarkId }) {
 
     return (
         <>
-            <div className='remove-bookmark-button' onClick={() => setShowModal(true)}>Remove Bookmark</div>
+            <button className='remove-bookmark-button' onClick={() => setShowModal(true)}>Remove Bookmark</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <RemoveBookmark bookmarkId={bookmarkId} onClick={() => setShowModal(false)} />
