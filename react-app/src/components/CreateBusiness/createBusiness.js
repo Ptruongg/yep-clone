@@ -37,34 +37,6 @@ const CreateBusiness = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const imgRegex = new RegExp(
-            /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
-        );
-        const phoneRegex = new RegExp(
-            /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
-        )
-        const zipcodeRegex = new RegExp(
-            /^\d{5}(?:[-\s]\d{4})?$/
-        )
-        if (imageUrl && !imgRegex.test(imageUrl)) {
-            setErrors([
-                "Invalid Image Url! URL must start with https:// and contain a .png, .jpg, .jpeg, .gif, .png or .svg!",
-            ]);
-            return;
-        };
-        if (description.length < 5) {
-            setErrors(["Description length must be longer than 5 characters"])
-            return;
-        }
-        if (phoneNumber && !phoneRegex.test(phoneNumber)) {
-            setErrors(["Please enter in a valid phone number"])
-            return;
-        }
-        if (zipcode && !zipcodeRegex.test(zipcode)) {
-            setErrors(["Please enter in a valid zipcode"])
-            return;
-        }
-
         if (!name) {
             setErrors(['Please enter in a name'])
             return;
@@ -97,6 +69,35 @@ const CreateBusiness = () => {
             setErrors(['Please enter in a valid phone number'])
             return;
         }
+
+        const imgRegex = new RegExp(
+            /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))/
+        );
+        const phoneRegex = new RegExp(
+            /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/
+        )
+        const zipcodeRegex = new RegExp(
+            /^\d{5}(?:[-\s]\d{4})?$/
+        )
+        if (imageUrl && !imgRegex.test(imageUrl)) {
+            setErrors([
+                "Invalid Image Url! URL must start with https:// and contain a .png, .jpg, .jpeg, .gif, .png or .svg!",
+            ]);
+            return;
+        };
+        if (description.length < 5) {
+            setErrors(["Description length must be longer than 5 characters"])
+            return;
+        }
+        if (phoneNumber && !phoneRegex.test(phoneNumber)) {
+            setErrors(["Please enter in a valid phone number"])
+            return;
+        }
+        if (zipcode && !zipcodeRegex.test(zipcode)) {
+            setErrors(["Please enter in a valid zipcode"])
+            return;
+        }
+
         if (phoneNumber.length >= 11 || phoneNumber <= 10) {
             setErrors(['Phone Number format must be 0001112222'])
             return;
@@ -122,6 +123,10 @@ const CreateBusiness = () => {
             user_id: user.id,
             imageUrl: imageUrl
         }
+        if (!data) {
+            setErrors(['Please fill out the required fields'])
+            return;
+        }
         let created = await dispatch(businessActions.createBusiness(data))
         if (created) {
             history.push("/")
@@ -142,7 +147,7 @@ const CreateBusiness = () => {
                             </ul>
                         )}
                     </div>
-                    <div className="form" style={{ justifyContent: "center", alignItems: "center"}}>
+                    <div className="form" style={{ justifyContent: "center", alignItems: "center" }}>
                         <div>
                             <h2>Create Your Business</h2>
                         </div>
@@ -155,7 +160,7 @@ const CreateBusiness = () => {
                                 placeholder="Business Name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -167,7 +172,7 @@ const CreateBusiness = () => {
                                 placeholder="Description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -179,7 +184,7 @@ const CreateBusiness = () => {
                                 placeholder="Address"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -191,7 +196,7 @@ const CreateBusiness = () => {
                                 placeholder="City"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -203,7 +208,7 @@ const CreateBusiness = () => {
                                 placeholder="State"
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -215,7 +220,7 @@ const CreateBusiness = () => {
                                 placeholder="Zipcode"
                                 value={zipcode}
                                 onChange={(e) => setZipcode(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -227,7 +232,7 @@ const CreateBusiness = () => {
                                 placeholder="Country"
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -239,7 +244,7 @@ const CreateBusiness = () => {
                                 placeholder="Phone Number"
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
-                                style={{justifyContent: "center", width: "85%"}}
+                                style={{ justifyContent: "center", width: "85%" }}
                             />
                         </div>
                         <div>
@@ -251,7 +256,7 @@ const CreateBusiness = () => {
                                 placeholder="Image"
                                 value={imageUrl}
                                 onChange={(e) => setImageUrl(e.target.value)}
-                                style={{justifyContent: "center", width: "85%", marginBottom: "20px"}}
+                                style={{ justifyContent: "center", width: "85%", marginBottom: "20px" }}
                             />
                         </div>
                     </div>

@@ -44,7 +44,7 @@ def user_bookmarks(userId):
 
 @bookmark_routes.route("/", methods=['POST'])
 # @login_required
-def create_bookmark():
+def create_bookmark(user_id, business_id):
     new_bookmark = BookmarkForm()
     new_bookmark["csrf_token"].data = request.cookies["csrf_token"]
     if new_bookmark.validate_on_submit():

@@ -35,7 +35,7 @@ const BusinessDetails = () => {
     // console.log('session user', sessionUser)
     const businessString = JSON.stringify(businesses);
     const bookmarks = useSelector((state) => Object.values(state.bookmarksReducer))
-
+    const bookmark = useSelector((state) => state.bookmarksReducer)
     useEffect(() => {
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
@@ -57,16 +57,22 @@ const BusinessDetails = () => {
 
 
 
+
+
     const addBookmark = async (businesses, isLiked) => {
         const payload = {
             business_id: businesses.id,
             user_id: sessionUser.id
         }
-        await dispatch(addBookmarksThunk(payload));
-        // dispatch(getBookmarksThunk())
-        dispatch(getUserBookmarksThunk(sessionUser.id))
-        isLiked = true
-        history.push(`/bookmarks/user/${sessionUser.id}`)
+        // if (businesses.id !== bookmarks.business.id) {
+            await dispatch(addBookmarksThunk(payload));
+            // dispatch(getBookmarksThunk())
+            dispatch(getUserBookmarksThunk(sessionUser.id))
+            isLiked = true
+            history.push(`/bookmarks/user/${sessionUser.id}`)
+        // } else {
+        //     return "You have already bookedmarked this business"
+        // }
     }
 
     // useEffect(() => {
@@ -93,10 +99,10 @@ const BusinessDetails = () => {
         e.preventDefault();
         history.push(`/business/${businessId}/createReview`);
     };
-    console.log('bbizzzzzzzzzzzzz', bookmarks)
-    // console.log('ssssssssssseee', sessionUser)
-    console.log('userId', sessionUser?.id)
-    console.log('bookmarkssssss', bookmarks.user_id)
+    // console.log('bbizzzzzzzzzzzzz', bookmarks)
+    // // console.log('ssssssssssseee', sessionUser)
+    // console.log('userId', sessionUser?.id)
+    // console.log('bookmarkssssss', bookmarks[0].user_id)
     // const fetchUserbyId = (user_id) => {
     //     if (!allUsers[user_id]) {
     //         return ''
