@@ -46,12 +46,23 @@ def user_bookmarks(userId):
 # @login_required
 def create_bookmark():
     new_bookmark = BookmarkForm()
+    curr_user = new_bookmark.data['user_id']
+    business_id = new_bookmark.data['business_id']
+    print ('yeeeeeeeeeeee', curr_user)
     new_bookmark["csrf_token"].data = request.cookies["csrf_token"]
     if new_bookmark.validate_on_submit():
+
+        all_bookmarks = Bookmark.query.filter(Bookmark.business_id == business_id).all()
+
+        for book in all_bookmarks:
+            if book.user_id == curr_user:
+                return "Error: You have already bookmarked this business", 400
+
         newBookmark = Bookmark(
             user_id=new_bookmark.data['user_id'],
             business_id=new_bookmark.data['business_id']
         )
+
         db.session.add(newBookmark)
         db.session.commit()
         return newBookmark.to_dict()

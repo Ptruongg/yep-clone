@@ -25,7 +25,7 @@ const BusinessDetails = () => {
     const allUsers = useSelector((state) => state.usersReducer)
 
 
-    const [isLoaded, setIsLoaded] = useState(false)
+
     const [isLiked, setIsLiked] = useState(false)
     const [isBookmarked, setBookmarked] = useState(false)
     // console.log('bizzzzzzz', businessReviews)
@@ -41,6 +41,7 @@ const BusinessDetails = () => {
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
         dispatch(getBookmarksThunk())
+        // dispatch(userHasBookmarked())
         // setIsLoaded(true)
         // dispatch(getAllUsers())
     }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify(bookmarks)])
@@ -68,7 +69,14 @@ const BusinessDetails = () => {
         isLiked = true
         history.push(`/bookmarks/user/${sessionUser.id}`)
     }
-
+    // const userHasBookmarked = () => {
+    //     for (let i = 0; i < bookmarks.length; i++) {
+    //         if (sessionUser.id === bookmarks.business[i].user_id) {
+    //             setIsLiked(true)
+    //             return
+    //         }
+    //     }
+    // }
     // useEffect(() => {
     //     dispatch(getReviewsThunk())
     // }, [dispatch, businesses, JSON.stringify(businessReviews)])
@@ -554,7 +562,7 @@ const BusinessDetails = () => {
                                 ) : (
                                     <i
                                         style={{ color: "rgb(249, 24, 128)" }}
-                                        onClick={() => addBookmark(businesses, isLiked)}
+                                        onClick={() => removeBookmarksThunk(bookmark)}
 
                                     >Removed</i>
                                 )}
