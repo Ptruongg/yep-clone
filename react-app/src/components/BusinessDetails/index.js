@@ -38,10 +38,10 @@ const BusinessDetails = () => {
     const bookmarks = useSelector((state) => Object.values(state.bookmarksReducer))
     const bookmark = useSelector((state) => state.bookmarksReducer)
     useEffect(() => {
+        // dispatch(userHasBookmarked())
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
         dispatch(getBookmarksThunk())
-        // dispatch(userHasBookmarked())
         // setIsLoaded(true)
         // dispatch(getAllUsers())
     }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify(bookmarks)])
@@ -69,8 +69,9 @@ const BusinessDetails = () => {
         isLiked = true
         history.push(`/bookmarks/user/${sessionUser.id}`)
     }
+
     // const userHasBookmarked = () => {
-    //     for (let i = 0; i < bookmarks.length; i++) {
+    //     for (let i = 0; i < bookmarkslength; i++) {
     //         if (sessionUser.id === bookmarks.business[i].user_id) {
     //             setIsLiked(true)
     //             return

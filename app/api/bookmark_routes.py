@@ -7,8 +7,8 @@ import os
 
 bookmark_routes = Blueprint("bookmarks", __name__)
 
-# get all bookmarks
 
+# get all bookmarks
 
 @bookmark_routes.route("/", methods=['GET'])
 def bookmarks():
