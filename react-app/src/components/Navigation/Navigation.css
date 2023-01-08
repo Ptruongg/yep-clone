@@ -42,6 +42,7 @@
     height: 100%;
     position: relative;
     cursor: pointer;
+    text-align: center;
 }
 .loginNavBar {
     display: flex;
@@ -203,6 +204,7 @@
     justify-content: center;
     align-items: center;
     height: 40px;
+    background-color: none;
 }
 .create-business-button a {
     text-decoration: none;
@@ -215,7 +217,7 @@
     cursor: pointer;
     /* border: 1px solid gray;
     border-radius: 20px; */
-    width: 180px;
+    width: 160px;
     height: 40px;
 
 

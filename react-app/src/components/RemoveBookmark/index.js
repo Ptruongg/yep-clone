@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Modal } from '../../context/Modal'
 import RemoveBookmark from './removeBookmark'
-
+import "./removeBookmark.css"
 
 
 function RemoveBookmarkModal({ bookmarkId }) {

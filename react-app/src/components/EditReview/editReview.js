@@ -84,10 +84,11 @@ const EditReview = ({ reviewId, businessId, onClick }) => {
                         </ul>
                     )}
                 </div>
-                <div>
-                    <h2>Edit your Review </h2>
-                </div>
+
                 <div className='review-inputs'>
+                    <div>
+                        <h2>Edit your Review </h2>
+                    </div>
                     <div className='textinput'>
                         <label>
                             Review:

@@ -65,7 +65,7 @@ const CreateReviews = () => {
                         </ul>
                     )}
                 </div>
-                <div>
+                <div className="review-boxes">
                     <div>
                         <label>
                             Review:
@@ -75,7 +75,7 @@ const CreateReviews = () => {
                             placeholder="Review Message"
                             value={review}
                             onChange={(e) => setReview(e.target.value)}
-                            style={{ height: "90px", width: "500px" }}
+                            style={{ height: "90px", width: "500px", marginLeft: "5px" }}
                             required
                         />
                     </div>
@@ -90,7 +90,7 @@ const CreateReviews = () => {
                             max={5}
                             value={rating}
                             onChange={(e) => setRating(e.target.value)}
-                            style={{ height: "20px", width: "25%", marginTop: "10px" }}
+                            style={{ height: "20px", width: "500px", marginTop: "20px", marginLeft: "10px" }}
                             required
                         />
                     </div>

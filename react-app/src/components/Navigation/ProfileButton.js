@@ -4,7 +4,7 @@ import * as sessionActions from '../../store/session';
 import { Link, NavLink, useHistory } from "react-router-dom"
 import "./Navigation.css"
 
-function ProfileButton({user}) {
+function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const history = useHistory();
     // console.log("user,", user)
@@ -50,11 +50,15 @@ function ProfileButton({user}) {
                         <li>
                             <div>{user.email}</div>
                         </li> */}
-                        <NavLink to ={`/bookmarks/user/${sessionUser.id}`}>
-                            My Bookmarks
-                        </NavLink>
+
+                            <NavLink to={`/bookmarks/user/${sessionUser.id}`}
+                            className="myBookmarksButton"
+                            style={{color: "black"}}>
+                                My Bookmarks
+                            </NavLink>
+
                         <li>
-                            <div style={{cursor: "pointer"}} onClick={logout}>Log Out</div>
+                            <div style={{ cursor: "pointer" }} onClick={logout}>Log Out</div>
                         </li>
                     </div>
                 )}

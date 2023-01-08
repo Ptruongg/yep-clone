@@ -26,11 +26,11 @@ function RemoveBookmark({ bookmarkId, onClick }) {
                     Are you sure you want to remove this bookmark?
                 </div>
             </div>
-            <div className="delete-btns-outer">
+            <div className="remove-book">
                 {/* <div className="delete-option cancel" onClick={onClick}>
                     Cancel
                 </div> */}
-                <div className="delete-review-button">
+                <div className="delete-bookmark-button">
                     <button style={{ borderRadius: "5em", color: "white", backgroundColor: "red" }} className='deleteComment' onClick={removeBookmarkId}>Remove Bookmark</button>
                 </div>
 

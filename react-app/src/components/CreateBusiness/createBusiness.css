@@ -9,7 +9,7 @@
     align-items: center;
     cursor: pointer;
 } */
-.background {
+/* .background {
     background-image: url('https://photos.smugmug.com/photos/i-zQvX2Kt/2/X2/i-zQvX2Kt-X2.jpg');
     top: 0;
     left: 0;
@@ -17,10 +17,10 @@
     bottom: 0;
     background-size: cover;
     position: fixed;
-}
+} */
 .formContainer {
     margin: 50px auto 0 auto;
-    width: 30%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     border: 1px solid black;
@@ -29,9 +29,9 @@
     padding-right: 25px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20%;
-    background-color: lightgrey;
+    background-color: white;
     font-weight: bold;
+    height: 65%;
 }
 
 .business label {
@@ -61,7 +61,13 @@
     width: 90%;
 }
 
-.form .business {
+#form .business {
     justify-content: center;
     align-items: center;
 }
+
+/* .errors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
