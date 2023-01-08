@@ -27,7 +27,7 @@ const BusinessDetails = () => {
 
 
     const [isLiked, setIsLiked] = useState(false)
-    const [isBookmarked, setBookmarked] = useState(false)
+    // const [isBookmarked, setBookmarked] = useState(false)
     // console.log('bizzzzzzz', businessReviews)
 
     // const allUsers= useSelector((state) => Object.values(state.usersReducer))
@@ -37,6 +37,9 @@ const BusinessDetails = () => {
     const businessString = JSON.stringify(businesses);
     const bookmarks = useSelector((state) => Object.values(state.bookmarksReducer))
     const bookmark = useSelector((state) => state.bookmarksReducer)
+    const [errors, setErrors] = useState([]);
+
+
     useEffect(() => {
         // dispatch(userHasBookmarked())
         dispatch(getAllBusinesses());
@@ -44,31 +47,72 @@ const BusinessDetails = () => {
         dispatch(getBookmarksThunk())
         // setIsLoaded(true)
         // dispatch(getAllUsers())
-    }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify(bookmarks)])
+
+    }, [dispatch, JSON.stringify(businesses), JSON.stringify(allReviews), JSON.stringify(bookmarks), isLiked])
 
 
     useEffect(() => {
         Object.values(bookmarks).forEach((bookmark) => {
-            // if (bookmark.user_id === sessionUser.id) {
-            setIsLiked(true);
-            setBookmarked(true)
-            return
-            // }
+            if (bookmark.user_id === sessionUser.id) {
+                setIsLiked(true);
+                // setBookmarked(true)
+                return
+            }
         })
     }, [bookmarks])
 
     const addBookmark = async (businesses, isLiked) => {
+
         const payload = {
             business_id: businesses.id,
             user_id: sessionUser.id
         }
 
-        await dispatch(addBookmarksThunk(payload));
+        const res = await dispatch(addBookmarksThunk(payload));
+        if (res.error) {
+            setErrors([res.error])
+            return
+            console.log('hiiiiit', res.error)
+        }
+        // try{
+        //     const res = await dispatch(addBookmarksThunk(payload));
+        // } catch(e) {
+        //     setErrors([e])
+        //     console.log('eeeeeeeeeee', e)
+        // }
+
         // dispatch(getBookmarksThunk())
         dispatch(getUserBookmarksThunk(sessionUser.id))
         isLiked = true
         history.push(`/bookmarks/user/${sessionUser.id}`)
     }
+    // const addBookmark = async (e) => {
+    //     e.preventDefault();
+    //     const payload = {
+    //         business_id: businesses.id,
+    //         user_id: sessionUser.id
+    //     }
+    //     if (sessionUser.id === bookmarks.user_id) {
+    //         const data = await dispatch(addBookmarksThunk(payload))
+    //         if (data) {
+    //             setErrors(data)
+    //         }
+    //     } else {
+    //         return setErrors(["You have"])
+    //     }
+    // }
+    const removeBookmark = async (isLiked, bookmarks) => {
+        let bookmarkId;
+        Object.values(bookmarks).forEach((book) => {
+            if (book.user_id === sessionUser.id) {
+                bookmarkId = bookmark.id
+            }
+        });
+        await dispatch(removeBookmarksThunk(bookmarkId))
+        dispatch(getBookmarksThunk())
+        isLiked = false;
+        setIsLiked(false)
+    };
 
     // const userHasBookmarked = () => {
     //     for (let i = 0; i < bookmarkslength; i++) {
@@ -102,6 +146,10 @@ const BusinessDetails = () => {
         e.preventDefault();
         history.push(`/business/${businessId}/createReview`);
     };
+    // const handleAddBookmark = (e) => {
+    //     e.preventDefault();
+    //     fetch('/api/bookmarks').then(res => res.json()).then().catch(e => console.log('you have already bookmarked this business'))
+    // }
     // console.log('bbizzzzzzzzzzzzz', bookmarks)
     // // console.log('ssssssssssseee', sessionUser)
     // console.log('userId', sessionUser?.id)
@@ -133,6 +181,23 @@ const BusinessDetails = () => {
         <div className="businessDetailPage">
             <div className="header">
                 <h2>{businesses?.name}</h2>
+                <div>
+                    <div className="bookmarks-div">
+
+                        {sessionUser && (
+
+                            <i
+                                onClick={() => addBookmark(businesses, isLiked)}
+                                className="fa-regular fa-bookmark"
+                            ></i>
+
+                        )}
+
+                    </div>
+                    <div>
+                        {errors}
+                    </div>
+                </div>
                 {sessionUser && sessionUser.id === businesses?.user_id && (
                     <div className="editAndDeleteButtons">
                         {/* <button className="editButton" onClick={handleEditClick}>
@@ -546,28 +611,7 @@ const BusinessDetails = () => {
 
                                 ) : (<div> You have already bookmarked this business </div>)}
                             </div> */}
-                            <div className="bookmarks-div">
 
-                                {/* {sessionUser && (
-
-                                    <button
-                                        onClick={() => addBookmark(businesses, isLiked)}
-
-                                    >Add Bookmark</button>
-                                )} */}
-                                {bookmarks && isBookmarked ? (
-                                    <button
-                                        onClick={() => addBookmark(businesses, isLiked)}
-
-                                    >Add Bookmark</button>
-                                ) : (
-                                    <i
-                                        style={{ color: "rgb(249, 24, 128)" }}
-                                        onClick={() => removeBookmarksThunk(bookmark)}
-
-                                    >Removed</i>
-                                )}
-                            </div>
 
                         </div>
                         {sessionUser && (

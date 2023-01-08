@@ -68,19 +68,23 @@ export const addBookmarksThunk = (payload) => async (dispatch) => {
         },
         body: JSON.stringify(payload)
     })
-    if (response.ok) {
-        const bookmark = await response.json()
-        dispatch(addBookmarksAction(bookmark))
-        return bookmark
+
+    if (!response.ok) {
+        const error = await response.text()
+
+        return {"error": error}
     }
-    return response
+    const bookmark = await response.json()
+    dispatch(addBookmarksAction(bookmark))
+    return bookmark
+
 }
 
 export const removeBookmarksThunk = (bookmarkId) => async (dispatch) => {
     const response = await fetch(`/api/bookmarks/${bookmarkId}`, {
         method: "DELETE"
     })
-    console.log('reeeeeeeeees' , response)
+    console.log('reeeeeeeeees', response)
     if (response.ok) {
         dispatch(remBookmarksAction(bookmarkId));
     }
@@ -96,7 +100,7 @@ export const removeBookmarksThunk = (bookmarkId) => async (dispatch) => {
 const initialState = {}
 
 const bookmarksReducer = (state = initialState, action) => {
-    let newState = { ...state }
+    // let newState = { ...state }
     switch (action.type) {
         case GET_BOOKMARKS: {
             const newState = {};
@@ -109,15 +113,15 @@ const bookmarksReducer = (state = initialState, action) => {
             let allBookmarks = { ...newState };
             return allBookmarks;
         }
-        case ADD_BOOKMARKS:{
+        case ADD_BOOKMARKS: {
             const newState = { ...state };
             newState[action.bookmark.id] = action.bookmark
             return newState
         }
         case REM_BOOKMARKS: {
-           const newState = { ...state }
-           delete newState[action.bookmarkId]
-           return newState
+            const newState = { ...state }
+            delete newState[action.bookmarkId]
+            return newState
         }
         // case CLEAR_BOOKMARKS:
         //     return {...initialState}
