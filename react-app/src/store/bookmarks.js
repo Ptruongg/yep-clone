@@ -84,7 +84,7 @@ export const removeBookmarksThunk = (bookmarkId) => async (dispatch) => {
     const response = await fetch(`/api/bookmarks/${bookmarkId}`, {
         method: "DELETE"
     })
-    console.log('reeeeeeeeees', response)
+    // console.log('reeeeeeeeees', response)
     if (response.ok) {
         dispatch(remBookmarksAction(bookmarkId));
     }
