@@ -29,7 +29,7 @@ const BookmarksList = () => {
     useEffect(() => {
         dispatch(getUserBookmarksThunk(userId))
     }, [dispatch])
-    console.log('booooooooooks', bookmarkList)
+
     return (
         <div className="homepage">
 
@@ -39,8 +39,8 @@ const BookmarksList = () => {
                     bookmarkList.map((bus) => (
                         <>
                             <div>
-                                <div>{bus.business.name}</div>
-                                <div>id {bus.id}</div>
+                                {/* <div>{bus.business.name}</div> */}
+                                {/* <div>id {bus.id}</div> */}
                                 <RemoveBookmarkModal bookmarkId={bus.id}/>
 
                                 {/* <div>
