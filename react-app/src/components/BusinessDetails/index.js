@@ -44,7 +44,7 @@ const BusinessDetails = () => {
         // dispatch(userHasBookmarked())
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
-        dispatch(getBookmarksThunk())
+        dispatch(getUserBookmarksThunk())
         // setIsLoaded(true)
         // dispatch(getAllUsers())
 
@@ -205,8 +205,9 @@ const BusinessDetails = () => {
                             {/* <button className="editButton" onClick={handleEditClick}>
                             Edit Business
                         </button> */}
-                            <button className="editButton">
+                            <button className="editButton" style={{marginLeft: "10px"}}>
                                 <EditBusinessModal/>
+
                             </button>
                             <button className="deleteButton" onClick={handleDeleteClick}>
                                 Delete Business

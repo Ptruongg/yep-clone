@@ -27,7 +27,6 @@ const BookmarksList = () => {
     //     // history.push(`/bookmarks/user/${sessionUser.id}`)
     // }
     useEffect(() => {
-
         dispatch(getUserBookmarksThunk(userId))
     }, [dispatch])
 
