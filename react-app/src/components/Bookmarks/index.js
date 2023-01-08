@@ -27,21 +27,22 @@ const BookmarksList = () => {
     //     // history.push(`/bookmarks/user/${sessionUser.id}`)
     // }
     useEffect(() => {
+
         dispatch(getUserBookmarksThunk(userId))
     }, [dispatch])
 
     return (
         <div className="homepage">
+            <div className='businessTitle'>{bookmarkList?.length > 0 ? "My Bookmarks" : "You currently do not have any bookmarks"}</div>
 
-            <div className="businesses-list">
-
+            <div className="bookmarks-list">
                 {bookmarkList &&
                     bookmarkList.map((bus) => (
                         <>
                             <div>
                                 {/* <div>{bus.business.name}</div> */}
                                 {/* <div>id {bus.id}</div> */}
-                                <RemoveBookmarkModal bookmarkId={bus.id}/>
+                                <RemoveBookmarkModal bookmarkId={bus.id} />
 
                                 {/* <div>
                                     <button className="deletebookmark" onClick={() => removeBookmark(bus.id)}>Remove Bookmark</button>

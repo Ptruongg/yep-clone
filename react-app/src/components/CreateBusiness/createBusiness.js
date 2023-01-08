@@ -140,7 +140,8 @@ const CreateBusiness = () => {
                 <form className="business" onSubmit={handleSubmit}>
                     <div className="errors">
                         {errors ?? (
-                            <ul>
+                            <ul
+                         >
                                 {errors.map((error, idx) => (
                                     <div key={idx}>{error} </div>
                                 ))}

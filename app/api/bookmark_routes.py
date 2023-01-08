@@ -56,7 +56,7 @@ def create_bookmark():
 
         for book in all_bookmarks:
             if book.user_id == curr_user:
-                return "Error: You have already bookmarked this business", 400
+                return "You have already bookmarked this business", 400
 
         newBookmark = Bookmark(
             user_id=new_bookmark.data['user_id'],
