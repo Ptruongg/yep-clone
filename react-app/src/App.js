@@ -39,41 +39,44 @@ function App() {
     <>
       <Navigation isLoaded={loaded} />
       {loaded && (
-          <Switch>
-            <Route path="/signup" >
-              <SignUpForm />
-            </Route>
-            <Route path="/users" exact={true}>
-              <UsersList />
-            </Route>
-            <Route path="/users/:userId" exact={true}>
-              <User />
-            </Route>
-            <Route exact path="/">
-              <BusinessesList />
-            </Route>
-            <Route path="/bookmarks/user/:userId">
-              <BookmarksList />
-            </Route>
-            <Route path="/business/create" >
-              <CreateBusiness />
-            </Route>
-            <Route path="/business/:businessId/edit">
-              <EditBusiness />
-            </Route>
-            <Route path="/business/:businessId/createReview">
-              <CreateReviews />
-            </Route>
-            <Route path="/business/:businessId/editReview">
-              <EditReview />
-            </Route>
-            <Route path="/business/:businessId/delete">
-              <DeleteReview />
-            </Route>
-            <Route path="/business/:businessId">
-              <BusinessDetails />
-            </Route>
-          </Switch>
+        <Switch>
+          <Route path="/signup" >
+            <SignUpForm />
+          </Route>
+          <Route path="/users" exact={true}>
+            <UsersList />
+          </Route>
+          <Route path="/users/:userId" exact={true}>
+            <User />
+          </Route>
+          <Route exact path="/">
+            <BusinessesList />
+          </Route>
+          <Route path="/bookmarks/user/:userId">
+            <BookmarksList />
+          </Route>
+          <Route path="/business/create" >
+            <CreateBusiness />
+          </Route>
+          <Route path="/business/:businessId/edit">
+            <EditBusiness />
+          </Route>
+          <Route path="/business/:businessId/createReview">
+            <CreateReviews />
+          </Route>
+          <Route path="/business/:businessId/editReview">
+            <EditReview />
+          </Route>
+          <Route path="/business/:businessId/delete">
+            <DeleteReview />
+          </Route>
+          <Route path="/business/:businessId">
+            <BusinessDetails />
+          </Route>
+          <Route path="*">
+            <div className="pageNotFound">404 Page Not Found</div>
+          </Route>
+        </Switch>
       )}
     </>
   );

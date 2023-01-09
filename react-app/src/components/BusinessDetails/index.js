@@ -44,7 +44,7 @@ const BusinessDetails = () => {
         // dispatch(userHasBookmarked())
         dispatch(getAllBusinesses());
         dispatch(getReviewsThunk())
-        dispatch(getUserBookmarksThunk())
+        // dispatch(getUserBookmarksThunk())
         // setIsLoaded(true)
         // dispatch(getAllUsers())
 
