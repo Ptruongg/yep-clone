@@ -89,19 +89,19 @@ const CreateBusiness = () => {
             setErrors(["Description length must be longer than 5 characters"])
             return;
         }
-        if (phoneNumber && !phoneRegex.test(phoneNumber)) {
-            setErrors(["Please enter in a valid phone number"])
-            return;
-        }
         if (zipcode && !zipcodeRegex.test(zipcode)) {
             setErrors(["Please enter in a valid zipcode"])
             return;
         }
-
+        if (phoneNumber && !phoneRegex.test(phoneNumber)) {
+            setErrors(["Please enter in a valid phone number"])
+            return;
+        }
         if (phoneNumber.length >= 11 || phoneNumber <= 10) {
             setErrors(['Phone Number format must be 0001112222'])
             return;
         }
+
         if (!imageUrl) {
             setErrors(['Please enter in an image'])
             return;

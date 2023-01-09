@@ -82,6 +82,11 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.businessDetailPage {
+    height: 0;
+    justify-content: center;
+}
 .businessDetails {
     display: grid;
     width: 80%;
@@ -241,5 +246,4 @@
     display: block;
     justify-content: center;
     align-items: center;
-
 }
