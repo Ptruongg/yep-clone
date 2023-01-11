@@ -22,16 +22,8 @@ const BusinessDetails = () => {
     const businessReviews = allReviews.filter(
         (review) => review.business_id === businessId
     )
-    const allUsers = useSelector((state) => state.usersReducer)
-
-
-
+    // const allUsers = useSelector((state) => state.usersReducer)
     const [isLiked, setIsLiked] = useState(false)
-    // const [isBookmarked, setBookmarked] = useState(false)
-    // console.log('bizzzzzzz', businessReviews)
-
-    // const allUsers= useSelector((state) => Object.values(state.usersReducer))
-
     const sessionUser = useSelector((state) => state.session.user);
     // console.log('session user', sessionUser)
     const businessString = JSON.stringify(businesses);
@@ -74,12 +66,7 @@ const BusinessDetails = () => {
             return
 
         }
-        // try{
-        //     const res = await dispatch(addBookmarksThunk(payload));
-        // } catch(e) {
-        //     setErrors([e])
-        //     console.log('eeeeeeeeeee', e)
-        // }
+
 
         // dispatch(getBookmarksThunk())
         dispatch(getUserBookmarksThunk(sessionUser.id))
