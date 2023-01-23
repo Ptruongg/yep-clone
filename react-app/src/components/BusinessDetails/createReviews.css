@@ -26,6 +26,7 @@
     float: left;
 }
 
+
 .createReviewButton {
     background-color: red;
     border: none;
@@ -40,6 +41,11 @@
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.busName {
+    display: flex;
+    margin-left: 0px;
 }
 
 /* .spotsReview input {
