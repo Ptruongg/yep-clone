@@ -267,7 +267,7 @@ const CreateBusiness = () => {
                         </button>
                     </div>
                 </form >
-            </div >
+            </div>
             <div className="createBizImgForm">
                 <img src="https://s3-media0.fl.yelpcdn.com/assets/public/cityscape_300x233_v2.yji-deccc3d10e15b4494be1.svg" />
                 <img src="https://s3-media0.fl.yelpcdn.com/assets/public/searching_on_map_234x177_v2.yji-0b5da3ce1e6a636298be.svg" />

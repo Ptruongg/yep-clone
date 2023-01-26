@@ -17,4 +17,12 @@ def search():
     search = []
 
     if data["name"]:
-        search.append(Business.name)
+        search.append(Business.name.ilike(f"%{data['name']}%"))
+    if data["city"]:
+        search.append(Business.city.ilike(f"%{data['city']}%"))
+    if data["state"]:
+        search.append(Business.state.ilike(f"%{data['state']}%"))
+
+    searched_business = Business.query.filter(*search)
+    search = [business.to_dict() for business in searched_business]
+    return {"businesses": search}
