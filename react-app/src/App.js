@@ -73,6 +73,7 @@ function App() {
           <Route path="/business/:businessId">
             <BusinessDetails />
           </Route>
+          <Route path="/search"></Route>
           <Route path="*">
             <div className="pageNotFound">404 Page Not Found</div>
           </Route>
