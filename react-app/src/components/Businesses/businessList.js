@@ -50,12 +50,12 @@ const BusinessesList = () => {
 
     return (
         <div className="homepage">
+            <div className="searchBar">
+                <Search />
+            </div>
             <div className="website-description">Yep is a Yelp clone that has core CRUD features for Businesses and Reviews</div>
             <div className="header">
                 <img src={url} alt="" className="image-scroll"></img>
-            </div>
-            <div>
-                <Search />
             </div>
             <h2 className='your-next-review'>Your Next Review Awaits</h2>
             <div className="businesses-list">

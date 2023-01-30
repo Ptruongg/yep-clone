@@ -10,7 +10,42 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border: 0.25px solid lightgrey;
 }
+.searchDiv {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.searchBar {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+}
 
+.resultsSearch {
+    display: grid;
+    justify-content: center;
+    width: 25px;
+}
+.results {
+    display: grid;
+    width: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+.listRes {
+    display: grid;
+    width: 306px;
+}
+.search-img {
+    width: 150px;
+    height: 100px;
+}
+.resultInfo {
+    font: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    color: black
+}
 .businesses-list {
     /* display: grid;
     border: 0.25px solid lightgrey;
