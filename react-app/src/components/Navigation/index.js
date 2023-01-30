@@ -6,6 +6,7 @@ import LoginFormModal from '../auth/index';
 import BookmarksList from '../Bookmarks';
 import * as sessionActions from "../../store/session"
 import CreateBusiness from '../CreateBusiness/createBusiness';
+import Search from '../Search/index.js';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -77,21 +78,7 @@ function Navigation({ isLoaded }) {
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaT-NcnLo4dUZBCe2abefSWdmECMUixI4AQw&usqp=CAU"></img>
                     </NavLink>
                 </div>
-                <div className='search-navBar'>
-                    <form>
-                        <label htmlFor='search'>
-                            <input
-                                type='text'
-                                autoComplete='on'
-                                id='search'
-                                placeholder='Search Business'
-                                value={search}
-                                onChange={(e) => setSearch(e.target.value)}
-                            ></input>
-                        </label>
-                        <button className='searchButton' onChange={searchForm}>Search</button>
-                    </form>
-                </div>
+
                 <div className='aboutMe'>
                     <div className='github' onClick={() => newTab('https://github.com/Ptruongg/yep-clone')}>
                         <img src='https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' style={{ height: "30px", width: "30px", marginLeft: "10px", marginRight: "10px" }} />

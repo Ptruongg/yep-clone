@@ -15,7 +15,8 @@ import CreateReviews from "./components/BusinessDetails/createReview";
 import DeleteReview from "./components/DeleteReview/DeleteReview";
 import EditReview from "./components/EditReview/editReview";
 import BookmarksList from "./components/Bookmarks/index";
-import SearchBusiness from "./components/Search/index"
+import SearchBusiness from "./components/Search/index";
+import Search from "./components/Search/index";
 import DemoUser from "./components/DemoUser";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
@@ -75,7 +76,7 @@ function App() {
             <BusinessDetails />
           </Route>
           <Route path="/search">
-            <SearchBusiness />
+            <Search />
           </Route>
           <Route path="*">
             <div className="pageNotFound">404 Page Not Found</div>
