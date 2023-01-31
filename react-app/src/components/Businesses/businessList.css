@@ -21,11 +21,15 @@
     /* align-items: center; */
     width: 100%;
 }
-
+.inputBox {
+    border-radius: 0.35em;
+    padding: 0em;
+    height: 20px
+}
 .resultsSearch {
     display: grid;
     justify-content: center;
-    width: 25px;
+    width: 300px;
 }
 .results {
     display: grid;
@@ -35,16 +39,23 @@
 
 }
 .listRes {
-    display: grid;
+    display: flex;
     width: 306px;
 }
 .search-img {
-    width: 150px;
+    width: 120px;
     height: 100px;
+    object-fit: cover;
+
 }
 .resultInfo {
     font: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-    color: black
+    color: black;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    align-content: center;
 }
 .businesses-list {
     /* display: grid;

@@ -32,6 +32,7 @@ export default function Search() {
         <div className="searchDiv">
             <div className="searchBar">
                 <input
+                    className="inputBox"
                     style={{ justifyContent: "center", alignContent: "center", borderColor: "gray", borderWidth: 1, width: "300px", height: "30px", marginTop: "15px" }}
                     icon="search"
                     placeholder="Search a Business..."
@@ -45,10 +46,10 @@ export default function Search() {
                             <div className="results" key={item.id}>
                                 <NavLink to={`/business/${item.id}`}>
                                     <div className="listRes">
-                                        <div className="resultInfo">{item.name}</div>
+                                        <img className="search-img" src={item.imageUrl}></img>
+                                        <div className="resultInfo" style={{alignItems: "center", justifyContent: "center"}}>{item.name}<div style={{fontSize: "12px"}}>{item.address}</div></div>
                                         {/* <div className="resultInfo">{item.city}</div>
                                         <div className="resultInfo">{item.state}</div> */}
-                                        <img className="search-img" src={item.imageUrl}></img>
                                     </div>
                                 </NavLink>
                             </div>

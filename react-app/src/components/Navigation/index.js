@@ -46,7 +46,9 @@ function Navigation({ isLoaded }) {
                         <button className='create-business-button'>
                             <NavLink to="/business/create" exact={true} style={{ textDecoration: "none", color: "red", border: "none", marginBottom: "100px" }}>Create Your Business</NavLink>
                         </button>
+                        <div>
                         <ProfileButton user={sessionUser} />
+                        </div>
                     </div>
                 </div>
             </>
