@@ -50,12 +50,13 @@ const CreateReviews = () => {
     };
     return (
         <div className="reviewContainer">
-            <div>
-                <h2>{business?.name}</h2>
-            </div>
-            <h2 className="reviewTitle">Create Your Review</h2>
+
+            {/* <h2 className="reviewTitle">Create Your Review</h2> */}
             <form className="businessReviews" onSubmit={handleSubmit}>
-                <div style={{color: "red"}}>
+                <div className="busNameDiv">
+                    <h2 className="busName">{business?.name}</h2>
+                </div>
+                <div style={{ color: "red" }}>
                     {errors ?? (
                         <ul>
                             {errors.map((error, idx) => (
@@ -97,10 +98,13 @@ const CreateReviews = () => {
                 </div>
                 <div>
                     <button className="createReviewButton" type="submit" onClick={handleSubmit}>
-                        Create Review
+                        Post Review
                     </button>
                 </div>
             </form>
+            <div>
+                {business?.review}
+            </div>
         </div>
     )
 }

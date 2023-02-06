@@ -73,6 +73,8 @@ const BusinessDetails = () => {
         isLiked = true
         history.push(`/bookmarks/user/${sessionUser.id}`)
     }
+
+
     // const addBookmark = async (e) => {
     //     e.preventDefault();
     //     const payload = {

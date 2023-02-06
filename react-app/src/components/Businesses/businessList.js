@@ -5,6 +5,8 @@ import * as businessActions from "../../store/businesses";
 import { getAllBusinesses } from "../../store/businesses";
 import "./businessList.css";
 import { NavLink } from "react-router-dom";
+import Search from "../Search";
+import SearchBusiness from "../Search";
 
 
 const BusinessesList = () => {
@@ -13,7 +15,7 @@ const BusinessesList = () => {
     const [url, setUrl] = useState('https://photos.smugmug.com/photos/i-ZcW3j56/0/X4/i-ZcW3j56-X4.jpg');
     const [index, setIndex] = useState(0);
     useEffect(() => {
-        const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg', 'https://i.imgur.com/fXZuXu8.jpg'];
+        const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://i.imgur.com/fXZuXu8.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg'];
         let scroll = setInterval(() => {
             if (index === 3) {
                 setIndex(0)
@@ -48,6 +50,9 @@ const BusinessesList = () => {
 
     return (
         <div className="homepage">
+            <div className="searchBar">
+                <Search />
+            </div>
             <div className="website-description">Yep is a Yelp clone that has core CRUD features for Businesses and Reviews</div>
             <div className="header">
                 <img src={url} alt="" className="image-scroll"></img>

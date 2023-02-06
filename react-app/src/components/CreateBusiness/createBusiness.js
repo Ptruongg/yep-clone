@@ -134,14 +134,14 @@ const CreateBusiness = () => {
     }
 
     return (
-        <div className="background" >
+        <div className="createBizPage" >
             <div className="formContainer">
 
                 <form className="business" onSubmit={handleSubmit}>
                     <div className="errors">
                         {errors ?? (
                             <ul
-                         >
+                            >
                                 {errors.map((error, idx) => (
                                     <div key={idx}>{error} </div>
                                 ))}
@@ -161,7 +161,7 @@ const CreateBusiness = () => {
                                 placeholder="Business Name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -173,7 +173,7 @@ const CreateBusiness = () => {
                                 placeholder="Description"
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -185,7 +185,7 @@ const CreateBusiness = () => {
                                 placeholder="Address"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -197,7 +197,7 @@ const CreateBusiness = () => {
                                 placeholder="City"
                                 value={city}
                                 onChange={(e) => setCity(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -209,7 +209,7 @@ const CreateBusiness = () => {
                                 placeholder="State"
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -221,7 +221,7 @@ const CreateBusiness = () => {
                                 placeholder="Zipcode"
                                 value={zipcode}
                                 onChange={(e) => setZipcode(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -233,7 +233,7 @@ const CreateBusiness = () => {
                                 placeholder="Country"
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -245,7 +245,7 @@ const CreateBusiness = () => {
                                 placeholder="Phone Number"
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%" }}
+                                style={{ justifyContent: "center", width: "100%", height: "40px" }}
                             />
                         </div>
                         <div>
@@ -257,7 +257,7 @@ const CreateBusiness = () => {
                                 placeholder="Image"
                                 value={imageUrl}
                                 onChange={(e) => setImageUrl(e.target.value)}
-                                style={{ justifyContent: "center", width: "85%", marginBottom: "20px" }}
+                                style={{ justifyContent: "center", width: "100%", marginBottom: "20px", height: "40px" }}
                             />
                         </div>
                     </div>
@@ -267,7 +267,11 @@ const CreateBusiness = () => {
                         </button>
                     </div>
                 </form >
-            </div >
+            </div>
+            <div className="createBizImgForm">
+                <img src="https://s3-media0.fl.yelpcdn.com/assets/public/cityscape_300x233_v2.yji-deccc3d10e15b4494be1.svg" />
+                <img src="https://s3-media0.fl.yelpcdn.com/assets/public/searching_on_map_234x177_v2.yji-0b5da3ce1e6a636298be.svg" />
+            </div>
         </div>
     )
 }

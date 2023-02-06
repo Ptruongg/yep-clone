@@ -3,7 +3,7 @@
 # Intro
 This is Yep where my project is a replica of Yelp for anything car related.
 
-Yep is a place where you can view automotive businesses and their reviews. As logged in users they are able to create, edit, and delete their businesses. They can also create, edit, and delete their reviews/
+Yep is a place where you can view automotive businesses and their reviews. As logged in users they are able to create, edit, and delete their businesses. They can also create, edit, and delete their reviews.
 
 Live site: https://yepyep-capstone.herokuapp.com/
 
