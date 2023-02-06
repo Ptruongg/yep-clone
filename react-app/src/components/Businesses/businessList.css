@@ -21,33 +21,7 @@
     /* align-items: center; */
     width: 100%;
 }
-.inputBox {
-    border-radius: 0.35em;
-    padding: 0em;
-    height: 20px
-}
-.resultsSearch {
-    display: grid;
-    justify-content: center;
-    width: 300px;
-}
-.results {
-    display: grid;
-    width: 10px;
-    justify-content: center;
-    align-items: center;
 
-}
-.listRes {
-    display: flex;
-    width: 306px;
-}
-.search-img {
-    width: 120px;
-    height: 100px;
-    object-fit: cover;
-
-}
 .resultInfo {
     font: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
     color: black;
