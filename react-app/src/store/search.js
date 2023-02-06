@@ -15,7 +15,7 @@ export const getAllSearchResults = (name, city, state) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({name, city, state})
+        body: JSON.stringify({ name, city, state })
     })
     if (response.ok) {
         const searchResults = await response.json();
@@ -28,14 +28,17 @@ export const getAllSearchResults = (name, city, state) => async (dispatch) => {
 const initialState = {};
 
 const searchReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case GET_SEARCH_RESULTS: {
-            const newState = {...state};
+            const newState = { ...state };
             for (let business of action.businesses.businesses) {
                 newState[business.id] = business
             }
             return newState
         }
+        default:
+            return state;
     }
+
 }
 export default searchReducer;

@@ -5,13 +5,15 @@ import businessReducer from './businesses';
 import reviewsReducer from './reviews';
 import usersReducer from './user';
 import bookmarksReducer from './bookmarks';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   session,
   businessReducer,
   reviewsReducer,
   usersReducer,
-  bookmarksReducer
+  bookmarksReducer,
+  searchReducer
 });
 
 

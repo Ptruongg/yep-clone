@@ -5,6 +5,8 @@ import * as businessActions from "../../store/businesses";
 import { getAllBusinesses } from "../../store/businesses";
 import "./businessList.css";
 import { NavLink } from "react-router-dom";
+import Search from "../Search";
+import SearchBusiness from "../Search";
 
 
 const BusinessesList = () => {
@@ -48,6 +50,9 @@ const BusinessesList = () => {
 
     return (
         <div className="homepage">
+            <div className="searchBar">
+                <Search />
+            </div>
             <div className="website-description">Yep is a Yelp clone that has core CRUD features for Businesses and Reviews</div>
             <div className="header">
                 <img src={url} alt="" className="image-scroll"></img>
