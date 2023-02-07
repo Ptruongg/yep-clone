@@ -57,7 +57,7 @@
 
 .navButton {
     display: flex;
-    margin-right: 70px;
+    /* margin-right: 70px; */
     align-items: center;
     cursor: pointer;
 }
@@ -67,7 +67,7 @@
     color: red;
     font-size: 16px;
     font-weight: 500;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,7 +163,7 @@
     width: 20%;
     display: flex;
     align-items: center;
-    justify-content: margin-left
+    /* justify-content: margin-left */
 }
 
 #logo>a>img {
@@ -174,11 +174,16 @@
     cursor: pointer;
 }
 
+.headerDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .aboutMe {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 200px;
 }
 .name {
     justify-content: center;

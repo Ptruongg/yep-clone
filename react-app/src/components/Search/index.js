@@ -11,7 +11,7 @@ export default function Search() {
         axios.get(`/api/business`).then((response) => {
             setAPIData(response.data);
         });
-    }, []);
+    }, [JSON.stringify(APIData)]);
     //   console.log("aaaaaaaaaa", APIData)
     const searchItems = (searchValue) => {
         setSearchInput(searchValue);

@@ -30,7 +30,7 @@ const BusinessesList = () => {
 
     // const sessionUser = useSelector((state) => state.session.user)
     // const reviews = useSelector((state) => Object.values(state?.reviews))
-    const buz = useSelector((state) => state)
+    // const buz = useSelector((state) => state)
     // console.log('buz', buz)
     useEffect(() => {
         dispatch(getAllBusinesses())
