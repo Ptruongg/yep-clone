@@ -57,9 +57,7 @@ function Navigation({ isLoaded }) {
         sessionLinks = (
             <>
                 <div id='navBarRightLoad'>
-                    <div>
 
-                    </div>
                     <div id='loginButtonDiv'>
                         <LoginFormModal />
                         <div>

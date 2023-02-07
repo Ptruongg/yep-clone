@@ -3,7 +3,11 @@ import axios from "axios";
 // import { Card, Input } from "semantic-ui-react";
 // import "./search.css";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBusinesses } from "../../store/businesses";
 export default function Search() {
+    const dispatch = useDispatch();
+    const businesses = useSelector((state) => Object.values(state?.businessReducer));
     const [APIData, setAPIData] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
     const [searchInput, setSearchInput] = useState("");
@@ -27,6 +31,10 @@ export default function Search() {
             setFilteredResults(APIData);
         }
     };
+    useEffect(() => {
+        dispatch(getAllBusinesses());
+
+    }, [dispatch, JSON.stringify(businesses)])
 
     return (
         <div className="searchDiv">

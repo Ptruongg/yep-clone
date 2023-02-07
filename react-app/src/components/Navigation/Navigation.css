@@ -54,7 +54,11 @@
     cursor: pointer;
 
 }
-
+.navBarRightLoad {
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
 .navButton {
     display: flex;
     /* margin-right: 70px; */
@@ -155,6 +159,7 @@
     font-size: 18px;
     height: 70px;
     gap: 10px;
+    margin-right: 150px;
 
 }
 
