@@ -96,5 +96,4 @@ const BusinessesList = () => {
 }
 
 
-
 export default BusinessesList
