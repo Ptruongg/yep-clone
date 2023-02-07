@@ -120,7 +120,7 @@ def seed_businesses():
         country="United States",
         user_id=10,
         phoneNumber=9959832424,
-        imageUrl="https://www.jdmbuysell.com/wp-content/uploads/2022/05/1993-Toyota-Supra-for-sale-via-rhdspecialties-7059580223577.jpg"
+        imageUrl="https://a-static.besthdwallpaper.com/red-modified-toyota-supra-mk4-wallpaper-3840x2160-92500_54.jpg"
     )
     business11 = Business(
         name="West Coast Exotics",

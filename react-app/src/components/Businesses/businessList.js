@@ -61,11 +61,9 @@ const BusinessesList = () => {
             <div className="businesses-list">
                 {business &&
                     business.map((bus) => (
-                        <NavLink to={`/business/${bus.id}`}>
-                            <div className="busCard" key={bus.id}>
-
+                        <NavLink to={`/business/${bus.id}`} key={bus.id}>
+                            <div className="busCard">
                                 <div className="businessDiv">
-
                                     <div className="businessImage" style={{ fontFamily: "Times-new-roman" }}>
                                         <img src={bus.imageUrl} className="bizphoto" onError={({ currentTarget }) => {
                                             currentTarget.onerror = null; // prevents looping

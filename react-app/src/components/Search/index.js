@@ -46,8 +46,12 @@ export default function Search() {
                             <div className="results" key={item.id}>
                                 <NavLink to={`/business/${item.id}`}>
                                     <div className="listRes">
-                                        <img className="search-img" src={item.imageUrl}></img>
-                                        <div className="resultInfo" style={{alignItems: "center", justifyContent: "center"}}>{item.name}<div style={{fontSize: "12px"}}>{item.address}</div></div>
+                                        <img className="search-img" src={item.imageUrl} onError={({ currentTarget }) => {
+                                            currentTarget.onerror = null; // prevents looping
+                                            currentTarget.src =
+                                                "https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg";
+                                        }}></img>
+                                        <div className="resultInfo" style={{ alignItems: "center", justifyContent: "center" }}>{item.name}<div style={{ fontSize: "12px" }}>{item.address}</div></div>
                                         {/* <div className="resultInfo">{item.city}</div>
                                         <div className="resultInfo">{item.state}</div> */}
                                     </div>
