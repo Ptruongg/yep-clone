@@ -12,10 +12,11 @@ export default function Search() {
     const [filteredResults, setFilteredResults] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     useEffect(() => {
+        dispatch(getAllBusinesses())
         axios.get(`/api/business`).then((response) => {
             setAPIData(response.data);
         });
-    }, [JSON.stringify(APIData)]);
+    }, [dispatch, JSON.stringify(APIData), JSON.stringify(businesses)]);
     //   console.log("aaaaaaaaaa", APIData)
     const searchItems = (searchValue) => {
         setSearchInput(searchValue);
@@ -31,10 +32,6 @@ export default function Search() {
             setFilteredResults(APIData);
         }
     };
-    useEffect(() => {
-        dispatch(getAllBusinesses());
-
-    }, [dispatch, JSON.stringify(businesses)])
 
     return (
         <div className="searchDiv">
