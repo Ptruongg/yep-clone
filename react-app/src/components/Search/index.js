@@ -7,20 +7,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllBusinesses } from "../../store/businesses";
 export default function Search() {
     const dispatch = useDispatch();
-
-    // const businesses = useSelector((state) => Object.values(state?.businessReducer));
+    const businesses = useSelector((state) => Object.values(state?.businessReducer));
     const [APIData, setAPIData] = useState([]);
-    const [businesses, setBusinesses] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     useEffect(() => {
         dispatch(getAllBusinesses())
         axios.get(`/api/businesses`).then((response) => {
             setAPIData(response.data);
-            setBusinesses(response.data)
         });
     }, [dispatch, JSON.stringify(APIData), JSON.stringify(businesses)]);
-    //   console.log("aaaaaaaaaa", APIData)
+      console.log("aaaaaaaaaa", APIData)
     const searchItems = (searchValue) => {
         setSearchInput(searchValue);
         console.log('yeeeeeeeeee', businesses)
@@ -34,7 +31,6 @@ export default function Search() {
             setFilteredResults(filteredData);
         } else {
             setFilteredResults(APIData);
-            setFilteredResults(businesses);
         }
     };
 
