@@ -7,6 +7,7 @@ import "./businessList.css";
 import { NavLink } from "react-router-dom";
 import Search from "../Search";
 import SearchBusiness from "../Search";
+import Footer from "../Footer";
 
 
 const BusinessesList = () => {
@@ -89,7 +90,11 @@ const BusinessesList = () => {
                         </NavLink>
                     ))}
             </div>
+            <div>
+                <Footer />
+            </div>
         </div>
+
     )
 }
 

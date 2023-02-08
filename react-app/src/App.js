@@ -21,6 +21,7 @@ import DemoUser from "./components/DemoUser";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,50 +40,55 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={loaded} />
-      {loaded && (
-        <Switch>
-          <Route path="/signup" >
-            <SignUpForm />
-          </Route>
-          <Route path="/users" exact={true}>
-            <UsersList />
-          </Route>
-          <Route path="/users/:userId" exact={true}>
-            <User />
-          </Route>
-          <Route exact path="/">
-            <BusinessesList />
-          </Route>
-          <Route path="/bookmarks/user/:userId">
-            <BookmarksList />
-          </Route>
-          <Route path="/business/create" >
-            <CreateBusiness />
-          </Route>
-          <Route path="/business/:businessId/edit">
-            <EditBusiness />
-          </Route>
-          <Route path="/business/:businessId/createReview">
-            <CreateReviews />
-          </Route>
-          <Route path="/business/:businessId/editReview">
-            <EditReview />
-          </Route>
-          <Route path="/business/:businessId/delete">
-            <DeleteReview />
-          </Route>
-          <Route path="/business/:businessId">
-            <BusinessDetails />
-          </Route>
-          <Route path="/search">
-            <Search />
-          </Route>
-          <Route path="*">
-            <div className="pageNotFound">404 Page Not Found</div>
-          </Route>
-        </Switch>
-      )}
+      <BrowserRouter>
+        <Navigation isLoaded={loaded} />
+        {loaded && (
+          <Switch>
+            <Route exact path="/">
+              <BusinessesList />
+              <Footer />
+            </Route>
+            <Route path="/signup" >
+              <SignUpForm />
+            </Route>
+            <Route path="/users" exact={true}>
+              <UsersList />
+            </Route>
+            <Route path="/users/:userId" exact={true}>
+              <User />
+            </Route>
+            <Route path="/bookmarks/user/:userId">
+              <BookmarksList />
+            </Route>
+            <Route path="/business/create" >
+              <CreateBusiness />
+            </Route>
+            <Route path="/business/:businessId/edit">
+              <EditBusiness />
+            </Route>
+            <Route path="/business/:businessId/createReview">
+              <CreateReviews />
+            </Route>
+            <Route path="/business/:businessId/editReview">
+              <EditReview />
+            </Route>
+            <Route path="/business/:businessId/delete">
+              <DeleteReview />
+            </Route>
+            <Route path="/business/:businessId">
+              <BusinessDetails />
+            </Route>
+            <Route path="/search">
+              <Search />
+            </Route>
+            <Route path="*">
+              <div className="pageNotFound">404 Page Not Found</div>
+              <Footer />
+            </Route>
+          </Switch>
+
+        )}
+      </BrowserRouter>
     </>
   );
 }
