@@ -45,7 +45,7 @@ const businessDelete = (businessId) => {
 //thunks
 
 export const getAllBusinesses = () => async(dispatch) => {
-    const response = await fetch(`/api/business/`)
+    const response = await fetch(`/api/businesses/`)
     if (response.ok) {
         const business = await response.json();
         dispatch(getBusinesses(business))
@@ -56,7 +56,7 @@ export const getAllBusinesses = () => async(dispatch) => {
 }
 
 export const getBusinessDetails = (businessId) => async(dispatch) => {
-    const response = await fetch(`/api/business/${businessId}`)
+    const response = await fetch(`/api/businesses/${businessId}`)
     if(response.ok) {
         const businessDeats = await response.json();
         dispatch(getBusinessId(businessDeats));
@@ -80,7 +80,7 @@ export const createBusiness = (data) => async (dispatch) => {
     formData.append('user_id', user_id)
     formData.append('imageUrl', imageUrl)
 
-    const response = await fetch(`/api/business/`, {
+    const response = await fetch(`/api/businesses/`, {
         method: 'POST',
         body: formData
     })
@@ -108,7 +108,7 @@ export const createBusiness = (data) => async (dispatch) => {
 }
 
 export const editBusiness = (payload, businessId) => async(dispatch) => {
-    const response = await fetch(`/api/business/${businessId}`, {
+    const response = await fetch(`/api/businesses/${businessId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -124,7 +124,7 @@ export const editBusiness = (payload, businessId) => async(dispatch) => {
 }
 
 export const deleteBusiness = (businessId) => async(dispatch) => {
-    const response = await fetch(`/api/business/${businessId}`, {
+    const response = await fetch(`/api/businesses/${businessId}`, {
         method: 'DELETE',
     });
     if(response.ok) {
