@@ -17,12 +17,12 @@ export default function Search() {
             setAPIData(response.data);
         });
     }, [dispatch, JSON.stringify(APIData), JSON.stringify(businesses)]);
-      console.log("aaaaaaaaaa", APIData)
+
     const searchItems = (searchValue) => {
         setSearchInput(searchValue);
         console.log('yeeeeeeeeee', businesses)
         if (searchInput !== "") {
-            const filteredData = APIData.businesses.filter((item) => {
+            const filteredData = businesses.filter((item) => {
                 return Object.values(item)
                     .join("")
                     .toLowerCase()
