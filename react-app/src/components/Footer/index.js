@@ -34,7 +34,6 @@ function Footer() {
                             <img src='https://cdn-icons-png.flaticon.com/512/174/174857.png' style={{ height: "30px", width: "30px", marginLeft: "10px", marginRight: "10px" }} />
                         </div>
                     </li>
-                    <li>Google Maps API</li>
                     <li>Python</li>
                     <li>React</li>
                     <li>Redux</li>
