@@ -22,6 +22,7 @@ import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import Home from "./components/GoogleMaps";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,6 +47,7 @@ function App() {
           <Switch>
             <Route exact path="/">
               <BusinessesList />
+              <Home />
               <Footer />
             </Route>
             <Route path="/signup" >

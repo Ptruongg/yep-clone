@@ -11,6 +11,7 @@ import EditBusiness from "../EditBusiness/editBusiness";
 // import { getAllUsers } from "../../store/user";
 import EditBusinessModal from "../EditBusiness";
 import EditReviewModal from "../EditReview";
+import Home from "../GoogleMaps";
 
 const BusinessDetails = () => {
     const history = useHistory();
@@ -168,6 +169,7 @@ const BusinessDetails = () => {
         // <div>hi</div>
 
         <div className="businessDetailPage">
+            <Home />
             <div className="header">
                 <div className="title-books">
                     <h2>{businesses?.name}</h2>
