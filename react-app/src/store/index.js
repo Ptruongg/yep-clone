@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   reviewsReducer,
   usersReducer,
   bookmarksReducer,
-  searchReducer
+  searchReducer,
 });
 
 

@@ -6,7 +6,7 @@ import LoginFormModal from '../auth/index';
 import BookmarksList from '../Bookmarks';
 import * as sessionActions from "../../store/session"
 import CreateBusiness from '../CreateBusiness/createBusiness';
-import Search from '../Search/index.js';
+import SearchBusiness from '../SearchBusiness';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -14,16 +14,16 @@ function Navigation({ isLoaded }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const [search, setSearch] = useState("");
-    // const [bookmarksInfo, setBookmarksInfo] = useState({ "business_ids": []})
-    const searchForm = async (e) => {
+
+    const handleForm = async (e) => {
         e.preventDefault();
 
         if (search.length > 0) {
-            history.push(`/search/${search}`)
+            history.push(`/search/${search}`);
         } else {
-            history.push(`/`)
+            history.push(`/`);
         }
-    }
+    };
 
 
     const newTab = (url) => {
@@ -73,10 +73,39 @@ function Navigation({ isLoaded }) {
     return (
         <div className='headerDiv'>
             <div id="home">
+
                 <div id='logo'>
                     <NavLink to="/" exact={true}>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaT-NcnLo4dUZBCe2abefSWdmECMUixI4AQw&usqp=CAU"></img>
                     </NavLink>
+                </div>
+                <div className="banner-container">
+                    <div className="banner-content">
+                        <div className="banner-logo-container">
+                            {/* Search Bar Container don't delete this div*/}
+                        </div>
+                        <div className="banner-form-container">
+                            <form className="banner-search">
+                                <label htmlFor="search">
+                                    <input
+                                        type="text"
+                                        className="banner-search-input"
+                                        autoComplete="off"
+                                        id="search"
+                                        placeholder="Search Automotive Shops"
+                                        maxLength="50"
+                                        value={search}
+                                        required
+                                        onChange={(e) => setSearch(e.target.value)}
+                                    ></input>
+                                </label>
+
+                                <button className="banner-submit" onClick={handleForm}>
+                                    <i className="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 {isLoaded && sessionLinks}
             </div>

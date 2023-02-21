@@ -3,7 +3,7 @@ from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired, Length
 from app.models import User, Business, Review
 
-class SearchForm(FlaskForm):
+class NewSearchForm(FlaskForm):
     name = StringField("name")
     city = StringField("city")
     state = StringField("state")

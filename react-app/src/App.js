@@ -15,14 +15,15 @@ import CreateReviews from "./components/BusinessDetails/createReview";
 import DeleteReview from "./components/DeleteReview/DeleteReview";
 import EditReview from "./components/EditReview/editReview";
 import BookmarksList from "./components/Bookmarks/index";
-import SearchBusiness from "./components/Search/index";
-import Search from "./components/Search/index";
+import SearchBusiness from "./components/SearchBusiness/index";
+import Search from "./components/SearchBusiness/index";
 import DemoUser from "./components/DemoUser";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Home from "./components/GoogleMaps";
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,7 +46,7 @@ function App() {
         <Navigation isLoaded={loaded} />
         {loaded && (
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/" >
               <BusinessesList />
               <Home />
               <Footer />
@@ -58,6 +59,9 @@ function App() {
             </Route>
             <Route path="/users/:userId" exact={true}>
               <User />
+            </Route>
+            <Route path="/search/:id">
+              <SearchBusiness />
             </Route>
             <Route path="/bookmarks/user/:userId">
               <BookmarksList />
@@ -80,9 +84,7 @@ function App() {
             <Route path="/business/:businessId">
               <BusinessDetails />
             </Route>
-            <Route path="/search">
-              <Search />
-            </Route>
+
             <Route path="*">
               <div className="pageNotFound">404 Page Not Found</div>
               <Footer />

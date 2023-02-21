@@ -1,44 +1,45 @@
-const GET_SEARCH_RESULTS = 'search/GE_SEARCH_RESULTS'
+const LOAD_SEARCH_RESULTS = "search/LOAD_SEARCH_RESULTS";
 
-const getSearchResults = (businesses) => {
-    return {
-        type: GET_SEARCH_RESULTS,
-        businesses
-    }
-}
+const loadSearchResults = (businesses) => ({
+    type: LOAD_SEARCH_RESULTS,
+    businesses: businesses,
+});
 
-//thunk
-
-export const getAllSearchResults = (name, city, state) => async (dispatch) => {
-    const response = await fetch(`/api/search/`, {
+export const loadSearchResultsThunk = (name, city, state) => async (dispatch) => {
+    const res = await fetch(`/api/search/`, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, city, state })
-    })
-    if (response.ok) {
-        const searchResults = await response.json();
-        dispatch(getSearchResults(searchResults));
+        body: JSON.stringify({
+            name,
+            city,
+            state,
+        }),
+    });
+
+    if (res.ok) {
+        const searchResults = await res.json();
+
+        dispatch(loadSearchResults(searchResults));
         return ["Results", searchResults];
     }
-}
+};
 
-//reducer
 const initialState = {};
 
 const searchReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_SEARCH_RESULTS: {
-            const newState = { ...state };
+        case LOAD_SEARCH_RESULTS:
+            const allResults = {};
+
             for (let business of action.businesses.businesses) {
-                newState[business.id] = business
+                allResults[business.id] = business;
             }
-            return newState
-        }
+            return { ...allResults };
         default:
             return state;
     }
+};
 
-}
 export default searchReducer;
