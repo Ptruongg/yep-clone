@@ -21,10 +21,12 @@
     justify-content: center;
     align-items: center;
 }
+
 .header {
     display: flex;
     align-items: center;
 }
+
 .title-books {
     display: flex;
     justify-content: center;
@@ -32,11 +34,13 @@
     margin-left: 10px;
     /* justify-content: space-between; */
 }
+
 .bookmarks-div {
     margin-left: 20px;
     display: flex;
     position: static;
 }
+
 .errors {
     display: flex;
 
@@ -44,12 +48,14 @@
 
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
+
 .editAndDeleteButtons {
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+
 .editButton {
     background: red;
     color: white;
@@ -61,6 +67,7 @@
     cursor: pointer;
     margin-right: 10px;
 }
+
 .edit-business-button {
     background: red;
     color: white;
@@ -72,6 +79,7 @@
     cursor: pointer;
     margin-right: 10px;
 }
+
 .deleteButton {
     background: red;
     color: white;
@@ -87,6 +95,7 @@
     height: 0;
     justify-content: center;
 }
+
 .businessDetails {
     display: grid;
     width: 80%;
@@ -96,15 +105,18 @@
     /* margin-left: 5%; */
     margin: auto;
 }
+
 .about-content {
     display: grid;
     justify-content: flex-start;
 }
+
 .allReviews {
-  justify-content: flex-start;
-  display: grid;
-  margin-top: 50px;
+    justify-content: flex-start;
+    display: grid;
+    margin-top: 50px;
 }
+
 .reviews-header {
     display: flex;
     justify-content: flex-start;
@@ -112,6 +124,7 @@
     align-items: center;
     margin-bottom: 30px;
 }
+
 .reviewButton {
     background: red;
     color: white;
@@ -124,9 +137,11 @@
     margin-left: 60px;
 
 }
+
 .bus-left {
     margin-right: 30px;
 }
+
 .busDetails-scroll {
     display: table-cell;
     box-sizing: border-box;
@@ -136,6 +151,7 @@
     border-radius: 5px;
     position: static;
 }
+
 .side-bar {
     display: grid;
     justify-content: center;
@@ -144,6 +160,7 @@
     border: 2px solid lightgray;
     width: 80%;
 }
+
 .businessReviews {
     display: grid;
     justify-content: space-between;
@@ -161,12 +178,14 @@
     align-items: center;
     display: grid;
 }
+
 .each-review-container {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     width: 100%;
 }
+
 .edit-review {
     align-items: center;
     display: flex;
@@ -182,6 +201,7 @@
     cursor: pointer;
     justify-content: center;
 }
+
 .delete-review {
     align-items: center;
     display: flex;
@@ -197,32 +217,38 @@
     cursor: pointer;
     justify-content: center;
 }
+
 .edit-review-button {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .delete-review-button {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .edit-n-delete-buttons {
     display: flex;
     /* justify-content: flex-end;
     align-items: flex-end; */
     font-size: 14px;
 }
+
 .userName {
     display: flex;
     width: 10%;
     height: 20%;
     font-weight: bold;
 }
+
 .stars {
     display: flex;
 
 }
+
 .amenitiesNmore {
     display: grid;
 
@@ -230,6 +256,7 @@
     float: left;
 
 }
+
 .amenitiesSecond {
     display: grid;
     flex-direction: column;
@@ -237,6 +264,7 @@
     margin-top: 100px;
     margin-right: 100px;
 }
+
 .amenitiesFirst {
     display: flex;
     width: 50%;
@@ -246,4 +274,12 @@
     display: block;
     justify-content: center;
     align-items: center;
+}
+
+.googleMaps {
+    width: 50em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 20em;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }

@@ -1,23 +1,37 @@
-import { useMemo } from "react";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
-import "./googlemaps.css"
-export default function Home() {
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY",
-  });
+import React from "react";
+import {
+    GoogleMap,
+    LoadScript,
+    useJsApiLoader,
+    Marker,
+    Circle,
+} from "@react-google-maps/api";
+import { useSelector } from "react-redux";
 
-  if (!isLoaded) return <div>Loading...</div>;
-  return (
-    <GoogleMaps />
-  )
-}
+const MapContainer = () => {
+    // const APIKey = useSelector(state => state.map.APIKey)
+    // console.log(APIKey, "API")
 
-function GoogleMaps() {
-  return (
-    <GoogleMap
-      zoom={10}
-      center={{ lat: 44, lng: -80 }}
-      mapContainerClassName="map-container">
-    </GoogleMap>
-  )
-}
+    const mapStyles = {
+      height: "50vh",
+      width: "100%",
+    };
+
+    // const defaultCenter = {
+    //   lat: +lat,
+    //   lng: +lng,
+    // };
+
+    return (
+      <LoadScript googleMapsApiKey="AIzaSyCKDNtKPyDvxL789j3to2zmARx4gNuvsjE">
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={15}
+          center={{lat: 37, lng: -122}}
+          // center={defaultCenter}
+        />
+      </LoadScript>
+    );
+  };
+
+  export default MapContainer;

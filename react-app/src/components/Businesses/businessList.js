@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import Search from "../Search";
 import SearchBusiness from "../Search";
 import Footer from "../Footer";
+import Home from "../GoogleMaps"
 
 
 const BusinessesList = () => {
@@ -51,6 +52,7 @@ const BusinessesList = () => {
 
     return (
         <div className="homepage">
+
             <div className="searchBar">
                 <Search />
             </div>
