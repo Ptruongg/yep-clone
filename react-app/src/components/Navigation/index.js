@@ -18,6 +18,7 @@ function Navigation({ isLoaded }) {
     const handleForm = async (e) => {
         e.preventDefault();
 
+
         if (search.length > 0) {
             history.push(`/search/${search}`);
         } else {
@@ -79,35 +80,35 @@ function Navigation({ isLoaded }) {
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaT-NcnLo4dUZBCe2abefSWdmECMUixI4AQw&usqp=CAU"></img>
                     </NavLink>
                 </div>
-                <div>
-                    <SearchBusiness />
-                </div>
+
                 <div className="banner-container">
                     <div className="banner-content">
                         <div className="banner-logo-container">
                             {/* Search Bar Container don't delete this div*/}
                         </div>
-                        {/* <div className="banner-form-container">
+                        <div className="banner-form-container">
                             <form className="banner-search">
-                                <label htmlFor="search">
-                                    <input
-                                        type="text"
-                                        className="banner-search-input"
-                                        autoComplete="off"
-                                        id="search"
-                                        placeholder="Search Automotive Shops"
-                                        maxLength="50"
-                                        value={search}
-                                        required
-                                        onChange={(e) => setSearch(e.target.value)}
-                                    ></input>
-                                </label>
+                                <div className='searchDiv'>
+                                    <label htmlFor="search">
+                                        <input
+                                            type="text"
+                                            className="banner-search-input"
+                                            autoComplete="off"
+                                            id="search"
+                                            placeholder="Search Automotive Shops"
+                                            maxLength="50"
+                                            value={search}
+                                            required
+                                            onChange={(e) => setSearch(e.target.value)}
+                                        ></input>
+                                    </label>
 
-                                <button className="banner-submit" onClick={handleForm}>
-                                    <i className="fas fa-search"></i>
-                                </button>
+                                    <button className="banner-submit" onClick={handleForm}>
+                                        Search
+                                    </button>
+                                </div>
                             </form>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
                 {isLoaded && sessionLinks}

@@ -171,6 +171,7 @@
     width: 20%;
     display: flex;
     align-items: center;
+
     /* justify-content: margin-left */
 }
 
@@ -234,4 +235,37 @@
     height: 40px;
     background-color: white;
 
+}
+
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40em;
+
+}
+
+.banner-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-search-input {
+    height: 40px;
+    width: 300px;
+    border: none;
+}
+
+.banner-submit {
+    display: flex;
+    height: 42px;
+    justify-content: center;
+    align-items: center;
+    border: none
+}
+
+.searchDiv{
+    display: flex;
+    border: 2px solid red
 }

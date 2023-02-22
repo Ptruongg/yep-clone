@@ -21,6 +21,7 @@ import DemoUser from "./components/DemoUser";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
 import Navigation from "./components/Navigation";
+import PageNotFound from "./components/PagNotFound";
 import Footer from "./components/Footer";
 import Home from "./components/GoogleMaps";
 
@@ -48,7 +49,7 @@ function App() {
           <Switch>
             <Route exact path="/" >
               <BusinessesList />
-              <Home />
+
               <Footer />
             </Route>
             <Route path="/signup" >
@@ -60,7 +61,7 @@ function App() {
             <Route path="/users/:userId" exact={true}>
               <User />
             </Route>
-            <Route path="/search/:id">
+            <Route path={`/search/:id`}>
               <SearchBusiness />
             </Route>
             <Route path="/bookmarks/user/:userId">
@@ -86,7 +87,7 @@ function App() {
             </Route>
 
             <Route path="*">
-              <div className="pageNotFound">404 Page Not Found</div>
+              <PageNotFound />
               <Footer />
             </Route>
           </Switch>
