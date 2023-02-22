@@ -72,96 +72,118 @@
 //         </div>
 //     );
 // }
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import BusinessesList from "../Businesses/businessList";
+import { useEffect, useState } from "react";
+// import { useSelector } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import BusinessesList from "../Businesses/businessList";
 // import "./searchBusinesses.css"
-
 const SearchBusiness = () => {
-  const { id } = useParams();
-  const businesses = useSelector((state) => Object.values(state?.businessReducer));
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
 
-  function returnArrayOfBusinesses(businessesObj) {
-    const finalArray = [];
-    for (let i = 0; i < businessesObj.length; i++) {
-      const newString = `${businessesObj[
-        i
-      ].name.toLowerCase()}${businessesObj[
-        i
-      ].address.toLowerCase()}${businessesObj[
-        i
-      ].city.toLowerCase()}${businessesObj[
-        i
-      ].name.toLowerCase()}${businessesObj[i].zipcode.toLowerCase()}`;
-      finalArray.push(newString);
-    }
-    return finalArray;
+  const handleChange = (e) => {
+    setQuery(e.target.value);
   }
 
-  const arrayOfBusinessesSearch = returnArrayOfBusinesses(businesses);
-
-  function findBusinesses(businessesArray) {
-    const businessIndexes = [];
-    for (let i = 0; i < businessesArray.length; i++) {
-      const oneString = businessesArray[i];
-      if (oneString.includes(id.toLowerCase())) {
-        businessIndexes.push(i);
-      }
-    }
-    return businessIndexes;
-  }
-
-  const businessIndexes = findBusinesses(arrayOfBusinessesSearch);
-
-  function finalBusinessesArray(busIndex, businesses) {
-    const finalArr = [];
-    for (let i = 0; i < busIndex.length; i++) {
-      const index = busIndex[i];
-      finalArr.push(businesses[index]);
-    }
-    return finalArr;
-  }
-
-  const searchResults = finalBusinessesArray(businessIndexes, businesses);
-
-  //   sort by highest rated businesses
-  searchResults.sort(
-    (a, b) => b.ratingSum / b.ratingLen - a.ratingSum / a.ratingLen
-  );
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  if (searchResults.length) {
-    return (
-      <div className="search-results-container">
-        <div className="search-title-container">
-          <h1 className="business-search-title">
-            {searchResults.length} Search Results Found For:{" "}
-            <span className="search-parameter">{`"${id}"`}</span>
-          </h1>
-        </div>
-        <div className="business-roll">
-          {searchResults.map((business) => (
-            <BusinessesList business={business} key={business.id} />
-          ))}
-        </div>
-      </div>
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await fetch(`/api/search?q=${query}`)
+      .then((response) => response.json())
+      .then((data) => setResults(data))
   }
 
   return (
-    <div className="search-results-container">
-      <div className="no-search-title-container">
-        <h1 className="no-business-search-title">
-          0 Search Results For:{" "}
-          <span className="no-search-parameter">{`"${id}"`}</span>
-        </h1>
-      </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={query} onChange={handleChange} />
+        <button type="submit">Search</button>
+      </form>
+      <ul>
+        {results.map((result) => (
+          <li key={result.id}>{result.city}</li>
+        ))}
+      </ul>
     </div>
   );
-};
+}
 
 export default SearchBusiness;
+// const SearchBusiness = () => {
+//   const { id } = useParams();
+//   const businesses = useSelector((state) => Object.values(state?.businessReducer));
+
+//   function returnArrayOfBusinesses(businessesObj) {
+//     const finalArray = [];
+//     for (let i = 0; i < businessesObj.length; i++) {
+//       const newString = `${businessesObj[i].city.toLowerCase()}`;
+//       finalArray.push(newString);
+//     }
+//     console.log('final', finalArray)
+//     return finalArray;
+//   }
+
+//   const arrayOfBusinessesSearch = returnArrayOfBusinesses(businesses);
+//   console.log('arrrrrr', arrayOfBusinessesSearch)
+//   function findBusinesses(businessesArray) {
+//     const businessIndexes = [];
+//     for (let i = 0; i < businessesArray.length; i++) {
+//       const oneString = businessesArray[i];
+//       if (oneString.includes(id.toLowerCase())) {
+//         businessIndexes.push(i);
+//       }
+//     }
+//     console.log('bizzzindex', businessIndexes)
+//     return businessIndexes;
+//   }
+
+//   const businessIndexes = findBusinesses(arrayOfBusinessesSearch);
+
+//   function finalBusinessesArray(busIndex, businesses) {
+//     const finalArr = [];
+//     for (let i = 0; i < busIndex.length; i++) {
+//       const index = busIndex[i];
+//       finalArr.push(businesses[index]);
+//     }
+//     return finalArr;
+//   }
+
+//   const searchResults = finalBusinessesArray(businessIndexes, businesses);
+
+//   //   sort by highest rated businesses
+//   searchResults.sort(
+//     (a, b) => b.ratingSum / b.ratingLen - a.ratingSum / a.ratingLen
+//   );
+
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, []);
+
+//   if (searchResults.length) {
+//     return (
+//       <div className="search-results-container">
+//         <div className="search-title-container">
+//           <h1 className="business-search-title">
+//             {searchResults.length} Search Results Found For:{" "}
+//             <span className="search-parameter">{`"${id}"`}</span>
+//           </h1>
+//         </div>
+//         <div className="business-roll">
+//           {searchResults.map((business) => (
+//             <BusinessesList business={business} key={business.id} />
+//           ))}
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="search-results-container">
+//       <div className="no-search-title-container">
+//         <h1 className="no-business-search-title">
+//           0 Search Results For:{" "}
+//           <span className="no-search-parameter">{`"${id}"`}</span>
+//         </h1>
+//       </div>
+//     </div>
+//   );
+// };

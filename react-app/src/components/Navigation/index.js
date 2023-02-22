@@ -79,12 +79,15 @@ function Navigation({ isLoaded }) {
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaT-NcnLo4dUZBCe2abefSWdmECMUixI4AQw&usqp=CAU"></img>
                     </NavLink>
                 </div>
+                <div>
+                    <SearchBusiness />
+                </div>
                 <div className="banner-container">
                     <div className="banner-content">
                         <div className="banner-logo-container">
                             {/* Search Bar Container don't delete this div*/}
                         </div>
-                        <div className="banner-form-container">
+                        {/* <div className="banner-form-container">
                             <form className="banner-search">
                                 <label htmlFor="search">
                                     <input
@@ -104,7 +107,7 @@ function Navigation({ isLoaded }) {
                                     <i className="fas fa-search"></i>
                                 </button>
                             </form>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 {isLoaded && sessionLinks}
