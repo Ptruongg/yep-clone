@@ -5,8 +5,8 @@ import * as businessActions from "../../store/businesses";
 import { getAllBusinesses } from "../../store/businesses";
 import "./businessList.css";
 import { NavLink } from "react-router-dom";
-import Search from "../SearchBusiness";
-import SearchBusiness from "../SearchBusiness";
+// import Search from "../SearchBusiness";
+// import SearchBusiness from "../SearchBusiness";
 import Footer from "../Footer";
 import Home from "../GoogleMaps"
 

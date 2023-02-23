@@ -26,23 +26,7 @@ function PageNotFound() {
             <p className="page-not-found">
               We're sorry. We can't find the page you're looking for.
             </p>
-            <p className="login-404-msg">
-              Here are some helpful links instead:
-            </p>
-            <div className="pnf-visit-these">
-              <span>
-                Try Our{" "}
-                <Link to="/search/coffee" className="search-404-text">
-                  Quick Search
-                </Link>
-              </span>
-              <span>
-                Browse{" "}
-                <Link to="/" className="search-404-text">
-                  Coffee Shops
-                </Link>
-              </span>
-            </div>
+
           </div>
           <img
             className="img404"
