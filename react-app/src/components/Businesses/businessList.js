@@ -16,19 +16,19 @@ const BusinessesList = () => {
     const business = useSelector((state) => Object.values(state?.businessReducer));
     const [url, setUrl] = useState('https://photos.smugmug.com/photos/i-ZcW3j56/0/X4/i-ZcW3j56-X4.jpg');
     const [index, setIndex] = useState(0);
-    useEffect(() => {
-        const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://i.imgur.com/fXZuXu8.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg'];
-        let scroll = setInterval(() => {
-            if (index === 3) {
-                setIndex(0)
-            }
-            else {
-                setIndex((index) => index + 1)
-            }
-            return setUrl(images[index])
-        }, 4000)
-        return () => clearInterval(scroll)
-    }, [index, url])
+    // useEffect(() => {
+    //     const images = ['https://photos.smugmug.com/photos/i-Vhwkfx6/0/X2/i-Vhwkfx6-X2.jpg', 'https://i.imgur.com/fXZuXu8.jpg', 'https://photos.smugmug.com/photos/i-6m22HpM/0/X2/i-6m22HpM-X2.jpg', 'https://photos.smugmug.com/photos/i-Sn8rswX/1/X4/i-Sn8rswX-X4.jpg'];
+    //     let scroll = setInterval(() => {
+    //         if (index === 3) {
+    //             setIndex(0)
+    //         }
+    //         else {
+    //             setIndex((index) => index + 1)
+    //         }
+    //         return setUrl(images[index])
+    //     }, 4000)
+    //     return () => clearInterval(scroll)
+    // }, [index, url])
 
     // const sessionUser = useSelector((state) => state.session.user)
     // const reviews = useSelector((state) => Object.values(state?.reviews))
@@ -54,10 +54,10 @@ const BusinessesList = () => {
         <div className="homepage">
 
 
-            <div className="website-description">Yep is a Yelp clone that has core CRUD features for Businesses and Reviews</div>
-            <div className="header">
+            {/* <div className="header">
+
                 <img src={url} alt="" className="image-scroll"></img>
-            </div>
+            </div> */}
             <h2 className='your-next-review'>Your Next Review Awaits</h2>
             <div className="businesses-list">
                 {business &&

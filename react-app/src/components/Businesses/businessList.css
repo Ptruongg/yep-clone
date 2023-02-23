@@ -9,7 +9,7 @@
     justify-content: center;
     /* margin: 2px 2px 2px 2px; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border: 0.25px solid lightgrey;
+    /* border: 0.25px solid lightgrey; */
 }
 
 .searchDiv {
@@ -53,8 +53,8 @@
     grid-template-columns: 2fr 2fr;
     /* border: 1px solid rgba(0, 0, 0, 0.1);s */
     /* border-radius: 10px; */
-    margin-left: 50px;
-    margin-right: 50px;
+    /* margin-left: 250px;
+    margin-right: 250px; */
     margin-top: 50px;
     transition: box-shadow 0.9s ease;
     justify-content: center;
@@ -156,17 +156,18 @@ a:link {
     text-decoration: none;
 }
 
-.image-scroll {
+/* .image-scroll {
     height: 50vh;
     background-position: center;
     background-size: cover;
     display: flex;
     justify-content: center;
     object-fit: cover;
-    width: 2000px;
-    margin-left: 25px;
-    margin-right: 25px;
-}
+    width: 4500px;
+    height: 750px; */
+    /* margin-left: 25px;
+    margin-right: 25px; */
+/* } */
 
 @keyframes fadeInOpacity {
     0% {
@@ -181,6 +182,8 @@ a:link {
 .header {
     display: flex;
     margin-bottom: 30px;
+    overflow: hidden;
+    width: 100%;
 }
 
 .website-description {
@@ -194,6 +197,7 @@ a:link {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin-bottom: 30px;
     margin-left: 25px;
+    overflow: hidden;
 }
 
 .your-next-review {

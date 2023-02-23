@@ -78,53 +78,6 @@ const BusinessDetails = () => {
     }
 
 
-    // const addBookmark = async (e) => {
-    //     e.preventDefault();
-    //     const payload = {
-    //         business_id: businesses.id,
-    //         user_id: sessionUser.id
-    //     }
-    //     if (sessionUser.id === bookmarks.user_id) {
-    //         const data = await dispatch(addBookmarksThunk(payload))
-    //         if (data) {
-    //             setErrors(data)
-    //         }
-    //     } else {
-    //         return setErrors(["You have"])
-    //     }
-    // }
-    // const removeBookmark = async (isLiked, bookmarks) => {
-    //     let bookmarkId;
-    //     Object.values(bookmarks).forEach((book) => {
-    //         if (book.user_id === sessionUser.id) {
-    //             bookmarkId = bookmark.id
-    //         }
-    //     });
-    //     await dispatch(removeBookmarksThunk(bookmarkId))
-    //     dispatch(getBookmarksThunk())
-    //     isLiked = false;
-    //     setIsLiked(false)
-    // };
-
-    // const userHasBookmarked = () => {
-    //     for (let i = 0; i < bookmarkslength; i++) {
-    //         if (sessionUser.id === bookmarks.business[i].user_id) {
-    //             setIsLiked(true)
-    //             return
-    //         }
-    //     }
-    // }
-    // useEffect(() => {
-    //     dispatch(getReviewsThunk())
-    // }, [dispatch, businesses, JSON.stringify(businessReviews)])
-    // useEffect(() => {
-    //     dispatch(getAllUsers);
-    // }, [dispatch, usersString])
-    // const handleBookmarked = (e) => {
-    //     e.preventDefault();
-    //     setBookmarked(true)
-    //     history.push(`/bookmarks/user/${user}`)
-    // }
     const handleEditClick = (e) => {
         e.preventDefault();
         history.push(`/business/${businessId}/edit`)
@@ -169,7 +122,7 @@ const BusinessDetails = () => {
 
     return (
         // <div>hi</div>
-
+        <>
         <div className="businessDetailPage">
 
             <div className="header">
@@ -672,9 +625,10 @@ const BusinessDetails = () => {
 
 
         </div>
-
+        </>
 
     )
+
 }
 
 export default BusinessDetails;
