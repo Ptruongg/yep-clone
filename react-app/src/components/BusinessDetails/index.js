@@ -609,11 +609,11 @@ const BusinessDetails = () => {
                 </div>
                 <div className="busDetails-scroll">
                     <div className="side-bar">
-                        <div className="address">
+                        <div className="address" style={{height: "80px", border: "1px solid lightgrey", borderRadius: "33px"}}>
                             {businesses?.address}, {businesses?.city}, {businesses?.state}, {businesses?.zipcode}
                             <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                         </div>
-                        <div className="phone-Number">
+                        <div className="phone-Number" style={{height: "20px"}}>
                             {businesses?.phoneNumber}
                             <img src={'https://static.vecteezy.com/system/resources/previews/003/720/498/original/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                         </div>
