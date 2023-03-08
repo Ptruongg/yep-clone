@@ -306,7 +306,7 @@
     position: absolute;
     bottom: 155px;
     /* left: 550px; */
-    left: 750px;
+    right: 850px
 }
 
 .searchSubmitbutton {
@@ -315,7 +315,7 @@
     background-color: red;
     /* position: absolute;
     bottom: 150px; */
-    /* right: 500px; */
+    /* left: 700px; */
 }
 
 .profileButton-drop {

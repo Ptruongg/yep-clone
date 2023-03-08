@@ -116,7 +116,7 @@ function Navigation({ isLoaded }) {
 
                                         ></input>
                                     </label>
-                                    <button className="searchSubmitButton" onClick={handleForm} style={{ height: "55px", width: "75px", borderRadius: "25px", borderColor: "black", backgroundColor: "red", position: "absolute", bottom: "155px", right: "950px" }}>
+                                    <button className="searchSubmitButton" onClick={handleForm} style={{ height: "55px", width: "75px", borderRadius: "25px", borderColor: "black", backgroundColor: "red", position: "absolute", bottom: "155px", right: "770px" }}>
                                         <i class="fa-solid fa-magnifying-glass" style={{ color: 'white', position: "relative" }}></i>
                                     </button>
                                 </form>
