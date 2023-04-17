@@ -6,9 +6,18 @@ from app.forms import BusinessForm
 from werkzeug.utils import secure_filename
 import os
 
+
+# s3 = boto3.client(
+#     "s3",
+#     aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
+#     aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
+# )
+# BUCKET_NAME = os.environ.get("AWS_BUCKET_NAME")
+
 business_routes = Blueprint("businesses", __name__)
 
 # get all businesses route
+
 
 @business_routes.route("/")
 def businesses():
@@ -27,6 +36,8 @@ def business_by_id(id):
     return response
 
 # get businesses owned by one user
+
+
 @business_routes.route("user/<int:userId>/")
 # @login_required
 def businesses_of_user(userId):
@@ -36,6 +47,8 @@ def businesses_of_user(userId):
     return response
 
 # get reviews from business id
+
+
 @business_routes.route("/<business_id>/reviews")
 def get_review_id(business_id):
     reviews = Review.query.get(Review.business_id == business_id).all()
@@ -44,6 +57,8 @@ def get_review_id(business_id):
     return res
 
 # create a busines
+
+
 @business_routes.route("/", methods=['POST'])
 @login_required
 def create_business():
@@ -60,7 +75,7 @@ def create_business():
             country=new_business.data['country'],
             user_id=new_business.data['user_id'],
             phoneNumber=new_business.data['phoneNumber'],
-            imageUrl = new_business.data['imageUrl']
+            imageUrl=new_business.data['imageUrl']
         )
         # new_business = Business(
         #     name = name,
@@ -87,7 +102,6 @@ def create_business():
 def edit_business(business_id):
     # print('id', id)
     business = Business.query.get(business_id)
-
 
     if not business:
         return "Business could not be found!", 404
@@ -135,7 +149,7 @@ def delete_business(business_id):
 
     return "Successfully Deleted"
 
-#saving a bookmark
+# saving a bookmark
 # @business_routes.route("/<int:id>/bookmarks/<int:id2>", methods=['POST'])
 # def saved_business(id, id2):
 #     curr_user = User.query.get(id)
