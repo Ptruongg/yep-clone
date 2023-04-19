@@ -5,14 +5,23 @@ from app.models import db, User, Business, Review
 from app.forms import BusinessForm
 from werkzeug.utils import secure_filename
 import os
+import boto3
+from botocore.client import Config
 
+ACCESS_KEY_ID ='AKIAU2MZUKFHOAPHEEI6'
+ACCESS_SECRET_KEY='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'
+BUCKET_NAME='yep-proj-master'
 
-# s3 = boto3.client(
-#     "s3",
-#     aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
-#     aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
-# )
-# BUCKET_NAME = os.environ.get("AWS_BUCKET_NAME")
+data = open('test.png', 'rb')
+
+s3 = boto3.resource(
+    "s3",
+    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
+    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
+    config=Config(signature_version='s3v4')
+)
+
+s3.create_bucket(Bucket=BUCKET_NAME)
 
 business_routes = Blueprint("businesses", __name__)
 
