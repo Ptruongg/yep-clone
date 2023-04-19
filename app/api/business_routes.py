@@ -8,8 +8,8 @@ import os
 import boto3
 from botocore.client import Config
 
-ACCESS_KEY_ID ='AKIAU2MZUKFHOAPHEEI6'
-ACCESS_SECRET_KEY='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'
+# ACCESS_KEY_ID ='AKIAU2MZUKFHOAPHEEI6'
+# ACCESS_SECRET_KEY='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'
 BUCKET_NAME='yep-proj-master'
 
 data = open('test.png', 'rb')
