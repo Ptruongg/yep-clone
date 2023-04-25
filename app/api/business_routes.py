@@ -17,8 +17,8 @@ data = open('test.png', 'rb')
 s3 = boto3.resource(
     "s3",
     aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
-    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
-    config=Config(signature_version='s3v4')
+    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
+    config=Config(signature_version='s3v4'),
 )
 
 s3.create_bucket(Bucket=BUCKET_NAME)
