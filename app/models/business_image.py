@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
 
-class BusinessIamge(db.Model):
+class BusinessImage(db.Model):
     __tablename__ = "business_images"
 
     if environment == "production":
