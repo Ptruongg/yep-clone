@@ -14,7 +14,7 @@ class BusinessImage(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-    business = db.relationship("Business", back_populates="businessimages")
+    businesses = db.relationship("Business", back_populates="businessimages")
 
     def to_dict(self):
         return {
