@@ -1,5 +1,6 @@
 const GET_BUSINESS = 'businesses/GET_BUSINESS';
-const GET_BUSINESS_DEATS = 'businesses/GET_BUSINESS_DEATS'
+const GET_BUSINESS_DEATS = 'businesses/GET_BUSINESS_DEATS';
+const GET_ALL_BUSINESS_IMAGES = 'businesses/GET_ALL_BUSINESS_IMAGES';
 const ADD_BUSINESS = 'businesses/ADD_BUSINESS';
 const EDIT_BUSINESS = 'businesses/EDIT_BUSINESS';
 const DELETE_BUSINESS = 'businesses/DELETE_BUSINESS';
@@ -17,6 +18,13 @@ const getBusinessId = (businessId) => {
     return {
         type: GET_BUSINESS_DEATS,
         businessId
+    }
+}
+
+const getAllBusinessImagesAction = (payload) => {
+    return {
+        type: GET_ALL_BUSINESS_IMAGES,
+        payload
     }
 }
 
@@ -63,6 +71,32 @@ export const getBusinessDetails = (businessId) => async(dispatch) => {
         return businessDeats;
     }
     return response
+}
+
+export const getAllBusinessImages = () => async(dispatch) => {
+    const response = await fetch("/api/businesses/images")
+
+    if (response.ok) {
+        const allBusinessImages = await response.json();
+        dispatch(getAllBusinessImagesAction(allBusinessImages))
+    }
+}
+
+export const createBusinessImages = (images, businessId) => async(dispatch) => {
+    const response = await fetch(`/api/businesses/${businessId}/images`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(images)
+    })
+    if (response.ok) {
+        const data = await response.json()
+        return data
+    } else if (response.status < 500) {
+        const data = await response.json()
+        if(data.errors) return data
+    }
 }
 
 export const createBusiness = (data) => async (dispatch) => {
@@ -144,8 +178,13 @@ const businessReducer = (state = initialState, action) => {
             return newState
         }
         case GET_BUSINESS_DEATS: {
-            const newState = {...state};
+            let newState = {...state};
             newState[action.businessId] = action.business;
+            return newState
+        }
+        case GET_ALL_BUSINESS_IMAGES: {
+            let newState = {...state}
+            newState.allBusinessImages = action.payload
             return newState
         }
         case ADD_BUSINESS: {
