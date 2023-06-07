@@ -1,33 +1,36 @@
 from flask import Blueprint, jsonify, request, url_for, render_template, redirect, flash
 from flask_login import login_required, current_user
-from app.models import db, User, Business, Review
+from app.models import db, User, Business, Review, BusinessImage
 # from app.models.business import bookmarks
 from app.forms import BusinessForm
 from werkzeug.utils import secure_filename
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename
+)
 import os
 import boto3
-from botocore.client import Config
+
+
+
+# from botocore.client import Config
 
 # ACCESS_KEY_ID ='AKIAU2MZUKFHOAPHEEI6'
 # ACCESS_SECRET_KEY='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'
-BUCKET_NAME='yep-proj-master'
+# BUCKET_NAME='yep-proj-master'
 
-data = open('test.png', 'rb')
+# data = open('test.png', 'rb')
 
-s3 = boto3.resource(
-    "s3",
-    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
-    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY")
-    config=Config(signature_version='s3v4')
-)
+# s3 = boto3.resource(
+#     "s3",
+#     aws_access_key_id=os.environ.get("AWS_ACCESS_KEY"),
+#     aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
+#     config=Config(signature_version='s3v4'),
+# )
 
-s3.create_bucket(Bucket=BUCKET_NAME)
+# s3.create_bucket(Bucket=BUCKET_NAME)
 
 business_routes = Blueprint("businesses", __name__)
-
 # get all businesses route
-
-
 @business_routes.route("/")
 def businesses():
     all_businesses = Business.query.all()
@@ -172,3 +175,35 @@ def delete_business(business_id):
 #         if x == id:
 #             newObj[['business_ids'].append(z)]
 #     return newObj
+
+#post new business images
+@business_routes.route("/<int:busId>/images", methods=["POST"])
+@login_required
+def upload_image(busId):
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type is not supported"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        print("upload", upload)
+
+        return upload, 400
+
+    url = upload["url"]
+    new_image = BusinessImage(url = url, business_id=busId, preview=True)
+    db.session.add(new_image)
+    db.session.commit
+    return {"url": url}
+
+@business_routes.route("/<int:busId>/images")
+def get_all_images(busId):
+    images = BusinessImage.query.filter_by(business_id = busId).all()
+    return {"images": [image.to_dict() for image in images]}

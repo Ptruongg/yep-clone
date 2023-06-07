@@ -21,7 +21,7 @@ import DemoUser from "./components/DemoUser";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import LoginFormModal from "./components/auth";
 import Navigation from "./components/Navigation";
-import PageNotFound from "./components/PagNotFound";
+import PageNotFound from "./components/PageNotFound";
 import Footer from "./components/Footer";
 import Home from "./components/GoogleMaps";
 
