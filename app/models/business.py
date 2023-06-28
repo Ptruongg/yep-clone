@@ -32,15 +32,7 @@ class Business(db.Model):
     user = db.relationship("User", back_populates='business')
     review = db.relationship("Review", back_populates='business', cascade="all, delete")
     bookmark = db.relationship("Bookmark", back_populates='business', cascade="all, delete")
-    businessimages = db.relationship("BusinessImage", back_populates="businesses", cascade="all, delete" )
 
-    def business_images(self):
-        if (self.businessimages):
-            image_to_dict = [image.url for image in self.businessimages]
-            print(image_to_dict)
-            return image_to_dict
-        else:
-            return 0
 
     def to_dict(self):
         return {
