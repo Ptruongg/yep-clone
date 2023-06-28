@@ -25,6 +25,7 @@ class Bookmark(db.Model):
             "business_id": self.business_id,
         }
 
+
 # bookmarks = db.Table(
 #     "bookmarks",
 #     db.Model.metadata,
