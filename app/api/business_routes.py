@@ -178,33 +178,33 @@ def delete_business(business_id):
 #     return newObj
 
 #post new business images
-@business_routes.route("/<int:busId>/images", methods=["POST"])
-@login_required
-def upload_image(busId):
-    if "image" not in request.files:
-        return {"errors": "image required"}, 400
+# @business_routes.route("/<int:busId>/images", methods=["POST"])
+# @login_required
+# def upload_image(busId):
+#     if "image" not in request.files:
+#         return {"errors": "image required"}, 400
 
-    image = request.files["image"]
+#     image = request.files["image"]
 
-    if not allowed_file(image.filename):
-        return {"errors": "file type is not supported"}, 400
+#     if not allowed_file(image.filename):
+#         return {"errors": "file type is not supported"}, 400
 
-    image.filename = get_unique_filename(image.filename)
+#     image.filename = get_unique_filename(image.filename)
 
-    upload = upload_file_to_s3(image)
+#     upload = upload_file_to_s3(image)
 
-    if "url" not in upload:
-        print("upload", upload)
+#     if "url" not in upload:
+#         print("upload", upload)
 
-        return upload, 400
+#         return upload, 400
 
-    url = upload["url"]
-    new_image = BusinessImage(url = url, business_id=busId, preview=True)
-    db.session.add(new_image)
-    db.session.commit
-    return {"url": url}
+#     url = upload["url"]
+#     new_image = BusinessImage(url = url, business_id=busId, preview=True)
+#     db.session.add(new_image)
+#     db.session.commit
+#     return {"url": url}
 
-@business_routes.route("/<int:busId>/images")
-def get_all_images(busId):
-    images = BusinessImage.query.filter_by(business_id = busId).all()
-    return {"images": [image.to_dict() for image in images]}
+# @business_routes.route("/<int:busId>/images")
+# def get_all_images(busId):
+#     images = BusinessImage.query.filter_by(business_id = busId).all()
+#     return {"images": [image.to_dict() for image in images]}
