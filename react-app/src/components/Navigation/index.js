@@ -86,8 +86,8 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <div className='headerDiv'>
-            <div className="imgNav">
+        <div className='headerDiv' >
+            <div className="imgNav" >
                 <img src={url} alt="" className="image-scroll"></img>
             </div>
             <div id="home">
@@ -96,7 +96,6 @@ function Navigation({ isLoaded }) {
                         <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/a28dqk0ou5spbsttmdey" style={{ height: "75px", borderRadius: "30px" }}></img>
                     </NavLink>
                 </div>
-
                 <div className="banner-container">
                     <div className="banner-content">
                         <div className="banner-form-container">
