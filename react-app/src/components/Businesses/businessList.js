@@ -77,12 +77,12 @@ const BusinessesList = () => {
                                             {bus.name}
                                         </div>
                                         <div className="address">
+                                            <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginRight: "1.1em" }} />
                                             {bus.address}, {bus.city}, {bus.state}, {bus.zipcode}, {bus.country}
-                                            <img src={'https://icons.veryicon.com/png/o/miscellaneous/basic-linear-icon/address-101.png'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                                         </div>
                                         <div className="phone-number">
+                                        <img src={'https://static.vecteezy.com/system/resources/previews/003/720/498/original/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg'} style={{ width: "1.3em", marginRight: "1.1em" }} />
                                             {bus.phoneNumber}
-                                            <img src={'https://static.vecteezy.com/system/resources/previews/003/720/498/original/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg'} style={{ width: "1.3em", marginLeft: "1.1em" }} />
                                         </div>
                                     </div>
                                 </div>

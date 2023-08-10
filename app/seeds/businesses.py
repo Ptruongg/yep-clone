@@ -11,7 +11,7 @@ def seed_businesses():
         zipcode="95051",
         country="United States",
         user_id=1,
-        phoneNumber=4082179112,
+        phoneNumber="408 111-1111",
         imageUrl="https://s3-media0.fl.yelpcdn.com/bphoto/royQpKYzGmjgVjuQ0ZsFtg/o.jpg"
     )
     business2 = Business(
@@ -23,7 +23,7 @@ def seed_businesses():
         zipcode="95132",
         country="United States",
         user_id=2,
-        phoneNumber=4085086022,
+        phoneNumber="408 111-1111",
         imageUrl="https://s3-media0.fl.yelpcdn.com/bphoto/9DfjVymrp19GuiditZSCJg/o.jpg"
     )
     business3 = Business(
@@ -35,7 +35,7 @@ def seed_businesses():
         zipcode="94085",
         country="United States",
         user_id=3,
-        phoneNumber=4085086022,
+        phoneNumber="408 111-1111",
         imageUrl="https://s3-media0.fl.yelpcdn.com/bphoto/LNkrALRly_Wmw-Pd2R5L6Q/o.jpg "
     )
     business4 = Business(
@@ -47,7 +47,7 @@ def seed_businesses():
         zipcode="95133",
         country="United States",
         user_id=4,
-        phoneNumber=4087689099,
+        phoneNumber="408 111-1111",
         imageUrl="https://photos.smugmug.com/photos/i-rNLqWr8/0/X5/i-rNLqWr8-X5.jpg"
     )
     business5 = Business(
@@ -59,7 +59,7 @@ def seed_businesses():
         zipcode="92062",
         country="United States",
         user_id=5,
-        phoneNumber=5103107650,
+        phoneNumber="408 111-1111",
         imageUrl="https://photos.smugmug.com/photos/i-cjkgNcv/0/X5/i-cjkgNcv-X5.jpg"
     )
     business6 = Business(
@@ -71,7 +71,7 @@ def seed_businesses():
         zipcode="94112",
         country="United States",
         user_id=6,
-        phoneNumber=4156014291,
+        phoneNumber="408 111-1111",
         imageUrl="https://s3-media0.fl.yelpcdn.com/bphoto/HJfsJWbaASxVF1GFjuEuDA/o.jpg"
     )
     business7 = Business(
@@ -83,7 +83,7 @@ def seed_businesses():
         zipcode="94112",
         country="United States",
         user_id=7,
-        phoneNumber=6508779777,
+        phoneNumber="408 111-1111",
         imageUrl="https://cc-prod.scene7.com/is/image/CCProdAuthor/car-photography_P4_720x654?$pjpeg$&jpegSize=200&wid=720"
     )
     business8 = Business(
@@ -95,7 +95,7 @@ def seed_businesses():
         zipcode="94087",
         country="United States",
         user_id=8,
-        phoneNumber=4157694111,
+        phoneNumber="408 111-1111",
         imageUrl="https://s3-media0.fl.yelpcdn.com/bphoto/P3AmbCId1k5BdWVVlsUzfA/o.jpg"
     )
     business9 = Business(
@@ -107,7 +107,7 @@ def seed_businesses():
         zipcode="94062",
         country="United States",
         user_id=9,
-        phoneNumber=4087382311,
+        phoneNumber="408 111-1111",
         imageUrl="https://1.bp.blogspot.com/-dEdiVI4UkyE/X2tQjQ_NiUI/AAAAAAAFTpU/vuTWwpZMIJMWIVRu7SAOWatB0XpNUPwegCLcBGAsYHQ/w640-h426/2005%2Bwhite%2Bevo%2Bedit_-41.jpg"
     )
     business10 = Business(
@@ -119,7 +119,7 @@ def seed_businesses():
         zipcode="96012",
         country="United States",
         user_id=10,
-        phoneNumber=9959832424,
+        phoneNumber="408 111-1111",
         imageUrl="https://a-static.besthdwallpaper.com/red-modified-toyota-supra-mk4-wallpaper-3840x2160-92500_54.jpg"
     )
     business11 = Business(
@@ -131,7 +131,7 @@ def seed_businesses():
         zipcode="92562",
         country="United States",
         user_id=11,
-        phoneNumber=8444889232,
+        phoneNumber="844 488 9232",
         imageUrl="https://www.westcoastexoticcars.com/imagetag/249/main/l/Used-2019-Porsche-911-GT3-RS-Weissach-1647888565.jpg"
     )
     business12 = Business(
@@ -143,7 +143,7 @@ def seed_businesses():
         zipcode="95112",
         country="United States",
         user_id=12,
-        phoneNumber=4083321024,
+        phoneNumber="408 111-1111",
         imageUrl="https://s3-media0.fl.yelpcdn.com/bphoto/CqAorx5Xcr0bNkbnXUSOpQ/o.jpg"
     )
 
