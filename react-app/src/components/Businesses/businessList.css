@@ -10,6 +10,7 @@
     /* margin: 2px 2px 2px 2px; */
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* border: 0.25px solid lightgrey; */
+
 }
 
 .searchDiv {
@@ -78,7 +79,7 @@
     border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb; */
     height: 275px;
-    width: 700px;
+    width: 675px;
     margin-right: 90px;
     margin-left: 200px;
 
