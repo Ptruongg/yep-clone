@@ -93,7 +93,7 @@ function Navigation({ isLoaded }) {
             <div id="home">
                 <div id='logo'>
                     <NavLink to="/" exact={true}>
-                        <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/a28dqk0ou5spbsttmdey" style={{ height: "75px", borderRadius: "30px" }}></img>
+                        <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/a28dqk0ou5spbsttmdey" style={{ height: "75px", width: "75px", borderRadius: "30px", color: "white" }}></img>
                     </NavLink>
                 </div>
                 <div className="banner-container">
